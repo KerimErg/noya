@@ -1,0 +1,43 @@
+{
+  "name": "chez-mario",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "images": "node scripts/optimize-images.mjs",
+    "build": "node scripts/optimize-images.mjs && next build",
+    "start": "node scripts/serve.mjs",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "next": "15.5.26",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "3.3.1",
+    "@fontsource-variable/manrope": "5.2.6",
+    "@fontsource-variable/montserrat": "5.2.6",
+    "@fontsource/montserrat": "^5.2.6",
+    "@playwright/test": "1.56.1",
+    "@types/node": "22.18.6",
+    "@types/react": "19.1.13",
+    "@types/react-dom": "19.1.9",
+    "autoprefixer": "10.4.21",
+    "eslint": "9.36.0",
+    "eslint-config-next": "15.5.26",
+    "postcss": "8.5.6",
+    "sharp": "0.34.4",
+    "tailwindcss": "3.4.17",
+    "typescript": "5.9.2"
+  },
+  "browserslist": [
+    "chrome >= 111",
+    "edge >= 111",
+    "firefox >= 111",
+    "safari >= 16.4",
+    "ios >= 16.4"
+  ]
+}
