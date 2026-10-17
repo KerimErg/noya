@@ -1,1 +1,226 @@
-{}
+{
+  "assiette-cordon-bleu": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "assiette-escalope": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "assiette-falafel": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "assiette-kebab": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "assiette-kofte": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "assiette-royal": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "assiette-steak": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "burger": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "falafel": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "kebab": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "mario-bowl": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "menu-kebab": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "menu-yufka": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "nuggets": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "tacos": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "yufka": {
+    "kind": "product",
+    "alpha": true,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  }
+}

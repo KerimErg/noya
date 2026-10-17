@@ -10,19 +10,17 @@ import "./globals.css";
 
 // Polices auto-hébergées (aucun appel à Google Fonts).
 const display = localFont({
-  src: [
-    { path: "../fonts/montserrat-latin-wght-normal.woff2", style: "normal", weight: "100 900" },
-    { path: "../fonts/montserrat-latin-wght-italic.woff2", style: "italic", weight: "100 900" },
-  ],
+  src: "../fonts/lilita-one-latin-400-normal.woff2",
   variable: "--font-display",
   display: "swap",
-  fallback: ["Arial Black", "Arial", "sans-serif"],
+  weight: "400",
+  fallback: ["Arial Rounded MT Bold", "Arial Black", "sans-serif"],
 });
 const sans = localFont({
-  src: "../fonts/manrope-latin-wght-normal.woff2",
+  src: "../fonts/nunito-latin-wght-normal.woff2",
   variable: "--font-sans",
   display: "swap",
-  weight: "200 800",
+  weight: "200 1000",
   fallback: ["system-ui", "Arial", "sans-serif"],
 });
 
@@ -45,7 +43,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A0A0A",
+  themeColor: "#63C7F7",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -62,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantJsonLd()) }} />
       </head>
       <body>
-        <a href="#contenu" className="sr-only z-[60] rounded-full bg-coin px-4 py-2 font-bold text-coal focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
+        <a href="#contenu" className="sr-only z-[60] rounded-full border-[3px] border-ink bg-coin px-4 py-2 font-bold text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
           Aller au contenu
         </a>
         <Header />

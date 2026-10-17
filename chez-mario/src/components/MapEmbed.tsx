@@ -11,32 +11,30 @@ import { PinIcon } from "./Icons";
 export function MapEmbed({ className = "" }: { className?: string }) {
   const [show, setShow] = useState(false);
   return (
-    <div className={`relative overflow-hidden rounded-3xl border border-white/[0.07] bg-coal-800 ${className}`}>
+    <div className={`relative overflow-hidden rounded-[1.75rem] border-[3px] border-ink bg-luigi-light shadow-pop ${className}`}>
       {show ? (
         <iframe title={`Plan d'accès — Chez Mario, ${fullAddress()}`} src={mapsEmbed()} className="h-full w-full border-0" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
       ) : (
         <div className="relative flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
-          {/* Fond « plan » stylisé */}
-          <svg aria-hidden className="absolute inset-0 h-full w-full opacity-[0.35]" preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 300">
-            <rect width="400" height="300" fill="#141414" />
-            <path d="M-10 210C80 190 120 120 210 130s150 60 210 40" stroke="#2f6b3a" strokeWidth="26" fill="none" opacity=".5" />
-            <path d="M0 80h400M0 160h400M90 0v300M200 0v300M310 0v300" stroke="#3a3a3a" strokeWidth="6" />
-            <path d="M-20 260L420 40" stroke="#5a4a2a" strokeWidth="10" />
-            <path d="M40 0l60 300M260 0l-40 300" stroke="#2c2c2c" strokeWidth="3" />
+          <svg aria-hidden className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 300">
+            <rect width="400" height="300" fill="#C8F0D0" />
+            <path d="M-10 220C80 200 120 130 210 140s150 60 210 40" stroke="#63C7F7" strokeWidth="22" fill="none" />
+            <path d="M0 80h400M0 160h400M90 0v300M200 0v300M310 0v300" stroke="#fff" strokeWidth="10" />
+            <path d="M-20 260L420 40" stroke="#FFE07A" strokeWidth="12" />
           </svg>
-          <span className="relative grid h-14 w-14 place-items-center rounded-full bg-mario text-white shadow-glow">
-            <PinIcon className="h-7 w-7" />
+          <span className="relative grid h-16 w-16 animate-float place-items-center rounded-full border-[3px] border-ink bg-mario text-white shadow-pop">
+            <PinIcon className="h-8 w-8" />
           </span>
-          <p className="relative font-display text-lg font-extrabold uppercase">{fullAddress()}</p>
-          <div className="relative flex flex-wrap justify-center gap-2">
-            <button type="button" onClick={() => setShow(true)} className="btn btn-line h-11">
+          <p className="relative rounded-xl border-[3px] border-ink bg-white px-4 py-2 font-display text-lg uppercase shadow-pop-sm">{fullAddress()}</p>
+          <div className="relative flex flex-wrap justify-center gap-3">
+            <button type="button" onClick={() => setShow(true)} className="btn btn-white h-11">
               Afficher le plan
             </button>
             <a href={mapsLink()} target="_blank" rel="noopener noreferrer" className="btn btn-red h-11">
               Itinéraire
             </a>
           </div>
-          <p className="relative max-w-xs text-[11px] text-muted">Le plan est fourni par Google Maps : en l&apos;affichant, des données sont transmises à Google.</p>
+          <p className="relative max-w-xs rounded-lg bg-white/80 px-2 py-1 text-[11px] text-ink-soft">Le plan est fourni par Google Maps : en l&apos;affichant, des données sont transmises à Google.</p>
         </div>
       )}
     </div>

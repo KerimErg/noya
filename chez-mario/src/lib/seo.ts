@@ -1,4 +1,4 @@
-import { menu } from "@/content/menu";
+import { allItems, menu } from "@/content/menu";
 import { DAYS } from "@/lib/hours";
 import { fullAddress, mapsLink, site } from "@/content/site";
 
@@ -33,7 +33,7 @@ export function restaurantJsonLd() {
       hasMenuSection: menu.map((c) => ({
         "@type": "MenuSection",
         name: c.title,
-        hasMenuItem: c.items.map((i) => ({
+        hasMenuItem: allItems(c).map((i) => ({
           "@type": "MenuItem",
           name: i.name,
           ...(i.description ? { description: i.description } : {}),

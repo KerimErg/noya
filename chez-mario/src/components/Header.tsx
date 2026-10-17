@@ -35,19 +35,19 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${scrolled || open ? "border-b border-white/[0.06] bg-coal/90 backdrop-blur-md" : "bg-gradient-to-b from-black/70 to-transparent"}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${scrolled || open ? "border-b-[3px] border-ink bg-white" : "border-b-[3px] border-transparent bg-transparent"}`}>
       <div className="container-x flex h-[72px] items-center justify-between">
         <Link href="/" aria-label="Chez Mario — accueil" className="rounded-full">
           <Logo />
         </Link>
 
-        <nav aria-label="Navigation principale" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Navigation principale" className="hidden items-center gap-3 md:flex">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               aria-current={pathname === l.href ? "page" : undefined}
-              className={`font-display text-[13px] font-bold uppercase tracking-wider transition hover:text-mario-bright ${pathname === l.href ? "text-mario-bright" : "text-cream/85"}`}
+              className={`rounded-full px-3 py-1.5 font-display text-[15px] uppercase tracking-wide transition hover:bg-coin ${pathname === l.href ? "bg-white text-mario shadow-pop-sm ring-2 ring-ink" : "text-ink"}`}
             >
               {l.label}
             </Link>
@@ -55,7 +55,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href="/carte" className="btn btn-line hidden h-11 lg:inline-flex">
+          <Link href="/carte" className="btn btn-white hidden h-11 lg:inline-flex">
             Voir la carte
           </Link>
           <a href={`tel:${site.phone.tel}`} className="btn btn-red hidden h-11 md:inline-flex">
@@ -67,7 +67,7 @@ export function Header() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-            className="grid h-11 w-11 place-items-center rounded-full border border-white/15 md:hidden"
+            className="grid h-11 w-11 place-items-center rounded-xl border-[3px] border-ink bg-white shadow-pop-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none md:hidden"
           >
             {open ? <CloseIcon /> : <MenuIcon />}
           </button>
@@ -75,17 +75,17 @@ export function Header() {
       </div>
 
       {open && (
-        <nav id="mobile-menu" aria-label="Menu mobile" className="h-[calc(100dvh-72px)] overflow-y-auto border-t border-white/[0.06] bg-coal px-5 pb-32 pt-6 md:hidden">
+        <nav id="mobile-menu" aria-label="Menu mobile" className="h-[calc(100dvh-72px)] overflow-y-auto bg-sky-light px-5 pb-32 pt-6 md:hidden">
           <ul className="space-y-1">
             {links.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} aria-current={pathname === l.href ? "page" : undefined} className={`display block py-3 text-5xl ${pathname === l.href ? "text-mario-bright" : ""}`}>
+                <Link href={l.href} aria-current={pathname === l.href ? "page" : undefined} className={`display block py-3 text-5xl ${pathname === l.href ? "text-mario" : "text-ink"}`}>
                   {l.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <p className="mt-10 text-muted">
+          <p className="mt-10 font-semibold text-ink-soft">
             {site.address.street}
             <br />
             {site.address.postalCode} {site.address.city}

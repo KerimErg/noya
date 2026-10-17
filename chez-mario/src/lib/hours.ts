@@ -42,3 +42,20 @@ export function openState(hours: Hours, now = new Date()): OpenState {
 }
 
 export const formatTime = (hm: string) => hm.replace(":", "h");
+
+const fmtRanges = (r: { open: string; close: string }[]) => r.map((x) => `${formatTime(x.open)} – ${formatTime(x.close)}`).join(" · ");
+
+/** Résumé court : les horaires les plus fréquents + les exceptions (ex. « Fermé le mardi »). */
+export function hoursSummary(hours: Hours): string[] {
+  const keyOf = (d: Day) => JSON.stringify(hours[d]);
+  const counts = new Map<string, number>();
+  DAYS.forEach((d) => hours[d].length && counts.set(keyOf(d), (counts.get(keyOf(d)) ?? 0) + 1));
+  const common = [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
+  const lines: string[] = [];
+  if (common) lines.push(fmtRanges(JSON.parse(common)));
+  DAYS.forEach((d) => {
+    if (!hours[d].length) lines.push(`Fermé le ${d}`);
+    else if (keyOf(d) !== common) lines.push(`${d[0].toUpperCase()}${d.slice(1)} : ${fmtRanges(hours[d])}`);
+  });
+  return lines;
+}

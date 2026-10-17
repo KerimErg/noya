@@ -21,7 +21,7 @@ export function Socials({ className = "" }: { className?: string }) {
     <ul className={`flex gap-2 ${className}`}>
       {links.map(({ href, label, Icon }) => (
         <li key={label}>
-          <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`Chez Mario sur ${label}`} className="grid h-11 w-11 place-items-center rounded-full border border-white/15 transition hover:border-mario-bright hover:text-mario-bright">
+          <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`Chez Mario sur ${label}`} className="grid h-11 w-11 place-items-center rounded-xl border-[3px] border-current transition hover:-translate-y-0.5 hover:bg-coin hover:text-ink">
             <Icon />
           </a>
         </li>

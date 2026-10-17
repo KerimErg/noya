@@ -18,6 +18,7 @@ test("accueil : bannière, boutons, sections", async ({ page }, info) => {
   const carte = info.project.name === "iphone" ? page.getByRole("link", { name: "Voir la carte" }).last() : page.locator("header").getByRole("link", { name: "Voir la carte" });
   await expect(carte).toBeInViewport();
   await page.evaluate(() => document.querySelectorAll("[data-reveal]").forEach((e) => e.classList.add("in")));
+  await page.waitForTimeout(1000);
   await page.screenshot({ path: `${shots}/${info.project.name}-accueil-complet.png`, fullPage: true });
 });
 
@@ -29,7 +30,9 @@ test("carte : catégories, prix réels, barre collante", async ({ page }, info) 
   await expect(page.locator("#sandwichs")).toContainText("Maxi Kebab");
   await expect(page.locator("#sandwichs")).toContainText("13,00");
   await expect(page.locator("#tacos")).toContainText("Samouraï");
-  await expect(page.locator("#supplements")).toContainText("2,00");
+  await expect(page.locator("#a-cote")).toContainText("2,00");
+  // Prix menu calculé : Kebab 8 € → menu 11 €
+  await expect(page.locator("#sandwichs")).toContainText("11,00");
   await nav.getByRole("link", { name: "Burgers" }).click();
   await page.waitForTimeout(800);
   await expect(nav).toBeInViewport();
@@ -37,6 +40,7 @@ test("carte : catégories, prix réels, barre collante", async ({ page }, info) 
   await expect(nav.getByRole("link", { name: "Burgers" })).toHaveAttribute("aria-current", "true");
   await page.screenshot({ path: `${shots}/${info.project.name}-carte-burgers.png` });
   await page.evaluate(() => document.querySelectorAll("[data-reveal]").forEach((e) => e.classList.add("in")));
+  await page.waitForTimeout(1000);
   await page.screenshot({ path: `${shots}/${info.project.name}-carte-complete.png`, fullPage: true });
 });
 

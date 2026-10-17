@@ -28,14 +28,18 @@ export const site = {
   phone: { display: "03 88 98 69 94", tel: "+33388986994" }, // à confirmer
 
   /**
-   * Horaires : null tant qu'ils ne sont pas connus. Exemple à copier :
-   * {
-   *   lundi: [{ open: "11:00", close: "14:00" }, { open: "18:00", close: "22:30" }],
-   *   mardi: [], // [] = fermé
-   *   ...
-   * }
+   * Horaires. [] = fermé. Une fermeture après minuit s'écrit { open: "18:00", close: "01:00" }.
+   * Mettez `hours: null` pour masquer les horaires.
    */
-  hours: null as Hours | null,
+  hours: {
+    lundi: [{ open: "11:30", close: "14:00" }, { open: "17:30", close: "22:00" }],
+    mardi: [],
+    mercredi: [{ open: "11:30", close: "14:00" }, { open: "17:30", close: "22:00" }],
+    jeudi: [{ open: "11:30", close: "14:00" }, { open: "17:30", close: "22:00" }],
+    vendredi: [{ open: "11:30", close: "14:00" }, { open: "17:30", close: "22:00" }],
+    samedi: [{ open: "11:30", close: "14:00" }, { open: "17:30", close: "22:00" }],
+    dimanche: [{ open: "11:30", close: "14:00" }, { open: "17:30", close: "22:00" }],
+  } as Hours | null,
 
   /** Liens réseaux sociaux : null = pas affiché. */
   social: {

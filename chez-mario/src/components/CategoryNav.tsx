@@ -3,7 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 
 /** Barre de catégories collante, qui suit la section affichée. */
-export function CategoryNav({ items }: { items: { id: string; title: string }[] }) {
+const ACTIVE: Record<string, string> = { red: "bg-mario text-white", green: "bg-luigi-dark text-white", blue: "bg-royal text-white", yellow: "bg-coin text-ink" };
+
+export function CategoryNav({ items }: { items: { id: string; title: string; color: string }[] }) {
   const [active, setActive] = useState(items[0]?.id);
   const listRef = useRef<HTMLUListElement>(null);
 
@@ -43,14 +45,15 @@ export function CategoryNav({ items }: { items: { id: string; title: string }[] 
   }, [active]);
 
   return (
-    <nav aria-label="Catégories de la carte" className="sticky top-[72px] z-30 border-b border-white/[0.06] bg-coal/90 backdrop-blur-md">
-      <ul ref={listRef} className="no-scrollbar container-x flex gap-2 overflow-x-auto py-3">
+    <nav aria-label="Catégories de la carte" className="sticky top-[72px] z-30 border-b-[3px] border-ink bg-cream">
+      <ul ref={listRef} className="no-scrollbar container-x flex gap-2 overflow-x-auto py-3 pr-6">
         {items.map((i) => (
           <li key={i.id} data-id={i.id} className="shrink-0">
             <a
               href={`#${i.id}`}
+              data-color={i.color}
               aria-current={active === i.id ? "true" : undefined}
-              className={`inline-flex h-10 items-center rounded-full px-4 font-display text-[13px] font-extrabold uppercase tracking-wide transition ${active === i.id ? "bg-mario text-white" : "border border-white/12 text-cream/80 hover:border-mario-bright hover:text-cream"}`}
+              className={`inline-flex h-10 items-center rounded-full border-[3px] border-ink px-4 font-display text-[14px] uppercase tracking-wide transition ${active === i.id ? `${ACTIVE[i.color]} shadow-pop-sm` : "bg-white text-ink hover:bg-coin-light"}`}
             >
               {i.title}
             </a>

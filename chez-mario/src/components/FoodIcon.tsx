@@ -1,9 +1,9 @@
-import type { MenuCategory } from "@/content/menu";
+export type IconName = "kebab" | "wrap" | "plate" | "grill" | "burger" | "tacos" | "kids" | "fries" | "plus" | "drink" | "star" | "menu";
 
 /** Pictogrammes au trait pour les catégories (utilisés tant qu'il n'y a pas de photo). */
-export function FoodIcon({ name, className }: { name: MenuCategory["icon"]; className?: string }) {
-  const p = { fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
-  const paths: Record<MenuCategory["icon"], React.ReactNode> = {
+export function FoodIcon({ name, className }: { name: IconName; className?: string }) {
+  const p = { fill: "none", stroke: "currentColor", strokeWidth: 3, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  const paths: Record<IconName, React.ReactNode> = {
     kebab: (
       <>
         <path {...p} d="M8 30c2-10 10-16 24-16s22 6 24 16c-4 12-12 20-24 20S12 42 8 30z" />
