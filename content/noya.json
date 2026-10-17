@@ -1,0 +1,79 @@
+{
+  "_meta": {
+    "sources": "noyakehl.com introuvable (DNS ne résout pas) et Instagram bloqué depuis l'environnement de build le 14/10/2026. Aucune fiche publique trouvée via recherche web. Toute valeur \"[À COMPLÉTER]\" doit être renseignée par l'établissement.",
+    "placeholder": "[À COMPLÉTER]"
+  },
+  "name": "NOYA",
+  "fullName": "NOYA Kehl",
+  "tagline": "Chichas · Cocktails · Lounge",
+  "spaces": ["interieur", "terrasse"],
+  "contact": {
+    "address": {
+      "street": "[À COMPLÉTER]",
+      "postalCode": "[À COMPLÉTER]",
+      "city": "Kehl",
+      "country": "DE"
+    },
+    "geo": { "lat": "[À COMPLÉTER]", "lng": "[À COMPLÉTER]" },
+    "phone": "[À COMPLÉTER]",
+    "whatsapp": "[À COMPLÉTER]",
+    "email": "[À COMPLÉTER]",
+    "instagram": "noyakehl",
+    "instagramUrl": "https://www.instagram.com/noyakehl/",
+    "googleMapsUrl": "[À COMPLÉTER]"
+  },
+  "hours": {
+    "_note": "Les horaires réels sont à saisir dans config/booking.ts (champ weeklySchedule) puis passer HOURS_CONFIRMED à true.",
+    "status": "[À COMPLÉTER]"
+  },
+  "groups": {
+    "maxOnlinePartySize": 8,
+    "largerGroupsVia": "instagram"
+  },
+  "access": {
+    "tram": "Tram D (CTS) depuis Strasbourg jusqu'à Kehl — arrêt le plus proche : [À COMPLÉTER]",
+    "parking": "[À COMPLÉTER]"
+  },
+  "menu": {
+    "_note": "Carte réelle introuvable. Les intitulés ci-dessous sont des exemples de structure (example: true) à remplacer ; tous les prix sont à compléter.",
+    "currency": "EUR",
+    "chichas": [
+      { "id": "c1", "example": true, "name": { "fr": "Menthe glaciale", "de": "Eisminze" }, "profile": "frais", "notes": { "fr": "Menthe poivrée, fraîcheur nette", "de": "Pfefferminze, klare Frische" }, "price": "[À COMPLÉTER]" },
+      { "id": "c2", "example": true, "name": { "fr": "Fruits rouges", "de": "Rote Beeren" }, "profile": "fruite", "notes": { "fr": "Framboise, cassis, fraise des bois", "de": "Himbeere, Cassis, Walderdbeere" }, "price": "[À COMPLÉTER]" },
+      { "id": "c3", "example": true, "name": { "fr": "Pêche & passion", "de": "Pfirsich & Maracuja" }, "profile": "fruite", "notes": { "fr": "Pêche blanche, fruit de la passion", "de": "Weißer Pfirsich, Passionsfrucht" }, "price": "[À COMPLÉTER]" },
+      { "id": "c4", "example": true, "name": { "fr": "Vanille caramel", "de": "Vanille Karamell" }, "profile": "gourmand", "notes": { "fr": "Vanille bourbon, caramel blond", "de": "Bourbon-Vanille, heller Karamell" }, "price": "[À COMPLÉTER]" },
+      { "id": "c5", "example": true, "name": { "fr": "Double pomme", "de": "Doppelapfel" }, "profile": "oriental", "notes": { "fr": "Pomme, anis, tradition", "de": "Apfel, Anis, Tradition" }, "price": "[À COMPLÉTER]" },
+      { "id": "c6", "example": true, "name": { "fr": "Thé à la menthe", "de": "Minztee" }, "profile": "oriental", "notes": { "fr": "Thé vert, menthe nanah", "de": "Grüner Tee, Nanaminze" }, "price": "[À COMPLÉTER]" },
+      { "id": "c7", "example": true, "name": { "fr": "Pastèque menthe", "de": "Wassermelone Minze" }, "profile": "frais", "notes": { "fr": "Pastèque juteuse, menthe fraîche", "de": "Saftige Wassermelone, frische Minze" }, "price": "[À COMPLÉTER]" },
+      { "id": "c8", "example": true, "name": { "fr": "Signature NOYA", "de": "NOYA Signature" }, "profile": "gourmand", "notes": { "fr": "Mélange maison — [À COMPLÉTER]", "de": "Hausmischung — [À COMPLÉTER]" }, "price": "[À COMPLÉTER]", "signature": true }
+    ],
+    "cocktails": [
+      { "id": "k1", "example": true, "name": { "fr": "Cocktail signature NOYA", "de": "NOYA Signature-Cocktail" }, "notes": { "fr": "[À COMPLÉTER]", "de": "[À COMPLÉTER]" }, "price": "[À COMPLÉTER]", "signature": true },
+      { "id": "k2", "example": true, "name": { "fr": "Espresso Martini", "de": "Espresso Martini" }, "notes": { "fr": "Vodka, espresso, liqueur de café", "de": "Wodka, Espresso, Kaffeelikör" }, "price": "[À COMPLÉTER]" },
+      { "id": "k3", "example": true, "name": { "fr": "Mojito", "de": "Mojito" }, "notes": { "fr": "Rhum, citron vert, menthe, sucre de canne", "de": "Rum, Limette, Minze, Rohrzucker" }, "price": "[À COMPLÉTER]" },
+      { "id": "k4", "example": true, "name": { "fr": "Pornstar Martini", "de": "Pornstar Martini" }, "notes": { "fr": "Vodka vanille, passion, prosecco", "de": "Vanillewodka, Maracuja, Prosecco" }, "price": "[À COMPLÉTER]" }
+    ],
+    "softs": [
+      { "id": "s1", "example": true, "name": { "fr": "Mocktail signature", "de": "Signature-Mocktail" }, "notes": { "fr": "[À COMPLÉTER]", "de": "[À COMPLÉTER]" }, "price": "[À COMPLÉTER]", "signature": true },
+      { "id": "s2", "example": true, "name": { "fr": "Virgin Mojito", "de": "Virgin Mojito" }, "notes": { "fr": "Citron vert, menthe, soda", "de": "Limette, Minze, Soda" }, "price": "[À COMPLÉTER]" },
+      { "id": "s3", "example": true, "name": { "fr": "Thé à la menthe", "de": "Marokkanischer Minztee" }, "notes": { "fr": "Servi en théière", "de": "In der Kanne serviert" }, "price": "[À COMPLÉTER]" },
+      { "id": "s4", "example": true, "name": { "fr": "Softs", "de": "Softdrinks" }, "notes": { "fr": "[À COMPLÉTER]", "de": "[À COMPLÉTER]" }, "price": "[À COMPLÉTER]" }
+    ],
+    "food": [
+      { "id": "f1", "example": true, "name": { "fr": "Planche à partager", "de": "Platte zum Teilen" }, "notes": { "fr": "[À COMPLÉTER]", "de": "[À COMPLÉTER]" }, "price": "[À COMPLÉTER]" },
+      { "id": "f2", "example": true, "name": { "fr": "Douceurs", "de": "Süßes" }, "notes": { "fr": "[À COMPLÉTER]", "de": "[À COMPLÉTER]" }, "price": "[À COMPLÉTER]" }
+    ]
+  },
+  "legal": {
+    "companyName": "[À COMPLÉTER]",
+    "legalForm": "[À COMPLÉTER]",
+    "representative": "[À COMPLÉTER]",
+    "register": "[À COMPLÉTER]",
+    "vatId": "[À COMPLÉTER]",
+    "responsibleForContent": "[À COMPLÉTER]"
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/noyakehl/",
+    "tiktok": "[À COMPLÉTER]"
+  }
+}

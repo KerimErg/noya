@@ -1,0 +1,239 @@
+{
+  "meta": {
+    "title": "NOYA Kehl — Shisha Bar & Cocktail Lounge bei Straßburg",
+    "description": "NOYA, Shisha-Lounge und Cocktailbar in Kehl, 5 Minuten von Straßburg. Premium-Shishas, Signature-Cocktails, gemütlicher Innenbereich und Terrasse. Jetzt online Tisch reservieren.",
+    "ogAlt": "NOYA Kehl — Shisha · Cocktails · Lounge"
+  },
+  "nav": {
+    "menu": "Karte",
+    "experience": "Erlebnis",
+    "events": "Events",
+    "infos": "Infos",
+    "book": "Reservieren",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "language": "Sprache",
+    "skip": "Zum Inhalt springen",
+    "home": "NOYA — Startseite"
+  },
+  "ageGate": {
+    "kicker": "Zutritt ab 18",
+    "question": "Sind Sie 18 Jahre oder älter?",
+    "yes": "Ja, ich bin 18",
+    "no": "Nein",
+    "deniedTitle": "Bis bald.",
+    "deniedText": "Shisha ist nur für Volljährige erlaubt (Jugendschutzgesetz). Besuchen Sie uns in ein paar Jahren.",
+    "back": "Ich habe mich vertan",
+    "legal": "Gemäß dem deutschen Jugendschutzgesetz (§ 10 JuSchG)."
+  },
+  "hero": {
+    "kicker": "Kehl · 5 Minuten von Straßburg",
+    "titleA": "Die Kunst der Nacht,",
+    "titleB": "direkt am Rhein",
+    "subtitle": "Premium-Shishas, Signature-Cocktails und goldenes Licht. Eine Lounge, in der die Zeit langsamer wird.",
+    "ctaBook": "Tisch reservieren",
+    "ctaMenu": "Zur Karte",
+    "open": "Heute geöffnet bis {time} Uhr",
+    "later": "Heute geöffnet ab {time} Uhr",
+    "closed": "Heute geschlossen — bis bald",
+    "scroll": "Scrollen"
+  },
+  "experience": {
+    "label": "Das Erlebnis",
+    "title": "Vier Arten, langsamer zu werden",
+    "scenes": [
+      { "kicker": "01 — Premium-Shishas", "title": "Dichter Rauch, klarer Geschmack", "text": "Ausgewählte Tabake, frisch gebaute Köpfe, Naturkohle. Jede Shisha wird wie ein Ritual vorbereitet." },
+      { "kicker": "02 — Signature-Cocktails", "title": "Die Bar als Werkstatt", "text": "Hausrezepte, selbstgemachte Sirups, Drinks, die den Rauch begleiten — mit oder ohne Alkohol." },
+      { "kicker": "03 — Lounge & Terrasse", "title": "Zwei Stimmungen, eine Nacht", "text": "Ein gedämpfter Innenraum mit warmem Licht und eine Terrasse für milde Abende. Wählen Sie Ihren Platz bei der Reservierung." },
+      { "kicker": "04 — Musik & Atmosphäre", "title": "Der richtige Sound, nie zu laut", "text": "Eine Auswahl, die mit dem Abend wächst, DJ-Sets an ausgewählten Abenden — und immer Raum für Gespräche." }
+    ]
+  },
+  "menu": {
+    "label": "Die Karte",
+    "title": "Kopfnoten, Herznoten",
+    "intro": "Unsere Shishas wählt man wie ein Parfum: nach Duftfamilie.",
+    "tabs": { "chichas": "Shishas", "cocktails": "Cocktails", "softs": "Softdrinks & Mocktails", "food": "Snacks" },
+    "profiles": { "all": "Alle", "fruite": "Fruchtig", "frais": "Frisch", "gourmand": "Süß", "oriental": "Orientalisch" },
+    "profileNotes": {
+      "fruite": "Reife, saftige, sonnige Früchte",
+      "frais": "Minze, Eis, klarer Zug",
+      "gourmand": "Vanille, Karamell, runde Süße",
+      "oriental": "Anis, Tee, warme Gewürze"
+    },
+    "signature": "Signature",
+    "example": "Karte wird aktualisiert — Namen und Preise folgen.",
+    "priceTbd": "Preis folgt",
+    "alcohol": "Kein Ausschank alkoholischer Getränke an Personen unter 18 Jahren. Genießen Sie verantwortungsvoll."
+  },
+  "signatures": {
+    "label": "Signatures",
+    "title": "Wofür man hierher kommt",
+    "items": [
+      { "kicker": "Shisha", "title": "Die NOYA Signature", "text": "Unsere Hausmischung, auf einem frisch gebauten Kopf serviert." },
+      { "kicker": "Cocktail", "title": "Der Cocktail des Hauses", "text": "Das Rezept der Bar, gemacht, um den Rauch zu begleiten." },
+      { "kicker": "Mocktail", "title": "Ohne Alkohol, mit Charakter", "text": "Eine frische, aromatische Kreation — genauso sorgfältig wie alles andere." },
+      { "kicker": "Ritual", "title": "Der Minztee", "text": "In der Kanne serviert, damit der Abend länger dauert." }
+    ]
+  },
+  "events": {
+    "label": "Events",
+    "title": "Die nächsten Abende",
+    "empty": "Das nächste Programm folgt bald. Folgen Sie @noyakehl, um nichts zu verpassen.",
+    "types": { "dj": "DJ-Set", "match": "Fußball", "birthday": "Geburtstag", "special": "Special" },
+    "book": "Für diesen Abend reservieren",
+    "example": "Beispiel"
+  },
+  "gallery": {
+    "label": "Instagram",
+    "title": "Die Nacht in Bildern",
+    "follow": "@noyakehl folgen",
+    "placeholder": "Foto folgt"
+  },
+  "groups": {
+    "label": "Private Events & Gruppen",
+    "title": "Ihr Abend, nach Maß",
+    "text": "Geburtstage, Junggesellenabschiede, Afterwork oder große Runden ab 9 Personen: Schreiben Sie uns — wir bereiten Bereich, Shishas und Flaschen gemeinsam mit Ihnen vor.",
+    "occasions": ["Geburtstage", "JGA", "Afterwork", "Gruppen ab 9 Personen"],
+    "instagram": "Auf Instagram schreiben",
+    "whatsapp": "WhatsApp"
+  },
+  "infos": {
+    "label": "Praktische Infos",
+    "title": "So finden Sie uns",
+    "hours": "Öffnungszeiten",
+    "today": "Heute",
+    "closed": "Geschlossen",
+    "hoursTbc": "Vorläufige Öffnungszeiten, Bestätigung folgt.",
+    "address": "Adresse",
+    "access": "Aus Straßburg",
+    "tram": "Tram D (CTS) Richtung Kehl: über den Rhein ohne Auto, in wenigen Minuten aus der Straßburger Innenstadt.",
+    "parking": "Parken",
+    "mapLoad": "Karte anzeigen",
+    "mapConsent": "Die Karte wird von Google Maps bereitgestellt. Beim Anzeigen werden Daten an Google übertragen.",
+    "directions": "Route",
+    "contact": "Kontakt"
+  },
+  "footer": {
+    "tagline": "Shisha · Cocktails · Lounge",
+    "health": "Shisha-Rauchen gefährdet Ihre Gesundheit und die Ihrer Mitmenschen. Zutritt nur ab 18 Jahren.",
+    "impressum": "Impressum",
+    "privacy": "Datenschutz",
+    "rights": "Alle Rechte vorbehalten.",
+    "sound": "Ambient-Sound",
+    "soundOn": "Ambient-Sound einschalten",
+    "soundOff": "Ambient-Sound ausschalten"
+  },
+  "booking": {
+    "label": "Reservierung",
+    "title": "Reservieren Sie Ihren Tisch",
+    "subtitle": "Verfügbarkeit in Echtzeit. Sofortige Bestätigung per E-Mail.",
+    "drawerTitle": "Tisch reservieren",
+    "close": "Schließen",
+    "progress": "Schritt {current} von {total}",
+    "back": "Zurück",
+    "next": "Weiter",
+    "skip": "Überspringen",
+    "steps": {
+      "party": "Wie viele Personen?",
+      "date": "Wählen Sie ein Datum",
+      "time": "Wählen Sie die Uhrzeit",
+      "prefs": "Ihre Wünsche",
+      "contact": "Ihre Kontaktdaten",
+      "summary": "Zusammenfassung"
+    },
+    "stepShort": { "party": "Gäste", "date": "Datum", "time": "Uhrzeit", "prefs": "Wünsche", "contact": "Kontakt", "summary": "Übersicht" },
+    "party": {
+      "guests": "{count, plural, one {# Person} other {# Personen}}",
+      "more": "Mehr als 8 Personen?",
+      "moreLink": "Schreiben Sie uns auf Instagram",
+      "space": "Bereich",
+      "terraceSeason": "Terrasse je nach Saison und Wetter geöffnet."
+    },
+    "spaces": { "any": "Egal", "interieur": "Innen", "terrasse": "Terrasse" },
+    "calendar": {
+      "prev": "Vorheriger Monat",
+      "next": "Nächster Monat",
+      "available": "Verfügbar",
+      "full": "Ausgebucht",
+      "closed": "Geschlossen",
+      "past": "Vergangen",
+      "today": "heute",
+      "loading": "Verfügbarkeiten werden geladen…",
+      "error": "Verfügbarkeiten konnten nicht geladen werden. Bitte gleich erneut versuchen.",
+      "retry": "Erneut versuchen"
+    },
+    "time": {
+      "live": "Echtzeit",
+      "pickDateFirst": "Wählen Sie zuerst ein Datum im Kalender",
+      "groups": { "afternoon": "Nachmittag", "evening": "Abend", "night": "Nacht" },
+      "remaining": "{count, plural, one {Nur noch ein Tisch} other {Nur noch # Tische}}",
+      "full": "Ausgebucht",
+      "none": "An diesem Tag ist nichts mehr frei. Versuchen Sie ein anderes Datum.",
+      "slotLabel": "{time} Uhr, {state}"
+    },
+    "prefs": {
+      "optional": "Optional — damit bei Ihrer Ankunft alles bereit ist.",
+      "occasion": "Anlass",
+      "occasions": { "birthday": "Geburtstag", "date": "Date", "friends": "Mit Freunden", "business": "Geschäftlich", "other": "Sonstiges" },
+      "shisha": "Ihre Shisha",
+      "shishaOptions": { "chosen": "Ich weiß schon, was ich will", "advice": "Beratung vor Ort", "none": "Keine Shisha" },
+      "notes": "Ein besonderer Wunsch?",
+      "notesPlaceholder": "Eine Geburtstagsüberraschung, eine Allergie, ein Platz am Fenster…"
+    },
+    "contact": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "phone": "Telefon",
+      "prefix": "Vorwahl",
+      "email": "E-Mail",
+      "consent": "Ich bin einverstanden, dass NOYA diese Daten zur Bearbeitung meiner Reservierung verwendet, gemäß der <link>Datenschutzerklärung</link>.",
+      "errors": {
+        "required": "Dieses Feld fehlt noch.",
+        "email": "Diese E-Mail-Adresse scheint unvollständig.",
+        "phone": "Bitte Nummer prüfen (ohne Vorwahl).",
+        "consent": "Ihre Zustimmung ist für die Reservierung nötig."
+      }
+    },
+    "summary": {
+      "confirm": "Reservierung bestätigen",
+      "sending": "Wird bestätigt…",
+      "edit": "Ändern",
+      "errors": {
+        "unavailable": "Diese Uhrzeit wurde gerade vergeben. Bitte wählen Sie eine andere.",
+        "invalid": "Einige Angaben sind unvollständig.",
+        "rate": "Zu viele Versuche. Bitte warten Sie einige Minuten.",
+        "generic": "Ein technisches Problem ist aufgetreten. Bitte erneut versuchen oder auf Instagram schreiben."
+      }
+    },
+    "recap": {
+      "title": "Ihre Reservierung",
+      "empty": "Ihre Auswahl erscheint hier.",
+      "guests": "Gäste",
+      "space": "Bereich",
+      "date": "Datum",
+      "time": "Uhrzeit",
+      "occasion": "Anlass",
+      "shisha": "Shisha",
+      "notes": "Wunsch",
+      "name": "Name",
+      "phone": "Telefon",
+      "email": "E-Mail"
+    },
+    "done": {
+      "title": "Reserviert.",
+      "pendingTitle": "Anfrage gesendet.",
+      "text": "Eine Bestätigung ist unterwegs an {email}. Wir freuen uns auf Sie.",
+      "pendingText": "Wir bestätigen Ihren Tisch in Kürze per E-Mail ({email}).",
+      "ref": "Referenz",
+      "calendar": "Zum Kalender hinzufügen",
+      "directions": "Route",
+      "again": "Neue Reservierung",
+      "icsTitle": "Tisch im NOYA Kehl",
+      "icsDescription": "{guests} — Ref. {ref}"
+    }
+  },
+  "legal": {
+    "backHome": "Zurück zur Startseite",
+    "germanOnly": "Rechtsverbindlich ist die deutsche Fassung."
+  }
+}

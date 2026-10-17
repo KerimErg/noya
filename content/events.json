@@ -1,0 +1,32 @@
+{
+  "_note": "Agenda des soirées. Ajoutez/retirez des entrées ici. date = YYYY-MM-DD, time = HH:mm, type = dj | match | birthday | special. Les événements passés sont masqués automatiquement. Les entrées example:true sont des exemples à remplacer.",
+  "events": [
+    {
+      "id": "e1",
+      "example": true,
+      "date": "2026-10-23",
+      "time": "21:00",
+      "type": "dj",
+      "title": { "fr": "DJ set — [À COMPLÉTER]", "de": "DJ-Set — [À COMPLÉTER]" },
+      "description": { "fr": "Line-up à annoncer sur Instagram.", "de": "Line-up folgt auf Instagram." }
+    },
+    {
+      "id": "e2",
+      "example": true,
+      "date": "2026-10-31",
+      "time": "21:00",
+      "type": "special",
+      "title": { "fr": "Soirée Halloween — [À COMPLÉTER]", "de": "Halloween-Nacht — [À COMPLÉTER]" },
+      "description": { "fr": "Programme à confirmer.", "de": "Programm folgt." }
+    },
+    {
+      "id": "e3",
+      "example": true,
+      "date": "2026-11-07",
+      "time": "20:45",
+      "type": "match",
+      "title": { "fr": "Soirée match — [À COMPLÉTER]", "de": "Fußballabend — [À COMPLÉTER]" },
+      "description": { "fr": "Diffusion sur écran, réservation conseillée.", "de": "Live-Übertragung, Reservierung empfohlen." }
+    }
+  ]
+}
