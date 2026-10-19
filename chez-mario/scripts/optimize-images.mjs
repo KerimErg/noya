@@ -16,7 +16,7 @@ const EXT = /\.(jpe?g|png|webp|avif|tiff?)$/i;
 const presets = {
   product: [{ suffix: "", ratio: 1, widths: [200, 400, 700] }],
   // Bannière : garde son format d'origine (recadrage fait à la main avant)
-  banner: [{ suffix: "", ratio: 0, widths: [640, 1024, 1376] }],
+  banner: [{ suffix: "", ratio: 0, widths: [640, 1024, 1376, 2048] }],
   hero: [
     { suffix: "", ratio: 16 / 9, widths: [960, 1440, 1920] },
     { suffix: "-m", ratio: 4 / 5, widths: [480, 800] },
@@ -46,7 +46,10 @@ for (const file of files) {
         if (done) continue;
         // Les détourages (fond transparent) gardent leur cadrage ; les photos sont recadrées sur le sujet.
         const img = sharp(input).rotate().resize(w, h, meta.hasAlpha ? { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } } : { fit: "cover", position: sharp.strategy.attention });
-        await (fmt === "avif" ? img.avif({ quality: 52, effort: 5 }) : img.webp({ quality: 74 })).toFile(out);
+        // Bannière : qualité supérieure + légère accentuation (version 2048 px pour écrans Retina)
+        const hq = kind === "banner";
+        const pipe = hq ? img.sharpen({ sigma: 0.7 }) : img;
+        await (fmt === "avif" ? pipe.avif({ quality: hq ? 70 : 52, effort: 6 }) : pipe.webp({ quality: hq ? 90 : 74 })).toFile(out);
       }
     }
   }

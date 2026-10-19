@@ -45,41 +45,37 @@ export default function Home() {
         <DriftingClouds />
         <HeroMedia />
         {site.heroBanner && hasPhoto(site.heroBanner) ? (
-          <div className="container-x relative z-10">
-            {/* Bannière « écran de jeu » */}
-            <div className="relative -mx-5 sm:mx-0">
-              <div className="overflow-hidden border-y-4 border-ink bg-sky shadow-pop-lg sm:rounded-[2rem] sm:border-4">
-                <Photo
-                  name={site.heroBanner}
-                  alt="Chez Mario : Mario savoure un kebab dans un monde de champignons et de collines"
-                  priority
-                  sizes="(min-width: 1200px) 1140px, 100vw"
-                  className="w-full"
-                  imgClassName="origin-[30%_40%] animate-kenburns"
-                />
-              </div>
-              <Coin className="absolute -top-4 left-[46%] h-10 w-10 md:-top-6 md:h-14 md:w-14" />
-              <Coin className="absolute -top-2 left-[54%] h-8 w-8 md:-top-3 md:h-11 md:w-11" delay={0.4} />
+          <div className="relative z-10">
+            {/* Bannière pleine largeur : sur ordinateur, sa hauteur laisse le titre et les boutons dans le premier écran */}
+            <div className="relative border-y-4 border-ink">
+              <Photo
+                name={site.heroBanner}
+                alt="Chez Mario : Mario savoure un kebab dans un monde de champignons et de collines"
+                priority
+                sizes="100vw"
+                className="aspect-[8/5] w-full md:aspect-auto md:h-[clamp(420px,calc(100svh-84px-170px),50.9vw)]"
+                imgClassName="object-[50%_35%]"
+              />
               {kebab.price !== null && (
-                <span className="absolute -bottom-5 right-3 z-20 rotate-[-6deg] rounded-2xl border-[3px] border-ink bg-coin px-3 py-1.5 font-display text-lg uppercase leading-none text-ink shadow-pop md:-bottom-6 md:right-8 md:px-5 md:py-2.5 md:text-3xl">
+                <span className="absolute bottom-3 right-3 z-20 rotate-[-6deg] rounded-2xl border-[3px] border-ink bg-coin px-3 py-1.5 font-display text-lg uppercase leading-none text-ink shadow-pop md:bottom-6 md:right-8 md:px-5 md:py-2.5 md:text-3xl">
                   Kebab <span className="text-mario">{kebab.price} €</span>
                 </span>
               )}
             </div>
-            <div className="grid items-end gap-6 pb-6 pt-9 md:grid-cols-[1fr_auto] md:pb-10 md:pt-12">
+            <div className="container-x grid items-center gap-5 py-6 md:grid-cols-[1fr_auto] md:py-5">
               <div>
-                <OpenBadge className="mb-4" />
-                <h1 id="hero-title" className="display outlined text-[clamp(2.8rem,11vw,5.6rem)] leading-[0.95] text-white">
+                <div className="mb-3 flex flex-wrap items-center gap-3">
+                  <OpenBadge />
+                  <p className="hidden font-bold text-ink md:block">À Erstein · kebab, yufka, assiettes, burgers et tacos</p>
+                </div>
+                <h1 id="hero-title" className="display outlined text-[clamp(2.7rem,10.5vw,4.4rem)] leading-[0.95] text-white">
                   <span className="sr-only">Kebab, tacos et burgers à Erstein</span>
                   <JumpWord text="Kebab," /> <JumpWord text="tacos" start={6} className="text-coin" />
-                  <br />
-                  <JumpWord text="& burgers" start={11} className="text-mario" />
+                  <br className="md:hidden" /> <JumpWord text="& burgers" start={11} className="text-mario" />
                 </h1>
-                <p className="mt-4 max-w-xl text-lg font-bold text-ink">
-                  À Erstein, chez Mario : kebab bœuf ou poulet, yufka, assiettes, burgers et tacos.
-                </p>
+                <p className="mt-3 text-lg font-bold text-ink md:hidden">À Erstein, chez Mario : kebab bœuf ou poulet, yufka, assiettes, burgers et tacos.</p>
               </div>
-              <div className="hidden flex-col gap-4 md:flex">
+              <div className="hidden gap-4 md:flex">
                 <Link href="/carte" className="btn btn-red h-14 px-8 text-lg">
                   Voir la carte <ArrowIcon className="h-5 w-5" />
                 </Link>
@@ -138,21 +134,6 @@ export default function Home() {
         <Hills className="relative -mb-[3px] block h-[60px] w-full md:h-[110px]" />
         <div className="ground h-10 border-b-[3px] border-ink" aria-hidden />
       </section>
-
-      {/* ───────────── Bandeau ───────────── */}
-      <div className="overflow-hidden border-b-[3px] border-ink bg-mario py-3" aria-hidden>
-        <div className="flex w-max animate-marquee items-center gap-6 whitespace-nowrap font-display text-2xl uppercase text-white md:text-3xl">
-          {Array.from({ length: 2 }, (_, k) => (
-            <span key={k} className="flex items-center gap-6">
-              {["Kebab", "Yufka", "Lahmacun", "Assiettes", "Burgers", "Tacos", "Menus enfant"].map((w) => (
-                <span key={w} className="flex items-center gap-6">
-                  <span className="outlined">{w}</span> <Coin className="h-7 w-7" />
-                </span>
-              ))}
-            </span>
-          ))}
-        </div>
-      </div>
 
       {/* ───────────── Les classiques ───────────── */}
       <section className="py-16 md:py-24" aria-labelledby="une-title">
