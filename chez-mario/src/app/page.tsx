@@ -55,13 +55,27 @@ export default function Home() {
                 alt="Chez Mario : Mario savoure un kebab dans un monde de champignons et de collines"
                 priority
                 sizes="100vw"
-                className="aspect-[1376/700] w-full"
+                className="h-[min(50.87vw,calc(100svh-104px))] w-full"
+                imgClassName="object-[50%_35%]"
               />
-              {kebab.price !== null && (
-                <span className="absolute bottom-2 left-2 z-20 rotate-[-6deg] rounded-xl border-[3px] border-ink bg-coin px-2 py-1 font-display text-sm uppercase leading-none text-ink shadow-pop-sm sm:bottom-4 sm:left-4 sm:text-xl md:bottom-6 md:left-8 md:rounded-2xl md:px-5 md:py-2.5 md:text-3xl md:shadow-pop">
-                  Kebab <span className="text-mario">{kebab.price} €</span>
-                </span>
-              )}
+              {/* Actions posées sous le titre de l'image (ordinateur/tablette ; sur mobile : barre collante) */}
+              <div className="absolute left-[53%] right-[3%] top-[50%] hidden flex-col items-center gap-3 md:flex lg:gap-4">
+                <div className="animate-pop" style={{ animationDelay: "250ms" }}>
+                  <OpenBadge />
+                </div>
+                <p className="animate-pop rounded-full border-[3px] border-ink bg-white/95 px-5 py-1.5 text-center font-display text-lg uppercase tracking-wide text-ink shadow-pop-sm lg:text-xl" style={{ animationDelay: "400ms" }}>
+                  Kebab · Tacos · Burgers
+                  {kebab.price !== null && <span className="text-mario"> — dès {kebab.price} €</span>}
+                </p>
+                <div className="flex animate-pop flex-wrap justify-center gap-3 lg:gap-4" style={{ animationDelay: "550ms" }}>
+                  <Link href="/carte" className="btn btn-red h-12 px-6 lg:h-14 lg:px-8 lg:text-lg">
+                    Voir la carte <ArrowIcon className="h-5 w-5" />
+                  </Link>
+                  <a href={`tel:${site.phone.tel}`} className="btn btn-coin h-12 px-6 lg:h-14 lg:px-8 lg:text-lg">
+                    <PhoneIcon className="h-5 w-5" /> Appeler
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         ) : (
@@ -111,11 +125,11 @@ export default function Home() {
           </div>
         )}
         {!banner && <Hills className="relative -mb-[3px] block h-[60px] w-full md:h-[110px]" />}
-        <div className={`ground border-b-[3px] border-ink ${banner ? "h-7" : "h-10"}`} aria-hidden />
+        <div className={`ground border-b-[3px] border-ink ${banner ? "h-[21px]" : "h-10"}`} aria-hidden />
       </section>
 
       {/* ───────────── Les classiques ───────────── */}
-      <section className="py-16 md:py-24" aria-labelledby="une-title">
+      <section className="pb-16 pt-8 md:pb-24 md:pt-10" aria-labelledby="une-title">
         <div className="container-x">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-6" data-reveal>
             <div>
