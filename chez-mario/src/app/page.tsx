@@ -73,7 +73,7 @@ export default function Home() {
             <div className="relative flex flex-col border-b-4 border-ink bg-[#3171b2] max-md:min-h-[calc(100svh-96px)] md:border-t-4">
               {/* Mobile : le ciel de l'image se prolonge en haut, avec le nom en grand */}
               <p
-                className="flex flex-1 animate-pop flex-col items-center justify-center pb-1 pt-[max(52px,env(safe-area-inset-top))] text-center font-sans font-black uppercase leading-[0.88] text-[#FBEFD5] md:hidden"
+                className="flex h-[190px] shrink-0 animate-pop flex-col items-center justify-end pb-2 text-center font-sans font-black uppercase leading-[0.88] text-[#FBEFD5] md:hidden"
                 style={{ WebkitTextStroke: "0.05em #3B2416", paintOrder: "stroke fill", textShadow: "0 0.06em 0 #3B2416, 0 0.12em 0.3em rgba(0,0,0,.3)" }}
                 aria-hidden
               >
@@ -86,8 +86,8 @@ export default function Home() {
                 alt="Chez Mario : Mario savoure un kebab dans un monde de champignons et de collines"
                 priority
                 sizes="100vw"
-                className="h-[clamp(112vw,calc(100svh-96px-170px),118vw)] w-full md:h-[min(50.87vw,calc(100svh-76px))]"
-                imgClassName="object-[12%_50%] md:object-[50%_35%]"
+                className="h-[max(100vw,calc(100svh-96px-190px))] w-full md:h-[min(50.87vw,calc(100svh-76px))]"
+                imgClassName="object-[8%_50%] md:object-[50%_35%]"
               />
               <div aria-hidden className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#3171b2] to-transparent md:hidden" />
               {/* Actions posées sous le titre de l'image (ordinateur/tablette ; sur mobile : barre collante) */}
@@ -162,7 +162,7 @@ export default function Home() {
       </section>
 
       {/* ───────────── Mosaïque photo : la carte en un coup d'œil ───────────── */}
-      <section className="relative overflow-hidden bg-royal pb-14 pt-12 md:pb-20 md:pt-16" aria-labelledby="faim-title">
+      <section className="relative overflow-hidden bg-royal pb-14 pt-7 md:pb-20 md:pt-16" aria-labelledby="faim-title">
         <Cloud className="absolute -left-6 top-10 w-32 opacity-25 md:w-48" />
         <Cloud className="absolute bottom-24 right-4 w-28 opacity-25 md:w-40" />
         <div className="container-x relative">

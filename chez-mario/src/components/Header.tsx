@@ -18,8 +18,6 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  // Accueil avec bannière, en haut de page, sur mobile : le logo est déjà sur l'image
-  const overBanner = pathname === "/" && !!site.heroBanner && !scrolled && !open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -40,7 +38,7 @@ export function Header() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${scrolled || open ? "border-b-[3px] border-ink bg-white" : "border-b-[3px] border-transparent bg-transparent"}`}>
       <div className="container-x flex h-[72px] items-center justify-between">
-        <Link href="/" aria-label="Chez Mario — accueil" className={`relative z-10 -mb-2 self-start rounded-xl pt-1.5 ${overBanner ? "max-md:invisible" : ""}`}>
+        <Link href="/" aria-label="Chez Mario — accueil" className={`relative z-10 -mb-2 self-start rounded-xl pt-1.5`}>
           <Logo className={`transition-[height] duration-300 ${scrolled || open ? "h-[60px]" : "h-[78px] md:h-[112px]"}`} />
         </Link>
 
