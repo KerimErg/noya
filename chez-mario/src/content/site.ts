@@ -49,7 +49,7 @@ export const site = {
   /** Liens réseaux sociaux : null = pas affiché. */
   social: {
     instagram: null as string | null,
-    facebook: null as string | null,
+    facebook: "https://www.facebook.com/chez.mario.erstein.2024/" as string | null,
     tiktok: null as string | null,
   },
   /** Liens de livraison : null = pas affiché. */
