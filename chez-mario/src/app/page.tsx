@@ -77,20 +77,26 @@ export default function Home() {
                 priority
                 sizes="100vw"
                 className="h-[min(128vw,calc(100svh-190px))] w-full md:h-[min(50.87vw,calc(100svh-104px))]"
-                imgClassName="object-[11%_50%] md:object-[50%_35%]"
+                imgClassName="object-[11%_100%] md:object-[50%_35%]"
               />
-              {/* Mobile : titre et état d'ouverture posés sur l'image */}
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 via-ink/40 to-transparent px-5 pb-5 pt-16 md:hidden">
-                <div className="animate-pop" style={{ animationDelay: "200ms" }}>
+              {/* Mobile : « Chez Mario » en haut (le titre de l'image sort du cadrage), infos en bas */}
+              <p
+                aria-hidden
+                className="absolute inset-x-0 top-3 animate-pop text-center font-sans font-black uppercase leading-[0.9] text-[#FBEFD5] md:hidden"
+                style={{ WebkitTextStroke: "0.06em #3B2416", paintOrder: "stroke fill", textShadow: "0 0.06em 0 #3B2416, 0 0.12em 0.25em rgba(0,0,0,.35)", animationDelay: "150ms" }}
+              >
+                <span className="block text-[11vw] tracking-wide">Chez</span>
+                <span className="block text-[20vw] tracking-tight">Mario</span>
+              </p>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 via-ink/40 to-transparent px-5 pb-5 pt-14 md:hidden">
+                <div className="animate-pop" style={{ animationDelay: "300ms" }}>
                   <OpenBadge />
                 </div>
-                <p className="display outlined mt-3 animate-pop text-[2.6rem] leading-[0.95] text-white" style={{ animationDelay: "350ms" }}>
-                  Kebab, tacos
-                  <br />
-                  <span className="text-coin">&amp; burgers</span>
+                <p className="display outlined mt-3 animate-pop text-[2rem] leading-[0.95] text-white" style={{ animationDelay: "450ms" }}>
+                  Kebab, tacos <span className="whitespace-nowrap text-coin">&amp; burgers</span>
                 </p>
                 {kebab.price !== null && (
-                  <p className="mt-2 animate-pop font-display text-lg uppercase tracking-wide text-white" style={{ animationDelay: "500ms" }}>
+                  <p className="mt-1.5 animate-pop font-display text-lg uppercase tracking-wide text-white" style={{ animationDelay: "600ms" }}>
                     À Erstein · dès {kebab.price} €
                   </p>
                 )}
