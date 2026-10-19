@@ -77,12 +77,12 @@ export default function Home() {
                 alt="Chez Mario : Mario savoure un kebab dans un monde de champignons et de collines"
                 priority
                 sizes="100vw"
-                className="h-[min(170vw,calc(100svh-96px))] w-full md:h-[min(50.87vw,calc(100svh-76px))]"
-                imgClassName="object-[11%_100%] md:object-[50%_35%]"
+                className="h-[min(118vw,calc(100svh-96px))] w-full md:h-[min(50.87vw,calc(100svh-76px))]"
+                imgClassName="object-[15%_50%] md:object-[50%_35%]"
               />
               {/* Mobile : logo posé sur l'image, une seule ligne discrète en bas */}
               <div className="absolute inset-x-0 top-0 flex justify-center pt-[max(14px,env(safe-area-inset-top))] md:hidden">
-                <Logo className="h-[29vw] max-h-[170px] animate-pop drop-shadow-[0_6px_10px_rgba(0,0,0,.35)]" />
+                <Logo className="h-[24vw] max-h-[150px] animate-pop drop-shadow-[0_6px_10px_rgba(0,0,0,.35)]" />
               </div>
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent px-5 pb-5 pt-16 text-center md:hidden">
                 <p className="font-display text-xl uppercase tracking-[0.12em] text-white drop-shadow">Kebab · Tacos · Burgers</p>
