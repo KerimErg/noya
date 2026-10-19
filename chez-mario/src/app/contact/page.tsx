@@ -47,11 +47,13 @@ export default function ContactPage() {
             <h2 className="mb-3 font-display text-2xl uppercase">Horaires</h2>
             <HoursTable />
           </div>
-          <div className="card p-6">
-            <h2 className="mb-3 font-display text-xl uppercase text-mario-dark">Accès & stationnement</h2>
-            <p className="font-semibold text-ink-soft">{site.access.parking ?? <span className="todo">Stationnement à compléter</span>}</p>
-            {site.access.transport && <p className="mt-2 font-semibold text-ink-soft">{site.access.transport}</p>}
-          </div>
+          {(site.access.parking || site.access.transport) && (
+            <div className="card p-6">
+              <h2 className="mb-3 font-display text-xl uppercase text-mario-dark">Accès & stationnement</h2>
+              {site.access.parking && <p className="font-semibold text-ink-soft">{site.access.parking}</p>}
+              {site.access.transport && <p className="mt-2 font-semibold text-ink-soft">{site.access.transport}</p>}
+            </div>
+          )}
           <div className="card p-6">
             <h2 className="mb-3 font-display text-xl uppercase text-mario-dark">Réseaux & livraison</h2>
             <Socials className="text-ink" />

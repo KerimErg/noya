@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MENU_CONTENT, allergensNote, formatPrice, menu, type Color, type MenuCategory, type MenuItem } from "@/content/menu";
 import { site } from "@/content/site";
 import { CategoryNav } from "@/components/CategoryNav";
-import { Photo, hasPhoto, isCutout } from "@/components/Photo";
+import { Photo } from "@/components/Photo";
 import { FoodIcon } from "@/components/FoodIcon";
 import { BadgeList } from "@/components/Badges";
 import { Cloud, Coin } from "@/components/Deco";
@@ -22,19 +22,9 @@ function Price({ value, strong = false }: { value: number | null; strong?: boole
 }
 
 function ItemRow({ item, category, level }: { item: MenuItem; category: MenuCategory; level: 3 | 4 }) {
-  const thumb = hasPhoto(item.photo);
   const H = level === 3 ? "h3" : "h4";
   return (
     <li className="flex items-center gap-3 py-3.5 sm:gap-4">
-      {thumb && (
-        <Photo
-          name={item.photo}
-          alt={item.name}
-          icon={category.icon}
-          sizes="72px"
-          className={`h-14 w-14 shrink-0 sm:h-[4.5rem] sm:w-[4.5rem] ${isCutout(item.photo) ? "" : "rounded-2xl border-[3px] border-ink"}`}
-        />
-      )}
       <div className="min-w-0 flex-1">
         <H className="font-display text-lg uppercase leading-tight sm:text-xl">
           {item.name}

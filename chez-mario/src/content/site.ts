@@ -12,6 +12,8 @@ export type Hours = Record<Day, { open: string; close: string }[]>;
 export const site = {
   name: "Chez Mario",
   tagline: "Kebab · Yufka · Burgers · Tacos",
+  /** Année d'ouverture (indiquée sur le logo). */
+  since: 2007,
   /** Nom de domaine définitif (sans / à la fin). À COMPLÉTER une fois le domaine acheté. */
   url: "https://chezmario-erstein.fr",
 

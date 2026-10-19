@@ -16,6 +16,7 @@ export function restaurantJsonLd() {
     telephone: site.phone.tel,
     servesCuisine: ["Kebab", "Turque", "Burgers", "Tacos", "Street food"],
     priceRange: "€",
+    foundingDate: String(site.since),
     acceptsReservations: false,
     address: {
       "@type": "PostalAddress",

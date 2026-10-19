@@ -22,7 +22,6 @@ const crops = [
     ["assiette-cordon-bleu", 807.5],
     ["assiette-royal", 846.5],
     ["assiette-falafel", 887.5],
-    ["mario-bowl", 930],
   ].map(([name, cy]) => ({ name, src: A, x: 155, y: Math.round(cy - 25), w: 50, h: 50, round: true })),
 ];
 

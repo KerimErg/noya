@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { MENU_CONTENT, featuredItems, formatPrice, menu, minPrice, type Color } from "@/content/menu";
 import { fullAddress, site } from "@/content/site";
@@ -39,6 +40,28 @@ export default function Home() {
   const kebab = menu[0].sections[0].items[0];
   const withMenu = menu.filter((c) => c.menuSupplement);
   const banner = !!site.heroBanner && hasPhoto(site.heroBanner);
+  const sandwichs = menu.find((c) => c.id === "sandwichs");
+  const menuKebab = kebab.price !== null && sandwichs?.menuSupplement ? kebab.price + sandwichs.menuSupplement : null;
+  const priceOf = (id: string) => {
+    const it = menu.flatMap((c) => c.sections.flatMap((s) => s.items)).find((i) => i.id === id);
+    return it?.price != null ? `${String(it.price).replace(".", ",")} €` : null;
+  };
+  const from = (id: string) => {
+    const c = menu.find((x) => x.id === id);
+    const p = c ? minPrice(c) : null;
+    return p !== null ? `dès ${String(p).replace(".", ",")} €` : null;
+  };
+  // Mosaïque : 4 colonnes × 3 rangées sur ordinateur (kebab en grand, assiette en hauteur)
+  const gallery = [
+    { photo: "kebab", label: "Kebab", price: priceOf("kebab"), cat: "sandwichs", span: "col-span-2 md:row-span-2" },
+    { photo: "burger", label: "Cheeseburger", price: priceOf("cheeseburger"), cat: "burgers", span: "" },
+    { photo: "assiette-kebab", label: "Assiette kebab", price: priceOf("assiette-kebab"), cat: "assiettes", span: "md:row-span-2" },
+    { photo: "tacos", label: "Tacos", price: from("tacos"), cat: "tacos", span: "" },
+    { photo: "mario-bowl", label: "Mario Bowl", price: priceOf("mario-bowl"), cat: "assiettes", span: "" },
+    { photo: "barquettes", label: "Barquettes", price: from("a-cote"), cat: "a-cote", span: "" },
+    { photo: "menu-enfant", label: "Menu enfant", price: priceOf("box-happy"), cat: "enfants", span: "" },
+    { photo: "boissons", label: "Boissons", price: from("boissons"), cat: "boissons", span: "col-span-2 md:col-span-1" },
+  ].filter((g) => hasPhoto(g.photo));
   return (
     <>
       {/* ───────────── Bannière : ciel, nuages, mascotte qui saute ───────────── */}
@@ -208,9 +231,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────────── Formule menu ───────────── */}
+      {/* ───────────── Formule menu : sandwich + frites + boisson ───────────── */}
       <section className="bg-coin py-14 md:py-20" aria-labelledby="menu-title">
-        <div className="container-x grid items-center gap-10 md:grid-cols-2">
+        <div className="container-x grid items-center gap-10 md:grid-cols-[1fr_1.1fr]">
           <div data-reveal>
             <p className="eyebrow mb-4">La formule</p>
             <h2 id="menu-title" className="display text-[clamp(2.6rem,9vw,4.6rem)]">
@@ -227,46 +250,63 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <div className="relative mx-auto w-[88%] max-w-[440px]" data-reveal>
-            <Photo name="menu-kebab" alt="Menu kebab : kebab, frites et boisson" sizes="(min-width:768px) 440px, 88vw" className="aspect-square w-full rotate-2 rounded-[2rem] border-4 border-ink shadow-pop-lg" />
-            <span className="absolute -left-3 -top-4 rotate-[-10deg] rounded-2xl border-[3px] border-ink bg-mario px-4 py-2 font-display text-xl uppercase text-white shadow-pop md:text-2xl">Menu kebab 11 €</span>
-            <Coin className="absolute -right-3 bottom-8 h-14 w-14" />
+          <div data-reveal>
+            <div className="flex items-start justify-center gap-1.5 sm:gap-3">
+              {[
+                { name: "kebab", label: "Ton kebab", r: -4 },
+                { name: "frites", label: "Frites", r: 3 },
+                { name: "boissons", label: "Boisson", r: -2 },
+              ].map((x, i) => (
+                <Fragment key={x.name}>
+                  {i > 0 && (
+                    <span aria-hidden className="mt-[9%] grid h-9 w-9 shrink-0 place-items-center rounded-full border-[3px] border-ink bg-white font-display text-2xl leading-none shadow-pop-sm sm:h-11 sm:w-11 sm:text-3xl">
+                      +
+                    </span>
+                  )}
+                  <figure className="w-[28%] max-w-[170px] animate-float" style={{ "--r": `${x.r}deg`, animationDelay: `${i * 0.5}s` } as React.CSSProperties}>
+                    <Photo name={x.name} alt={x.label} sizes="(min-width:768px) 170px, 28vw" className="aspect-square w-full rounded-full border-4 border-ink shadow-pop" />
+                    <figcaption className="mt-2 text-center font-display text-sm uppercase sm:text-lg">{x.label}</figcaption>
+                  </figure>
+                </Fragment>
+              ))}
+            </div>
+            {menuKebab !== null && (
+              <p className="mt-6 flex justify-center">
+                <span className="rotate-[-3deg] rounded-2xl border-[3px] border-ink bg-mario px-5 py-2 font-display text-2xl uppercase text-white shadow-pop md:text-3xl">
+                  = Menu kebab {menuKebab} €
+                </span>
+              </p>
+            )}
           </div>
         </div>
       </section>
 
-      {/* ───────────── Savoir-faire ───────────── */}
-      <section className="relative overflow-hidden border-y-[3px] border-ink bg-royal py-16 text-white md:py-24" aria-labelledby="sf-title">
+      {/* ───────────── Mosaïque photo : ça donne faim ───────────── */}
+      <section className="relative overflow-hidden border-y-[3px] border-ink bg-royal py-16 md:py-24" aria-labelledby="faim-title">
         <Cloud className="absolute -left-6 top-10 w-32 opacity-25 md:w-48" />
         <Cloud className="absolute bottom-10 right-4 w-28 opacity-25 md:w-40" />
-        <div className="container-x relative grid items-center gap-10 md:grid-cols-[.9fr_1.1fr]">
-          <div className="relative mx-auto w-[80%] max-w-[420px]" data-reveal>
-            <Photo name="burger" alt="Burger de Chez Mario" sizes="(min-width:768px) 420px, 80vw" className="aspect-square w-full -rotate-3 rounded-[2rem] border-4 border-ink shadow-pop-lg" />
-            <Sparkle className="absolute -right-4 -top-4 h-12 w-12 animate-float" />
-          </div>
-          <div data-reveal>
-            <p className="eyebrow mb-4">Le savoir-faire</p>
-            <h2 id="sf-title" className="display outlined text-[clamp(2.8rem,9vw,5rem)]">
-              Mario allume <span className="text-coin">le grill</span>
+        <div className="container-x relative">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-6" data-reveal>
+            <h2 id="faim-title" className="display outlined text-[clamp(2.8rem,9vw,5rem)] text-white">
+              Ça donne <span className="text-coin">faim ?</span>
             </h2>
-            <ul className="mt-8 grid gap-4">
-              {[
-                { t: "La broche", d: "Kebab bœuf ou poulet, en sandwich, en assiette, en yufka ou en tacos.", icon: "kebab" as const, c: "bg-mario" },
-                { t: "Le grill", d: "Köfte, sucuk, steak haché et escalope de poulet.", icon: "grill" as const, c: "bg-luigi" },
-                { t: "La touche Mario", d: "Le Berlinois : viande de kebab, crudités, feta, miel et sauce blanche.", icon: "star" as const, c: "bg-coin" },
-              ].map((s) => (
-                <li key={s.t} className="flex items-center gap-4 rounded-2xl border-[3px] border-ink bg-white p-4 text-ink shadow-pop">
-                  <span className={`grid h-14 w-14 shrink-0 place-items-center rounded-xl border-[3px] border-ink ${s.c}`}>
-                    <FoodIcon name={s.icon} className="h-9 w-9 text-ink" />
-                  </span>
-                  <span>
-                    <span className="block font-display text-xl uppercase">{s.t}</span>
-                    <span className="text-sm font-semibold text-ink-soft">{s.d}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <Link href="/carte" className="btn btn-coin">
+              Toute la carte <ArrowIcon className="h-4 w-4" />
+            </Link>
           </div>
+          <ul className="grid grid-cols-2 gap-3 md:h-[680px] md:grid-cols-4 md:grid-rows-3 md:gap-4">
+            {gallery.map((g, i) => (
+              <li key={g.photo} className={`${g.span} relative`} data-reveal style={{ "--d": `${(i % 4) * 60}ms` } as React.CSSProperties}>
+                <Link href={`/carte#${g.cat}`} className="group relative block h-full overflow-hidden rounded-[1.5rem] border-[3px] border-ink bg-tile shadow-pop transition duration-200 hover:-translate-y-1 hover:shadow-pop-lg">
+                  <Photo name={g.photo} alt={g.label} sizes={i === 0 ? "(min-width:768px) 600px, 100vw" : "(min-width:768px) 300px, 50vw"} className={`w-full md:absolute md:inset-0 md:h-full ${i === 0 ? "aspect-[4/3]" : g.span.includes("col-span-2") ? "aspect-[2/1]" : "aspect-square"} md:aspect-auto`} imgClassName="transition duration-500 group-hover:scale-110" />
+                  <span className="absolute bottom-2 left-2 right-2 flex flex-wrap items-center gap-1.5 md:bottom-3 md:left-3">
+                    <span className="rounded-full border-[3px] border-ink bg-white px-2.5 py-1 font-display text-xs uppercase leading-none text-ink sm:text-sm md:px-3 md:text-lg">{g.label}</span>
+                    {g.price && <span className="rounded-full border-[3px] border-ink bg-coin px-2 py-1 font-display text-xs leading-none text-ink sm:text-sm md:px-2.5 md:text-lg">{g.price}</span>}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -327,11 +367,13 @@ export default function Home() {
                   <h3 className="mb-2 flex items-center gap-2 font-display text-lg uppercase text-mario-dark"><PhoneIcon className="h-5 w-5" /> Téléphone</h3>
                   <a href={`tel:${site.phone.tel}`} className="font-display text-2xl hover:text-royal">{site.phone.display}</a>
                 </div>
-                <div className="sm:col-span-2">
-                  <h3 className="mb-2 font-display text-lg uppercase text-mario-dark">Accès & stationnement</h3>
-                  <p className="font-semibold text-ink-soft">{site.access.parking ?? <span className="todo">Stationnement à compléter</span>}</p>
-                  {site.access.transport && <p className="mt-1 font-semibold text-ink-soft">{site.access.transport}</p>}
-                </div>
+                {(site.access.parking || site.access.transport) && (
+                  <div className="sm:col-span-2">
+                    <h3 className="mb-2 font-display text-lg uppercase text-mario-dark">Accès & stationnement</h3>
+                    {site.access.parking && <p className="font-semibold text-ink-soft">{site.access.parking}</p>}
+                    {site.access.transport && <p className="mt-1 font-semibold text-ink-soft">{site.access.transport}</p>}
+                  </div>
+                )}
               </div>
             </div>
             <MapEmbed className="min-h-[380px] lg:min-h-full" />

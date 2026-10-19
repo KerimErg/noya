@@ -168,6 +168,20 @@
       }
     }
   },
+  "frites": {
+    "kind": "product",
+    "alpha": false,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
   "kebab": {
     "kind": "product",
     "alpha": false,
@@ -184,7 +198,7 @@
   },
   "mario-bowl": {
     "kind": "product",
-    "alpha": true,
+    "alpha": false,
     "variants": {
       "default": {
         "ratio": 1,
