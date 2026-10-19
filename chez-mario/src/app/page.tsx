@@ -76,9 +76,25 @@ export default function Home() {
                 alt="Chez Mario : Mario savoure un kebab dans un monde de champignons et de collines"
                 priority
                 sizes="100vw"
-                className="h-[min(50.87vw,calc(100svh-104px))] w-full"
-                imgClassName="object-[50%_35%]"
+                className="h-[min(128vw,calc(100svh-190px))] w-full md:h-[min(50.87vw,calc(100svh-104px))]"
+                imgClassName="object-[11%_50%] md:object-[50%_35%]"
               />
+              {/* Mobile : titre et état d'ouverture posés sur l'image */}
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 via-ink/40 to-transparent px-5 pb-5 pt-16 md:hidden">
+                <div className="animate-pop" style={{ animationDelay: "200ms" }}>
+                  <OpenBadge />
+                </div>
+                <p className="display outlined mt-3 animate-pop text-[2.6rem] leading-[0.95] text-white" style={{ animationDelay: "350ms" }}>
+                  Kebab, tacos
+                  <br />
+                  <span className="text-coin">&amp; burgers</span>
+                </p>
+                {kebab.price !== null && (
+                  <p className="mt-2 animate-pop font-display text-lg uppercase tracking-wide text-white" style={{ animationDelay: "500ms" }}>
+                    À Erstein · dès {kebab.price} €
+                  </p>
+                )}
+              </div>
               {/* Actions posées sous le titre de l'image (ordinateur/tablette ; sur mobile : barre collante) */}
               <div className="absolute left-[53%] right-[3%] top-[50%] hidden flex-col items-center gap-3 md:flex lg:gap-4">
                 <div className="animate-pop" style={{ animationDelay: "250ms" }}>
