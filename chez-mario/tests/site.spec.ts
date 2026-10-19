@@ -8,7 +8,7 @@ test("accueil : bannière, boutons, sections", async ({ page }, info) => {
   // Boutons « Voir la carte » et « Appeler » visibles sans défiler
   await expect(page.getByRole("link", { name: /voir la carte/i }).first()).toBeVisible();
   await expect(page.locator('a[href^="tel:"]:visible').first()).toBeVisible();
-  await expect(page.getByRole("heading", { name: /classiques/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /faim/i })).toBeVisible();
   await page.screenshot({ path: `${shots}/${info.project.name}-accueil-haut.png` });
   // Les boutons restent visibles après défilement
   await page.mouse.wheel(0, 2500);

@@ -72,3 +72,19 @@ export function DriftingClouds() {
     </div>
   );
 }
+
+/**
+ * Transition ondulée entre deux sections : `top` = couleur de la section du dessus,
+ * `bottom` = couleur de celle du dessous (classes Tailwind bg-* / fill-*).
+ */
+export function Wave({ top, bottom, flip = false }: { top: string; bottom: string; flip?: boolean }) {
+  const d = flip ? "M0 30 C 240 70 480 70 720 30 S 1200 -10 1440 30" : "M0 30 C 240 -10 480 -10 720 30 S 1200 70 1440 30";
+  return (
+    <div aria-hidden className={`${top} -mb-px leading-[0]`}>
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="block h-10 w-full md:h-16">
+        <path d={`${d} V80 H0 Z`} className={bottom} />
+        <path d={d} fill="none" stroke="#1F1A17" strokeWidth="4" vectorEffect="non-scaling-stroke" />
+      </svg>
+    </div>
+  );
+}

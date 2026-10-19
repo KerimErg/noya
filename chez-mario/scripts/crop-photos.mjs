@@ -13,7 +13,7 @@ const crops = [
   { name: "kebab", src: "photos/source/photo-kebab.jpg", x: 32, y: 470, size: 640 },
   { name: "assiette-kebab", src: "photos/source/photo-assiette-kebab.jpg", x: 30, y: 500, size: 660 },
   { name: "mario-bowl", src: "photos/source/photo-mario-bowl.jpg", x: 40, y: 520, size: 620 },
-  { name: "frites", src: "photos/source/photo-barquettes.jpg", x: 410, y: 655, size: 190 },
+  { name: "frites", src: "photos/source/photo-frites.jpg", x: 60, y: 590, size: 540 },
   { name: "menu-enfant", src: "photos/source/photo-menu-enfant.jpg", x: 50, y: 500, size: 590 },
 ];
 

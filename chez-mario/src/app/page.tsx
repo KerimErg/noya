@@ -1,15 +1,13 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import { MENU_CONTENT, featuredItems, formatPrice, menu, minPrice, type Color } from "@/content/menu";
+import { MENU_CONTENT, menu, minPrice, type Color } from "@/content/menu";
 import { fullAddress, site } from "@/content/site";
 import { HeroMedia } from "@/components/HeroMedia";
 import { HoursTable, OpenBadge } from "@/components/Hours";
 import { MapEmbed } from "@/components/MapEmbed";
 import { Photo, hasPhoto } from "@/components/Photo";
-import { FoodIcon } from "@/components/FoodIcon";
-import { BadgeList } from "@/components/Badges";
 import { Mascot } from "@/components/Mascot";
-import { Cloud, Coin, DriftingClouds, Hills, Sparkle } from "@/components/Deco";
+import { Cloud, Coin, DriftingClouds, Hills, Sparkle, Wave } from "@/components/Deco";
 import { ArrowIcon, PhoneIcon, PinIcon, StarIcon } from "@/components/Icons";
 
 const BG: Record<Color, string> = { red: "bg-mario", green: "bg-luigi", blue: "bg-royal", yellow: "bg-coin" };
@@ -36,7 +34,6 @@ function Sticker({ name, className = "", r = 0, delay = 0 }: { name: string; cla
 }
 
 export default function Home() {
-  const featured = featuredItems();
   const kebab = menu[0].sections[0].items[0];
   const withMenu = menu.filter((c) => c.menuSupplement);
   const banner = !!site.heroBanner && hasPhoto(site.heroBanner);
@@ -151,152 +148,31 @@ export default function Home() {
         <div className={`ground border-b-[3px] border-ink ${banner ? "h-[21px]" : "h-10"}`} aria-hidden />
       </section>
 
-      {/* ───────────── Les classiques ───────────── */}
-      <section className="pb-16 pt-8 md:pb-24 md:pt-10" aria-labelledby="une-title">
-        <div className="container-x">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-6" data-reveal>
-            <div>
-              <p className="eyebrow mb-4"><StarIcon className="h-3.5 w-3.5 text-coin-dark" /> À la une</p>
-              <h2 id="une-title" className="display text-[clamp(2.6rem,9vw,4.6rem)]">
-                Les <span className="text-mario">classiques</span>
-              </h2>
-            </div>
-            <Link href="/carte" className="btn btn-white">
-              Toute la carte <ArrowIcon className="h-4 w-4" />
-            </Link>
+      {/* ───────────── Mosaïque photo : la carte en un coup d'œil ───────────── */}
+      <section className="relative overflow-hidden bg-royal pb-14 pt-12 md:pb-20 md:pt-16" aria-labelledby="faim-title">
+        <Cloud className="absolute -left-6 top-10 w-32 opacity-25 md:w-48" />
+        <Cloud className="absolute bottom-24 right-4 w-28 opacity-25 md:w-40" />
+        <div className="container-x relative">
+          <div className="mb-8 text-center" data-reveal>
+            <h2 id="faim-title" className="display outlined text-[clamp(2.8rem,9vw,5rem)] text-white">
+              Ça donne <span className="text-coin">faim ?</span>
+            </h2>
+            <p className="mx-auto mt-3 max-w-lg text-lg font-bold text-white">Kebab, assiettes, burgers, tacos… choisis ta rubrique.</p>
           </div>
-          <ul className="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-6 pt-2 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 lg:grid-cols-5">
-            {featured.map((item, i) => (
-              <li key={item.id} className="w-[68%] shrink-0 snap-start sm:w-[42%] md:w-auto" data-reveal style={{ "--d": `${i * 80}ms` } as React.CSSProperties}>
-                <Link href={`/carte#${item.category.id}`} className="card group flex h-full flex-col overflow-hidden transition duration-200 hover:-translate-y-1.5 hover:rotate-[-1deg] hover:shadow-pop-lg">
-                  <div className={`relative border-b-[3px] border-ink ${BG[item.category.color]} p-3`}>
-                    <Photo name={item.photo} alt={item.name} icon={item.category.icon} sizes="(min-width:1024px) 20vw, (min-width:768px) 33vw, 68vw" className="aspect-square w-full rounded-2xl border-[3px] border-ink transition duration-300 group-hover:scale-[1.03]" />
-                    <span className="absolute -bottom-5 right-3 grid h-14 w-14 rotate-[-8deg] place-items-center rounded-full border-[3px] border-ink bg-coin font-display text-lg leading-none text-ink shadow-pop-sm transition duration-500 group-hover:rotate-[352deg]">
-                      {item.price !== null ? `${String(item.price).replace(".", ",")}€` : "?"}
-                    </span>
-                  </div>
-                  <div className="flex flex-1 flex-col p-5 pt-6">
-                    <BadgeList badges={item.badges} className="mb-2" />
-                    <h3 className="font-display text-2xl uppercase leading-tight">{item.name}</h3>
-                    <p className="mt-1 text-sm font-semibold text-ink-soft">{item.description ?? item.category.intro}</p>
-                  </div>
+          {/* Accès rapide aux rubriques */}
+          <ul className="no-scrollbar -mx-5 mb-8 flex gap-2 overflow-x-auto px-5 pb-2 md:mx-0 md:flex-wrap md:justify-center md:overflow-visible md:px-0" data-reveal>
+            {menu.map((c) => (
+              <li key={c.id} className="shrink-0">
+                <Link href={`/carte#${c.id}`} className="inline-flex items-center gap-2 rounded-full border-[3px] border-ink bg-white px-4 py-1.5 font-display uppercase text-ink shadow-pop-sm transition hover:-translate-y-0.5 hover:bg-coin">
+                  <span aria-hidden className={`h-3 w-3 rounded-full border-2 border-ink ${BG[c.color]}`} />
+                  {c.title}
                 </Link>
               </li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      {/* ───────────── Rubriques de la carte ───────────── */}
-      <section className="relative border-y-[3px] border-ink bg-sky-light py-16 md:py-24" aria-labelledby="carte-title">
-        <Cloud className="absolute left-[4%] top-6 w-24 opacity-90 md:w-36" />
-        <Cloud className="absolute right-[6%] top-16 w-20 opacity-90 md:w-28" />
-        <div className="container-x relative">
-          <div className="mb-10 text-center" data-reveal>
-            <p className="eyebrow mb-4">La carte</p>
-            <h2 id="carte-title" className="display text-[clamp(2.6rem,9vw,4.6rem)]">
-              Choisis ta <span className="text-royal">faim</span>
-            </h2>
-          </div>
-          <ul className="grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-4">
-            {menu.map((c, i) => {
-              const from = minPrice(c);
-              return (
-                <li key={c.id} data-reveal style={{ "--d": `${(i % 4) * 70}ms` } as React.CSSProperties}>
-                  <Link href={`/carte#${c.id}`} className={`group flex h-full flex-col rounded-[1.75rem] border-[3px] border-ink p-2 shadow-pop transition duration-200 hover:-translate-y-1.5 hover:rotate-1 hover:shadow-pop-lg md:p-2.5 ${BG[c.color]}`}>
-                    <div className="relative overflow-hidden rounded-[1.2rem] border-[3px] border-ink bg-white">
-                      {c.photo ? (
-                        <Photo name={c.photo} alt="" icon={c.icon} sizes="(min-width:1024px) 280px, 45vw" className="aspect-[4/3] w-full" imgClassName="transition duration-500 group-hover:scale-110" />
-                      ) : (
-                        <span className="grid aspect-[4/3] w-full place-items-center">
-                          <FoodIcon name={c.icon} className="h-1/2 w-1/2 text-ink" />
-                        </span>
-                      )}
-                      {from !== null && (
-                        <span className="absolute right-1.5 top-1.5 rounded-full border-2 border-ink bg-coin px-2 py-0.5 text-[11px] font-extrabold text-ink md:right-2 md:top-2 md:text-xs">dès {formatPrice(from)}</span>
-                      )}
-                    </div>
-                    <span className="display outlined block px-1.5 pb-1.5 pt-3 text-[1.3rem] leading-[1] text-white md:text-[1.7rem]">{c.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
-            <li data-reveal>
-              <Link href="/carte" className="group flex h-full min-h-[10rem] flex-col items-center justify-center gap-3 rounded-[1.75rem] border-[3px] border-dashed border-ink bg-white p-4 text-center transition hover:bg-coin">
-                <ArrowIcon className="h-10 w-10 transition group-hover:translate-x-1" />
-                <span className="font-display text-xl uppercase leading-tight">Toute la carte</span>
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      {/* ───────────── Formule menu : sandwich + frites + boisson ───────────── */}
-      <section className="bg-coin py-14 md:py-20" aria-labelledby="menu-title">
-        <div className="container-x grid items-center gap-10 md:grid-cols-[1fr_1.1fr]">
-          <div data-reveal>
-            <p className="eyebrow mb-4">La formule</p>
-            <h2 id="menu-title" className="display text-[clamp(2.6rem,9vw,4.6rem)]">
-              Passe en menu <span className="outlined whitespace-nowrap text-white">+ 3 €</span>
-            </h2>
-            <p className="mt-4 max-w-md text-lg font-bold text-ink">Ajoute {MENU_CONTENT} à ton sandwich, ton burger ou ton tacos.</p>
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {withMenu.map((c) => (
-                <li key={c.id}>
-                  <Link href={`/carte#${c.id}`} className="inline-flex rounded-full border-[3px] border-ink bg-white px-4 py-1.5 font-display uppercase shadow-pop-sm transition hover:-translate-y-0.5 hover:bg-cream">
-                    {c.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div data-reveal>
-            <div className="flex items-start justify-center gap-1.5 sm:gap-3">
-              {[
-                { name: "kebab", label: "Ton kebab", r: -4 },
-                { name: "frites", label: "Frites", r: 3 },
-                { name: "boissons", label: "Boisson", r: -2 },
-              ].map((x, i) => (
-                <Fragment key={x.name}>
-                  {i > 0 && (
-                    <span aria-hidden className="mt-[9%] grid h-9 w-9 shrink-0 place-items-center rounded-full border-[3px] border-ink bg-white font-display text-2xl leading-none shadow-pop-sm sm:h-11 sm:w-11 sm:text-3xl">
-                      +
-                    </span>
-                  )}
-                  <figure className="w-[28%] max-w-[170px] animate-float" style={{ "--r": `${x.r}deg`, animationDelay: `${i * 0.5}s` } as React.CSSProperties}>
-                    <Photo name={x.name} alt={x.label} sizes="(min-width:768px) 170px, 28vw" className="aspect-square w-full rounded-full border-4 border-ink shadow-pop" />
-                    <figcaption className="mt-2 text-center font-display text-sm uppercase sm:text-lg">{x.label}</figcaption>
-                  </figure>
-                </Fragment>
-              ))}
-            </div>
-            {menuKebab !== null && (
-              <p className="mt-6 flex justify-center">
-                <span className="rotate-[-3deg] rounded-2xl border-[3px] border-ink bg-mario px-5 py-2 font-display text-2xl uppercase text-white shadow-pop md:text-3xl">
-                  = Menu kebab {menuKebab} €
-                </span>
-              </p>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* ───────────── Mosaïque photo : ça donne faim ───────────── */}
-      <section className="relative overflow-hidden border-y-[3px] border-ink bg-royal py-16 md:py-24" aria-labelledby="faim-title">
-        <Cloud className="absolute -left-6 top-10 w-32 opacity-25 md:w-48" />
-        <Cloud className="absolute bottom-10 right-4 w-28 opacity-25 md:w-40" />
-        <div className="container-x relative">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-6" data-reveal>
-            <h2 id="faim-title" className="display outlined text-[clamp(2.8rem,9vw,5rem)] text-white">
-              Ça donne <span className="text-coin">faim ?</span>
-            </h2>
-            <Link href="/carte" className="btn btn-coin">
-              Toute la carte <ArrowIcon className="h-4 w-4" />
-            </Link>
-          </div>
           <ul className="grid grid-cols-2 gap-3 md:h-[680px] md:grid-cols-4 md:grid-rows-3 md:gap-4">
             {gallery.map((g, i) => (
-              <li key={g.photo} className={`${g.span} relative`} data-reveal style={{ "--d": `${(i % 4) * 60}ms` } as React.CSSProperties}>
+              <li key={g.photo} className={`${g.span} relative`} data-reveal style={{ "--d": `${(i % 4) * 70}ms` } as React.CSSProperties}>
                 <Link href={`/carte#${g.cat}`} className="group relative block h-full overflow-hidden rounded-[1.5rem] border-[3px] border-ink bg-tile shadow-pop transition duration-200 hover:-translate-y-1 hover:shadow-pop-lg">
                   <Photo name={g.photo} alt={g.label} sizes={i === 0 ? "(min-width:768px) 600px, 100vw" : "(min-width:768px) 300px, 50vw"} className={`w-full md:absolute md:inset-0 md:h-full ${i === 0 ? "aspect-[4/3]" : g.span.includes("col-span-2") ? "aspect-[2/1]" : "aspect-square"} md:aspect-auto`} imgClassName="transition duration-500 group-hover:scale-110" />
                   <span className="absolute bottom-2 left-2 right-2 flex flex-wrap items-center gap-1.5 md:bottom-3 md:left-3">
@@ -307,8 +183,66 @@ export default function Home() {
               </li>
             ))}
           </ul>
+          <p className="mt-10 text-center" data-reveal>
+            <Link href="/carte" className="btn btn-coin h-14 px-8 text-lg">
+              Voir toute la carte <ArrowIcon className="h-5 w-5" />
+            </Link>
+          </p>
         </div>
       </section>
+      <Wave top="bg-royal" bottom="fill-coin" />
+
+      {/* ───────────── Formule menu : sandwich + frites + boisson ───────────── */}
+      <section className="bg-coin pb-14 pt-8 md:pb-20 md:pt-10" aria-labelledby="menu-title">
+        <div className="container-x">
+          <div className="text-center" data-reveal>
+            <p className="eyebrow mb-4">La formule</p>
+            <h2 id="menu-title" className="display text-[clamp(2.6rem,9vw,4.8rem)]">
+              Passe en menu <span className="outlined whitespace-nowrap text-white">+ 3 €</span>
+            </h2>
+            <p className="mx-auto mt-3 max-w-md text-lg font-bold text-ink">Ajoute {MENU_CONTENT} à ton sandwich, ton burger ou ton tacos.</p>
+          </div>
+          {/* L'équation, en grand : chaque élément arrive l'un après l'autre */}
+          <div className="mx-auto mt-10 flex max-w-5xl items-start justify-center gap-1.5 sm:gap-4 md:gap-6">
+            {[
+              { name: "kebab", label: "Ton kebab", r: -4 },
+              { name: "frites", label: "Frites", r: 3 },
+              { name: "boissons", label: "Boisson", r: -2 },
+            ].map((x, i) => (
+              <Fragment key={x.name}>
+                {i > 0 && (
+                  <span data-reveal style={{ "--d": `${i * 260 - 130}ms` } as React.CSSProperties} aria-hidden className="mt-[11%] grid h-9 w-9 shrink-0 place-items-center rounded-full border-[3px] border-ink bg-white font-display text-2xl leading-none shadow-pop-sm sm:h-14 sm:w-14 sm:text-4xl">
+                    +
+                  </span>
+                )}
+                <figure data-reveal className="w-[30%] max-w-[280px]" style={{ "--d": `${i * 260}ms` } as React.CSSProperties}>
+                  <div className="animate-float" style={{ "--r": `${x.r}deg`, animationDelay: `${i * 0.5}s` } as React.CSSProperties}>
+                    <Photo name={x.name} alt={x.label} sizes="(min-width:768px) 280px, 30vw" className="aspect-square w-full rounded-full border-4 border-ink shadow-pop-lg" />
+                  </div>
+                  <figcaption className="mt-3 text-center font-display text-base uppercase sm:text-2xl">{x.label}</figcaption>
+                </figure>
+              </Fragment>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-col items-center gap-5" data-reveal style={{ "--d": "700ms" } as React.CSSProperties}>
+            {menuKebab !== null && (
+              <span className="rotate-[-3deg] rounded-2xl border-[3px] border-ink bg-mario px-6 py-2.5 font-display text-2xl uppercase text-white shadow-pop md:text-4xl">
+                = Menu kebab {menuKebab} €
+              </span>
+            )}
+            <ul className="flex flex-wrap justify-center gap-2">
+              {withMenu.map((c) => (
+                <li key={c.id}>
+                  <Link href={`/carte#${c.id}`} className="inline-flex rounded-full border-[3px] border-ink bg-white px-4 py-1.5 font-display uppercase shadow-pop-sm transition hover:-translate-y-0.5 hover:bg-cream">
+                    {c.title} en menu
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+      <Wave top="bg-coin" bottom="fill-cream" flip />
 
       {/* ───────────── Avis (uniquement ceux fournis) ───────────── */}
       {site.reviews.length > 0 && (
