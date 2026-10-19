@@ -180,26 +180,26 @@ export default function Home() {
               const from = minPrice(c);
               return (
                 <li key={c.id} data-reveal style={{ "--d": `${(i % 4) * 70}ms` } as React.CSSProperties}>
-                  <Link href={`/carte#${c.id}`} className={`group relative flex aspect-[1/1.05] flex-col justify-end overflow-hidden rounded-[1.75rem] border-[3px] border-ink p-4 shadow-pop transition duration-200 hover:-translate-y-1.5 hover:rotate-1 hover:shadow-pop-lg md:aspect-[4/3.6] md:p-5 ${BG[c.color]}`}>
-                    <div className="absolute right-3 top-3 w-[52%] transition duration-300 group-hover:-rotate-6 group-hover:scale-110">
+                  <Link href={`/carte#${c.id}`} className={`group flex h-full flex-col rounded-[1.75rem] border-[3px] border-ink p-2 shadow-pop transition duration-200 hover:-translate-y-1.5 hover:rotate-1 hover:shadow-pop-lg md:p-2.5 ${BG[c.color]}`}>
+                    <div className="relative overflow-hidden rounded-[1.2rem] border-[3px] border-ink bg-white">
                       {c.photo ? (
-                        <Photo name={c.photo} alt="" icon={c.icon} sizes="200px" className="aspect-square w-full rounded-full border-[3px] border-ink" />
+                        <Photo name={c.photo} alt="" icon={c.icon} sizes="(min-width:1024px) 280px, 45vw" className="aspect-[4/3] w-full" imgClassName="transition duration-500 group-hover:scale-110" />
                       ) : (
-                        <span className="grid aspect-square w-full place-items-center rounded-full border-[3px] border-ink bg-white">
+                        <span className="grid aspect-[4/3] w-full place-items-center">
                           <FoodIcon name={c.icon} className="h-1/2 w-1/2 text-ink" />
                         </span>
                       )}
+                      {from !== null && (
+                        <span className="absolute right-1.5 top-1.5 rounded-full border-2 border-ink bg-coin px-2 py-0.5 text-[11px] font-extrabold text-ink md:right-2 md:top-2 md:text-xs">dès {formatPrice(from)}</span>
+                      )}
                     </div>
-                    <span className="relative">
-                      <span className="display outlined block text-[1.55rem] leading-[1] text-white md:text-3xl">{c.title}</span>
-                      {from !== null && <span className="mt-2 inline-block rounded-full border-2 border-ink bg-white px-2.5 py-0.5 text-xs font-extrabold text-ink">dès {formatPrice(from)}</span>}
-                    </span>
+                    <span className="display outlined block px-1.5 pb-1.5 pt-3 text-[1.3rem] leading-[1] text-white md:text-[1.7rem]">{c.title}</span>
                   </Link>
                 </li>
               );
             })}
             <li data-reveal>
-              <Link href="/carte" className="group flex aspect-[1/1.05] flex-col items-center justify-center gap-3 rounded-[1.75rem] border-[3px] border-dashed border-ink bg-white p-4 text-center transition hover:bg-coin md:aspect-[4/3.6]">
+              <Link href="/carte" className="group flex h-full min-h-[10rem] flex-col items-center justify-center gap-3 rounded-[1.75rem] border-[3px] border-dashed border-ink bg-white p-4 text-center transition hover:bg-coin">
                 <ArrowIcon className="h-10 w-10 transition group-hover:translate-x-1" />
                 <span className="font-display text-xl uppercase leading-tight">Toute la carte</span>
               </Link>

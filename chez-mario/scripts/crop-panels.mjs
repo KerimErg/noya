@@ -12,7 +12,6 @@ const B = "photos/source/panneau-burgers-tacos.jpg";
 
 const crops = [
   { name: "burger", src: B, x: 245, y: 588, w: 222, h: 210 },
-  { name: "tacos", src: B, x: 250, y: 796, w: 214, h: 146 },
   { name: "menu-kebab", src: S, x: 484, y: 692, w: 220, h: 92 },
   { name: "menu-yufka", src: S, x: 484, y: 838, w: 220, h: 100 },
   { name: "kebab", src: S, x: 268, y: 588, w: 92, h: 64 },
@@ -31,7 +30,6 @@ const crops = [
   ].map(([name, cy]) => ({ name, src: A, x: 155, y: Math.round(cy - 25), w: 50, h: 50, round: true })),
 ];
 
-const BG = { r: 14, g: 16, b: 24, alpha: 1 };
 
 for (const c of crops) {
   const side = Math.max(c.w, c.h);
@@ -47,10 +45,8 @@ for (const c of crops) {
     const mask = Buffer.from(`<svg width="${sq}" height="${sq}"><circle cx="${sq / 2}" cy="${sq / 2}" r="${sq * 0.44}" fill="#fff"/></svg>`);
     await sharp(buf).resize(sq, sq).composite([{ input: mask, blend: "dest-in" }]).png().toFile(`photos/${c.name}.png`);
   } else {
-    await sharp({ create: { width: sq, height: sq, channels: 4, background: BG } })
-      .composite([{ input: buf, gravity: "center" }])
-      .png()
-      .toFile(`photos/${c.name}.png`);
+    // Photo opaque, au format du découpage (le recadrage final se fait à l'affichage)
+    await sharp(buf).removeAlpha().jpeg({ quality: 95 }).toFile(`photos/${c.name}.jpg`);
   }
   console.log("✓", c.name);
 }

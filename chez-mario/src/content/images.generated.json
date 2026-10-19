@@ -112,9 +112,37 @@
       }
     }
   },
+  "barquettes": {
+    "kind": "product",
+    "alpha": false,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "boissons": {
+    "kind": "product",
+    "alpha": false,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
   "burger": {
     "kind": "product",
-    "alpha": true,
+    "alpha": false,
     "variants": {
       "default": {
         "ratio": 1,
@@ -128,7 +156,7 @@
   },
   "falafel": {
     "kind": "product",
-    "alpha": true,
+    "alpha": false,
     "variants": {
       "default": {
         "ratio": 1,
@@ -142,7 +170,7 @@
   },
   "kebab": {
     "kind": "product",
-    "alpha": true,
+    "alpha": false,
     "variants": {
       "default": {
         "ratio": 1,
@@ -168,9 +196,23 @@
       }
     }
   },
+  "menu-enfant": {
+    "kind": "product",
+    "alpha": false,
+    "variants": {
+      "default": {
+        "ratio": 1,
+        "widths": [
+          200,
+          400,
+          700
+        ]
+      }
+    }
+  },
   "menu-kebab": {
     "kind": "product",
-    "alpha": true,
+    "alpha": false,
     "variants": {
       "default": {
         "ratio": 1,
@@ -184,7 +226,7 @@
   },
   "menu-yufka": {
     "kind": "product",
-    "alpha": true,
+    "alpha": false,
     "variants": {
       "default": {
         "ratio": 1,
@@ -198,7 +240,7 @@
   },
   "nuggets": {
     "kind": "product",
-    "alpha": true,
+    "alpha": false,
     "variants": {
       "default": {
         "ratio": 1,
@@ -212,7 +254,7 @@
   },
   "tacos": {
     "kind": "product",
-    "alpha": true,
+    "alpha": false,
     "variants": {
       "default": {
         "ratio": 1,
@@ -226,7 +268,7 @@
   },
   "yufka": {
     "kind": "product",
-    "alpha": true,
+    "alpha": false,
     "variants": {
       "default": {
         "ratio": 1,

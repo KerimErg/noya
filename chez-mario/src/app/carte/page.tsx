@@ -63,7 +63,7 @@ function CategoryBlock({ c }: { c: MenuCategory }) {
       {/* En-tête de rubrique */}
       <header className={`relative mb-6 flex items-center gap-4 overflow-hidden rounded-[1.75rem] border-[3px] border-ink p-5 shadow-pop md:p-7 ${BG[c.color]}`} data-reveal>
         <div className="min-w-0 flex-1">
-          <h2 id={`${c.id}-title`} className={`display outlined text-[clamp(2.3rem,8vw,3.6rem)] ${light ? "text-white" : "text-white"}`}>
+          <h2 id={`${c.id}-title`} className={`display outlined text-[clamp(1.9rem,7.5vw,3.6rem)] ${light ? "text-white" : "text-white"}`}>
             {c.title}
           </h2>
           {c.intro && <p className={`mt-2 font-bold ${light ? "text-ink" : "text-white"}`}>{c.intro}</p>}
@@ -73,11 +73,11 @@ function CategoryBlock({ c }: { c: MenuCategory }) {
             </p>
           )}
         </div>
-        <div className="w-24 shrink-0 sm:w-32 md:w-40">
+        <div className="w-28 shrink-0 sm:w-44 md:w-60">
           {c.photo ? (
-            <Photo name={c.photo} alt="" icon={c.icon} sizes="160px" className="aspect-square w-full rotate-3 rounded-full border-[3px] border-ink" />
+            <Photo name={c.photo} alt="" icon={c.icon} sizes="(min-width:768px) 240px, 176px" className="aspect-[4/3] w-full rotate-2 rounded-2xl border-[3px] border-ink bg-white shadow-pop-sm" />
           ) : (
-            <span className="grid aspect-square w-full rotate-3 place-items-center rounded-full border-[3px] border-ink bg-white">
+            <span className="grid aspect-[4/3] w-full rotate-2 place-items-center rounded-2xl border-[3px] border-ink bg-white shadow-pop-sm">
               <FoodIcon name={c.icon} className="h-1/2 w-1/2 text-ink" />
             </span>
           )}

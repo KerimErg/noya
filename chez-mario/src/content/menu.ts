@@ -66,7 +66,7 @@ export const menu: MenuCategory[] = [
     intro: "Nos viandes de kebab sont bœuf ou poulet.",
     color: "red",
     icon: "kebab",
-    photo: "kebab",
+    photo: "menu-kebab",
     menuSupplement: 3,
     menuPhoto: "menu-kebab",
     sections: [
@@ -194,12 +194,13 @@ export const menu: MenuCategory[] = [
     title: "Menus enfant",
     color: "yellow",
     icon: "kids",
+    photo: "menu-enfant",
     sections: [
       {
         items: [
           { id: "box-happy", name: "Box Happy", detail: "avec jouet", description: "Viande de kebab ou nuggets, Capri-Sun, ketchup, mayo et un jouet.", price: 8 },
           { id: "demi-kebab", name: "Kebab enfant", detail: "demi kebab", description: "Demi viande de kebab, sauce, frites et boisson 33 cl.", price: 8 },
-          { id: "nuggets-enfant", name: "Nuggets enfant", description: "Nuggets, sauce, frites et boisson 33 cl.", price: 8, photo: "nuggets" },
+          { id: "nuggets-enfant", name: "Nuggets enfant", description: "Nuggets, sauce, frites et boisson 33 cl.", price: 8, photo: "menu-enfant" },
         ],
       },
     ],
@@ -209,14 +210,14 @@ export const menu: MenuCategory[] = [
     title: "À côté & suppléments",
     color: "green",
     icon: "fries",
-    photo: "nuggets",
+    photo: "barquettes",
     sections: [
       {
         title: "Barquettes",
         items: [
           { id: "barquette-frites", name: "Frites", price: 2.5 },
           { id: "barquette-ble", name: "Blé", price: 4 },
-          { id: "barquette-viande", name: "Viande kebab", price: 5 },
+          { id: "barquette-viande", name: "Viande kebab", price: 5, photo: "barquettes" },
           { id: "barquette-piment", name: "Piment vert", price: 2, badges: ["epice"] },
           { id: "tenders", name: "Tenders", price: 1.5, priceSuffix: "la pièce" },
           { id: "nuggets", name: "Nuggets", price: 0.5, priceSuffix: "la pièce" },
@@ -241,11 +242,12 @@ export const menu: MenuCategory[] = [
     title: "Boissons",
     color: "blue",
     icon: "drink",
+    photo: "boissons",
     sections: [
       {
         title: "Softs",
         items: [
-          { id: "boisson-33", name: "Boisson 33 cl", price: 2 },
+          { id: "boisson-33", name: "Boisson 33 cl", price: 2, photo: "boissons" },
           { id: "boisson-50", name: "Boisson 50 cl", price: 3 },
           { id: "ayran", name: "Ayran 25 cl", price: 2 },
           { id: "grande-bouteille", name: "Grande bouteille", price: 5 },
