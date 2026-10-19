@@ -8,18 +8,14 @@ import sharp from "sharp";
 
 const S = "photos/source/panneau-sandwichs.jpg";
 const A = "photos/source/panneau-assiettes.jpg";
-const B = "photos/source/panneau-burgers-tacos.jpg";
 
 const crops = [
-  { name: "burger", src: B, x: 245, y: 588, w: 222, h: 210 },
   { name: "menu-kebab", src: S, x: 484, y: 692, w: 220, h: 92 },
   { name: "menu-yufka", src: S, x: 484, y: 838, w: 220, h: 100 },
-  { name: "kebab", src: S, x: 268, y: 588, w: 92, h: 64 },
   { name: "falafel", src: S, x: 356, y: 586, w: 92, h: 66 },
   { name: "yufka", src: S, x: 270, y: 644, w: 92, h: 70 },
   { name: "nuggets", src: A, x: 530, y: 770, w: 116, h: 52 },
   ...[
-    ["assiette-kebab", 646],
     ["assiette-kofte", 687.5],
     ["assiette-steak", 727.5],
     ["assiette-escalope", 766.5],

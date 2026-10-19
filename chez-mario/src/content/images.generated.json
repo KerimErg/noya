@@ -43,7 +43,7 @@
   },
   "assiette-kebab": {
     "kind": "product",
-    "alpha": true,
+    "alpha": false,
     "variants": {
       "default": {
         "ratio": 1,

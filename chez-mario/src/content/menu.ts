@@ -66,7 +66,7 @@ export const menu: MenuCategory[] = [
     intro: "Nos viandes de kebab sont bœuf ou poulet.",
     color: "red",
     icon: "kebab",
-    photo: "menu-kebab",
+    photo: "kebab",
     menuSupplement: 3,
     menuPhoto: "menu-kebab",
     sections: [
@@ -102,12 +102,12 @@ export const menu: MenuCategory[] = [
     intro: "Servies avec crudités, frites ou blé.",
     color: "green",
     icon: "plate",
-    photo: "assiette-royal",
+    photo: "assiette-kebab",
     sections: [
       {
         title: "Les assiettes",
         items: [
-          { id: "assiette-kebab", name: "Assiette Kebab", price: 12, photo: "assiette-kebab" },
+          { id: "assiette-kebab", name: "Assiette Kebab", price: 12, photo: "assiette-kebab", featured: true },
           { id: "assiette-kofte", name: "Assiette Köfte", price: 14, photo: "assiette-kofte" },
           { id: "assiette-steak", name: "Assiette Steak haché", price: 14, photo: "assiette-steak" },
           { id: "assiette-escalope", name: "Assiette Escalope de poulet", price: 14, photo: "assiette-escalope" },
@@ -125,7 +125,6 @@ export const menu: MenuCategory[] = [
             description: "Viande de kebab, köfte, escalope de poulet, steak haché, cordon bleu.",
             price: 17,
             photo: "assiette-royal",
-            featured: true,
           },
           { id: "grillade-mixte", name: "Grillade Mixte", description: "Escalope de poulet, köfte, steak haché, crudités, frites ou blé.", price: 15 },
         ],
@@ -151,13 +150,13 @@ export const menu: MenuCategory[] = [
     sections: [
       {
         items: [
-          { id: "cheeseburger", name: "Cheeseburger", description: "Viande hachée, fromage cheese.", price: 8 },
+          { id: "cheeseburger", name: "Cheeseburger", description: "Viande hachée, fromage cheese.", price: 8, photo: "burger", featured: true },
           { id: "double-cheese", name: "Double Cheeseburger", description: "Double viande hachée, double cheese.", price: 10 },
           { id: "burger-chicken", name: "Burger Chicken", description: "Viande de poulet, fromage cheese.", price: 8 },
           { id: "burger-kebab", name: "Burger Kebab", description: "Viande de kebab.", price: 8 },
           { id: "burger-veggie", name: "Burger Veggie", description: "Falafel, fromage feta, fromage cheese.", price: 8 },
           { id: "burger-mario", name: "Burger Mario", description: "Viande hachée, viande de kebab, fromage cheese.", price: 10 },
-          { id: "burger-super-mario", name: "Burger Super Mario", description: "Chicken, steak, fromage cheese.", price: 13, photo: "burger", featured: true },
+          { id: "burger-super-mario", name: "Burger Super Mario", description: "Chicken, steak, fromage cheese.", price: 13 },
         ],
       },
     ],
