@@ -7,7 +7,6 @@ import { HoursTable, OpenBadge } from "@/components/Hours";
 import { MapEmbed } from "@/components/MapEmbed";
 import { Photo, hasPhoto } from "@/components/Photo";
 import { Mascot } from "@/components/Mascot";
-import { Logo } from "@/components/Logo";
 import { Cloud, Coin, DriftingClouds, Hills, Sparkle, Wave } from "@/components/Deco";
 import { ArrowIcon, PhoneIcon, PinIcon, StarIcon } from "@/components/Icons";
 import { CallLink } from "@/components/CallLink";
@@ -71,22 +70,26 @@ export default function Home() {
           <div className="relative z-10">
             {/* Bannière pleine largeur, affichée en entier (jamais recadrée) */}
             <h1 id="hero-title" className="sr-only">Chez Mario — kebab, tacos et burgers à Erstein</h1>
-            <div className="relative border-b-4 border-ink md:border-t-4">
+            <div className="relative flex flex-col border-b-4 border-ink bg-[#3171b2] max-md:min-h-[calc(100svh-96px)] md:border-t-4">
+              {/* Mobile : le ciel de l'image se prolonge en haut, avec le nom en grand */}
+              <p
+                className="flex flex-1 animate-pop flex-col items-center justify-center pb-1 pt-[max(52px,env(safe-area-inset-top))] text-center font-sans font-black uppercase leading-[0.88] text-[#FBEFD5] md:hidden"
+                style={{ WebkitTextStroke: "0.05em #3B2416", paintOrder: "stroke fill", textShadow: "0 0.06em 0 #3B2416, 0 0.12em 0.3em rgba(0,0,0,.3)" }}
+                aria-hidden
+              >
+                <span className="text-[11vw] tracking-wide">Chez</span>
+                <span className="text-[21vw] tracking-tight">Mario</span>
+              </p>
+              <div className="relative">
               <Photo
                 name={site.heroBanner}
                 alt="Chez Mario : Mario savoure un kebab dans un monde de champignons et de collines"
                 priority
                 sizes="100vw"
-                className="h-[min(118vw,calc(100svh-96px))] w-full md:h-[min(50.87vw,calc(100svh-76px))]"
-                imgClassName="object-[15%_50%] md:object-[50%_35%]"
+                className="h-[clamp(112vw,calc(100svh-96px-170px),118vw)] w-full md:h-[min(50.87vw,calc(100svh-76px))]"
+                imgClassName="object-[12%_50%] md:object-[50%_35%]"
               />
-              {/* Mobile : logo posé sur l'image, une seule ligne discrète en bas */}
-              <div className="absolute inset-x-0 top-0 flex justify-center pt-[max(14px,env(safe-area-inset-top))] md:hidden">
-                <Logo className="h-[24vw] max-h-[150px] animate-pop drop-shadow-[0_6px_10px_rgba(0,0,0,.35)]" />
-              </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent px-5 pb-5 pt-16 text-center md:hidden">
-                <p className="font-display text-xl uppercase tracking-[0.12em] text-white drop-shadow">Kebab · Tacos · Burgers</p>
-              </div>
+              <div aria-hidden className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#3171b2] to-transparent md:hidden" />
               {/* Actions posées sous le titre de l'image (ordinateur/tablette ; sur mobile : barre collante) */}
               <div className="absolute left-[53%] right-[3%] top-[50%] hidden flex-col items-center gap-3 md:flex lg:gap-4">
                 <div className="animate-pop" style={{ animationDelay: "250ms" }}>
@@ -105,6 +108,7 @@ export default function Home() {
                   </CallLink>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         ) : (
