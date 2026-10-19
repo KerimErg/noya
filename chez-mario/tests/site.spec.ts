@@ -4,7 +4,7 @@ const shots = "screenshots";
 
 test("accueil : bannière, boutons, sections", async ({ page }, info) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Kebab");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(/kebab/i);
   // Boutons « Voir la carte » et « Appeler » visibles sans défiler
   await expect(page.getByRole("link", { name: /voir la carte/i }).first()).toBeVisible();
   await expect(page.locator('a[href^="tel:"]:visible').first()).toBeVisible();

@@ -38,51 +38,30 @@ export default function Home() {
   const featured = featuredItems();
   const kebab = menu[0].sections[0].items[0];
   const withMenu = menu.filter((c) => c.menuSupplement);
+  const banner = !!site.heroBanner && hasPhoto(site.heroBanner);
   return (
     <>
       {/* ───────────── Bannière : ciel, nuages, mascotte qui saute ───────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-sky to-sky-light pt-[84px]" aria-labelledby="hero-title">
-        <DriftingClouds />
+      <section className={`relative overflow-hidden bg-gradient-to-b from-sky to-sky-light ${banner ? "pt-[72px]" : "pt-[84px]"}`} aria-labelledby="hero-title">
+        {!banner && <DriftingClouds />}
         <HeroMedia />
-        {site.heroBanner && hasPhoto(site.heroBanner) ? (
+        {banner ? (
           <div className="relative z-10">
-            {/* Bannière pleine largeur : sur ordinateur, sa hauteur laisse le titre et les boutons dans le premier écran */}
+            {/* Bannière pleine largeur, affichée en entier (jamais recadrée) */}
+            <h1 id="hero-title" className="sr-only">Chez Mario — kebab, tacos et burgers à Erstein</h1>
             <div className="relative border-y-4 border-ink">
               <Photo
                 name={site.heroBanner}
                 alt="Chez Mario : Mario savoure un kebab dans un monde de champignons et de collines"
                 priority
                 sizes="100vw"
-                className="aspect-[8/5] w-full md:aspect-auto md:h-[clamp(420px,calc(100svh-84px-170px),50.9vw)]"
-                imgClassName="object-[50%_35%]"
+                className="aspect-[1376/700] w-full"
               />
               {kebab.price !== null && (
-                <span className="absolute bottom-3 right-3 z-20 rotate-[-6deg] rounded-2xl border-[3px] border-ink bg-coin px-3 py-1.5 font-display text-lg uppercase leading-none text-ink shadow-pop md:bottom-6 md:right-8 md:px-5 md:py-2.5 md:text-3xl">
+                <span className="absolute bottom-2 left-2 z-20 rotate-[-6deg] rounded-xl border-[3px] border-ink bg-coin px-2 py-1 font-display text-sm uppercase leading-none text-ink shadow-pop-sm sm:bottom-4 sm:left-4 sm:text-xl md:bottom-6 md:left-8 md:rounded-2xl md:px-5 md:py-2.5 md:text-3xl md:shadow-pop">
                   Kebab <span className="text-mario">{kebab.price} €</span>
                 </span>
               )}
-            </div>
-            <div className="container-x grid items-center gap-5 py-6 md:grid-cols-[1fr_auto] md:py-5">
-              <div>
-                <div className="mb-3 flex flex-wrap items-center gap-3">
-                  <OpenBadge />
-                  <p className="hidden font-bold text-ink md:block">À Erstein · kebab, yufka, assiettes, burgers et tacos</p>
-                </div>
-                <h1 id="hero-title" className="display outlined text-[clamp(2.7rem,10.5vw,4.4rem)] leading-[0.95] text-white">
-                  <span className="sr-only">Kebab, tacos et burgers à Erstein</span>
-                  <JumpWord text="Kebab," /> <JumpWord text="tacos" start={6} className="text-coin" />
-                  <br className="md:hidden" /> <JumpWord text="& burgers" start={11} className="text-mario" />
-                </h1>
-                <p className="mt-3 text-lg font-bold text-ink md:hidden">À Erstein, chez Mario : kebab bœuf ou poulet, yufka, assiettes, burgers et tacos.</p>
-              </div>
-              <div className="hidden gap-4 md:flex">
-                <Link href="/carte" className="btn btn-red h-14 px-8 text-lg">
-                  Voir la carte <ArrowIcon className="h-5 w-5" />
-                </Link>
-                <a href={`tel:${site.phone.tel}`} className="btn btn-coin h-14 px-8 text-lg">
-                  <PhoneIcon className="h-5 w-5" /> Appeler
-                </a>
-              </div>
             </div>
           </div>
         ) : (
@@ -131,8 +110,8 @@ export default function Home() {
             </div>
           </div>
         )}
-        <Hills className="relative -mb-[3px] block h-[60px] w-full md:h-[110px]" />
-        <div className="ground h-10 border-b-[3px] border-ink" aria-hidden />
+        {!banner && <Hills className="relative -mb-[3px] block h-[60px] w-full md:h-[110px]" />}
+        <div className={`ground border-b-[3px] border-ink ${banner ? "h-7" : "h-10"}`} aria-hidden />
       </section>
 
       {/* ───────────── Les classiques ───────────── */}
