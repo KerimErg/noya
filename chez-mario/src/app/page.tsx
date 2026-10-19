@@ -4,7 +4,7 @@ import { fullAddress, site } from "@/content/site";
 import { HeroMedia } from "@/components/HeroMedia";
 import { HoursTable, OpenBadge } from "@/components/Hours";
 import { MapEmbed } from "@/components/MapEmbed";
-import { Photo } from "@/components/Photo";
+import { Photo, hasPhoto } from "@/components/Photo";
 import { FoodIcon } from "@/components/FoodIcon";
 import { BadgeList } from "@/components/Badges";
 import { Mascot } from "@/components/Mascot";
@@ -44,50 +44,97 @@ export default function Home() {
       <section className="relative overflow-hidden bg-gradient-to-b from-sky to-sky-light pt-[84px]" aria-labelledby="hero-title">
         <DriftingClouds />
         <HeroMedia />
+        {site.heroBanner && hasPhoto(site.heroBanner) ? (
+          <div className="container-x relative z-10">
+            {/* Bannière « écran de jeu » */}
+            <div className="relative -mx-5 sm:mx-0">
+              <div className="overflow-hidden border-y-4 border-ink bg-sky shadow-pop-lg sm:rounded-[2rem] sm:border-4">
+                <Photo
+                  name={site.heroBanner}
+                  alt="Chez Mario : Mario savoure un kebab dans un monde de champignons et de collines"
+                  priority
+                  sizes="(min-width: 1200px) 1140px, 100vw"
+                  className="w-full"
+                  imgClassName="origin-[30%_40%] animate-kenburns"
+                />
+              </div>
+              <Coin className="absolute -top-4 left-[46%] h-10 w-10 md:-top-6 md:h-14 md:w-14" />
+              <Coin className="absolute -top-2 left-[54%] h-8 w-8 md:-top-3 md:h-11 md:w-11" delay={0.4} />
+              {kebab.price !== null && (
+                <span className="absolute -bottom-5 right-3 z-20 rotate-[-6deg] rounded-2xl border-[3px] border-ink bg-coin px-3 py-1.5 font-display text-lg uppercase leading-none text-ink shadow-pop md:-bottom-6 md:right-8 md:px-5 md:py-2.5 md:text-3xl">
+                  Kebab <span className="text-mario">{kebab.price} €</span>
+                </span>
+              )}
+            </div>
+            <div className="grid items-end gap-6 pb-6 pt-9 md:grid-cols-[1fr_auto] md:pb-10 md:pt-12">
+              <div>
+                <OpenBadge className="mb-4" />
+                <h1 id="hero-title" className="display outlined text-[clamp(2.8rem,11vw,5.6rem)] leading-[0.95] text-white">
+                  <span className="sr-only">Kebab, tacos et burgers à Erstein</span>
+                  <JumpWord text="Kebab," /> <JumpWord text="tacos" start={6} className="text-coin" />
+                  <br />
+                  <JumpWord text="& burgers" start={11} className="text-mario" />
+                </h1>
+                <p className="mt-4 max-w-xl text-lg font-bold text-ink">
+                  À Erstein, chez Mario : kebab bœuf ou poulet, yufka, assiettes, burgers et tacos.
+                </p>
+              </div>
+              <div className="hidden flex-col gap-4 md:flex">
+                <Link href="/carte" className="btn btn-red h-14 px-8 text-lg">
+                  Voir la carte <ArrowIcon className="h-5 w-5" />
+                </Link>
+                <a href={`tel:${site.phone.tel}`} className="btn btn-coin h-14 px-8 text-lg">
+                  <PhoneIcon className="h-5 w-5" /> Appeler
+                </a>
+              </div>
+            </div>
+          </div>
+        ) : (
         <div className="container-x relative z-10 grid items-center gap-2 md:grid-cols-[1.05fr_.95fr] md:gap-8 md:py-6">
-          <div className="order-2 pb-4 md:order-1">
-            <OpenBadge className="mb-4" />
-            <h1 id="hero-title" className="display outlined text-[clamp(3.3rem,14.5vw,7.4rem)] leading-[0.92] text-white">
-              <span className="sr-only">Kebab, tacos et burgers à Erstein</span>
-              <JumpWord text="Kebab," />
-              <br />
-              <JumpWord text="tacos" start={6} className="text-coin" />
-              <br />
-              <JumpWord text="& burgers" start={11} className="text-mario" />
-            </h1>
-            <p className="mt-4 max-w-md text-lg font-bold text-ink">
-              À Erstein, chez Mario : kebab bœuf ou poulet, yufka, assiettes, burgers et tacos.
-            </p>
-            <div className="mt-7 hidden flex-wrap gap-4 md:flex">
-              <Link href="/carte" className="btn btn-red h-14 px-8 text-lg">
-                Voir la carte <ArrowIcon className="h-5 w-5" />
-              </Link>
-              <a href={`tel:${site.phone.tel}`} className="btn btn-coin h-14 px-8 text-lg">
-                <PhoneIcon className="h-5 w-5" /> Appeler
-              </a>
+            <div className="order-2 pb-4 md:order-1">
+              <OpenBadge className="mb-4" />
+              <h1 id="hero-title" className="display outlined text-[clamp(3.3rem,14.5vw,7.4rem)] leading-[0.92] text-white">
+                <span className="sr-only">Kebab, tacos et burgers à Erstein</span>
+                <JumpWord text="Kebab," />
+                <br />
+                <JumpWord text="tacos" start={6} className="text-coin" />
+                <br />
+                <JumpWord text="& burgers" start={11} className="text-mario" />
+              </h1>
+              <p className="mt-4 max-w-md text-lg font-bold text-ink">
+                À Erstein, chez Mario : kebab bœuf ou poulet, yufka, assiettes, burgers et tacos.
+              </p>
+              <div className="mt-7 hidden flex-wrap gap-4 md:flex">
+                <Link href="/carte" className="btn btn-red h-14 px-8 text-lg">
+                  Voir la carte <ArrowIcon className="h-5 w-5" />
+                </Link>
+                <a href={`tel:${site.phone.tel}`} className="btn btn-coin h-14 px-8 text-lg">
+                  <PhoneIcon className="h-5 w-5" /> Appeler
+                </a>
+              </div>
+            </div>
+  
+            {/* Scène : photos en autocollants, pièces, mascotte */}
+            <div className="relative order-1 mx-auto aspect-[1/0.78] w-full max-w-[560px] md:order-2 md:aspect-square" aria-hidden>
+              <Sticker name="burger" className="left-[2%] top-[4%] w-[30%]" r={-8} />
+              <Sticker name="tacos" className="right-[0%] top-[14%] w-[27%]" r={9} delay={0.8} />
+              <Sticker name="menu-kebab" className="bottom-[10%] left-[0%] w-[26%]" r={6} delay={1.6} />
+              <Coin className="absolute left-[38%] top-[2%] h-9 w-9 md:h-12 md:w-12" />
+              <Coin className="absolute left-[48%] top-[10%] h-9 w-9 md:h-12 md:w-12" delay={0.3} />
+              <Coin className="absolute left-[58%] top-[2%] h-9 w-9 md:h-12 md:w-12" delay={0.6} />
+              <Sparkle className="absolute bottom-[30%] right-[6%] h-6 w-6 animate-float md:h-9 md:w-9" />
+              <div className="absolute bottom-0 left-1/2 w-[48%] -translate-x-1/2">
+                <Mascot className="relative z-10 w-full origin-bottom animate-jump" />
+                <span className="absolute -bottom-1 left-1/2 h-3 w-2/3 -translate-x-1/2 rounded-[50%] bg-ink/20 blur-[2px]" />
+              </div>
+              {kebab.price !== null && (
+                <span className="absolute bottom-[8%] right-[3%] z-20 rotate-6 rounded-2xl border-[3px] border-ink bg-white px-3 py-1.5 font-display text-lg uppercase leading-none text-ink shadow-pop md:text-2xl">
+                  Kebab <span className="text-mario">{kebab.price} €</span>
+                </span>
+              )}
             </div>
           </div>
-
-          {/* Scène : photos en autocollants, pièces, mascotte */}
-          <div className="relative order-1 mx-auto aspect-[1/0.78] w-full max-w-[560px] md:order-2 md:aspect-square" aria-hidden>
-            <Sticker name="burger" className="left-[2%] top-[4%] w-[30%]" r={-8} />
-            <Sticker name="tacos" className="right-[0%] top-[14%] w-[27%]" r={9} delay={0.8} />
-            <Sticker name="menu-kebab" className="bottom-[10%] left-[0%] w-[26%]" r={6} delay={1.6} />
-            <Coin className="absolute left-[38%] top-[2%] h-9 w-9 md:h-12 md:w-12" />
-            <Coin className="absolute left-[48%] top-[10%] h-9 w-9 md:h-12 md:w-12" delay={0.3} />
-            <Coin className="absolute left-[58%] top-[2%] h-9 w-9 md:h-12 md:w-12" delay={0.6} />
-            <Sparkle className="absolute bottom-[30%] right-[6%] h-6 w-6 animate-float md:h-9 md:w-9" />
-            <div className="absolute bottom-0 left-1/2 w-[48%] -translate-x-1/2">
-              <Mascot className="relative z-10 w-full origin-bottom animate-jump" />
-              <span className="absolute -bottom-1 left-1/2 h-3 w-2/3 -translate-x-1/2 rounded-[50%] bg-ink/20 blur-[2px]" />
-            </div>
-            {kebab.price !== null && (
-              <span className="absolute bottom-[8%] right-[3%] z-20 rotate-6 rounded-2xl border-[3px] border-ink bg-white px-3 py-1.5 font-display text-lg uppercase leading-none text-ink shadow-pop md:text-2xl">
-                Kebab <span className="text-mario">{kebab.price} €</span>
-              </span>
-            )}
-          </div>
-        </div>
+        )}
         <Hills className="relative -mb-[3px] block h-[60px] w-full md:h-[110px]" />
         <div className="ground h-10 border-b-[3px] border-ink" aria-hidden />
       </section>

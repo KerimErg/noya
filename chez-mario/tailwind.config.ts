@@ -39,6 +39,7 @@ export default {
         drift: { "0%": { transform: "translateX(-30vw)" }, "100%": { transform: "translateX(130vw)" } },
         marquee: { "0%": { transform: "translateX(0)" }, "100%": { transform: "translateX(-50%)" } },
         pop: { "0%": { transform: "scale(.4) translateY(30px)", opacity: "0" }, "70%": { transform: "scale(1.08) translateY(-4px)", opacity: "1" }, "100%": { transform: "scale(1) translateY(0)", opacity: "1" } },
+        kenburns: { "0%": { transform: "scale(1) translate(0,0)" }, "100%": { transform: "scale(1.07) translate(-1.5%, -1%)" } },
         wiggle: { "0%,100%": { transform: "rotate(0deg)" }, "25%": { transform: "rotate(-8deg)" }, "75%": { transform: "rotate(8deg)" } },
       },
       animation: {
@@ -48,6 +49,7 @@ export default {
         marquee: "marquee 30s linear infinite",
         pop: "pop .7s cubic-bezier(.34,1.56,.64,1) both",
         wiggle: "wiggle .5s ease-in-out",
+        kenburns: "kenburns 18s ease-in-out infinite alternate",
       },
     },
   },

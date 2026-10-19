@@ -15,6 +15,8 @@ const EXT = /\.(jpe?g|png|webp|avif|tiff?)$/i;
 
 const presets = {
   product: [{ suffix: "", ratio: 1, widths: [200, 400, 700] }],
+  // Bannière : garde son format d'origine (recadrage fait à la main avant)
+  banner: [{ suffix: "", ratio: 0, widths: [640, 1024, 1376] }],
   hero: [
     { suffix: "", ratio: 16 / 9, widths: [960, 1440, 1920] },
     { suffix: "-m", ratio: 4 / 5, widths: [480, 800] },
@@ -28,12 +30,13 @@ const manifest = {};
 for (const file of files) {
   const name = path.parse(file).name.toLowerCase().replace(/[^a-z0-9-]+/g, "-");
   const input = path.join(SRC, file);
-  const kind = name.startsWith("hero") ? "hero" : "product";
+  const kind = name.startsWith("banniere") ? "banner" : name.startsWith("hero") ? "hero" : "product";
   const srcTime = (await stat(input)).mtimeMs;
   const meta = await sharp(input).metadata();
   manifest[name] = { kind, alpha: !!meta.hasAlpha, variants: {} };
 
-  for (const v of presets[kind]) {
+  for (const preset of presets[kind]) {
+    const v = preset.ratio ? preset : { ...preset, ratio: meta.width / meta.height };
     manifest[name].variants[v.suffix || "default"] = { ratio: v.ratio, widths: v.widths };
     for (const w of v.widths) {
       const h = Math.round(w / v.ratio);

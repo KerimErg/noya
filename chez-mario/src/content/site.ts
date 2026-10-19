@@ -71,7 +71,12 @@ export const site = {
 
   /** Vidéo d'accueil (fichiers dans public/video/). null = photo/visuel à la place. */
   heroVideo: null as { mp4: string; webm?: string; poster: string } | null,
-  /** Photo d'accueil (nom du fichier dans photos/, sans extension). */
+  /**
+   * Grande image de bannière (nom du fichier dans photos/, sans extension), affichée en entier.
+   * null = bannière dessinée (mascotte + photos des produits).
+   */
+  heroBanner: "banniere" as string | null,
+  /** Photo d'accueil en fond (nom du fichier dans photos/, sans extension). */
   heroPhoto: null as string | null,
 
   legal: {

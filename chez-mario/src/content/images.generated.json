@@ -97,6 +97,20 @@
       }
     }
   },
+  "banniere": {
+    "kind": "banner",
+    "alpha": false,
+    "variants": {
+      "default": {
+        "ratio": 1.9657142857142857,
+        "widths": [
+          640,
+          1024,
+          1376
+        ]
+      }
+    }
+  },
   "burger": {
     "kind": "product",
     "alpha": true,
