@@ -13,7 +13,7 @@ export function Footer() {
       <div className="bg-ink pb-28 pt-14 text-white md:pb-12">
         <div className="container-x grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <Logo light />
+            <Logo className="h-28" />
             <p className="mt-4 max-w-xs text-sm text-white/70">{site.tagline} — à Erstein depuis {site.since}.</p>
             <Socials className="mt-5 text-white" />
             {!socialLinks().length && <p className="mt-4"><span className="todo border-coin text-coin">Réseaux sociaux à compléter</span></p>}

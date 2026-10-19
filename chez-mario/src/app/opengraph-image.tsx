@@ -9,6 +9,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OgImage() {
+  const logo = `data:image/png;base64,${(await readFile(path.join(process.cwd(), "public/logo.png"))).toString("base64")}`;
   const font = await readFile(path.join(process.cwd(), "node_modules/@fontsource/lilita-one/files/lilita-one-latin-400-normal.woff"));
   return new ImageResponse(
     (
@@ -26,6 +27,8 @@ export default async function OgImage() {
           backgroundImage: "linear-gradient(180deg, #63C7F7 0%, #C9EEFF 78%, #2DA84B 78%, #2DA84B 84%, #B5651D 84%)",
         }}
       >
+        {/* eslint-disable-next-line jsx-a11y/alt-text */}
+        <img src={logo} width={300} height={401} style={{ position: "absolute", right: 70, top: 60 }} />
         <div style={{ display: "flex", fontSize: 44 }}>
           CHEZ <span style={{ color: "#E52521", marginLeft: 12 }}>MARIO</span>
         </div>

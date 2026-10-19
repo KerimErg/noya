@@ -37,8 +37,8 @@ export function Header() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${scrolled || open ? "border-b-[3px] border-ink bg-white" : "border-b-[3px] border-transparent bg-transparent"}`}>
       <div className="container-x flex h-[72px] items-center justify-between">
-        <Link href="/" aria-label="Chez Mario — accueil" className="rounded-full">
-          <Logo />
+        <Link href="/" aria-label="Chez Mario — accueil" className="relative z-10 -mb-2 self-start rounded-xl pt-1.5">
+          <Logo className={`transition-[height] duration-300 ${scrolled || open ? "h-[60px]" : "h-[78px] md:h-[112px]"}`} />
         </Link>
 
         <nav aria-label="Navigation principale" className="hidden items-center gap-3 md:flex">
