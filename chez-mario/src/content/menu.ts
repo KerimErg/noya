@@ -266,7 +266,7 @@ export const menu: MenuCategory[] = [
 ];
 
 /** Mention allergènes (remplacer par un détail par produit si vous le fournissez). */
-export const allergensNote = "Liste des allergènes disponible sur demande au comptoir.";
+export const allergensNote = "La liste des allergènes présents dans chaque plat est consultable par écrit au comptoir.";
 
 export const formatPrice = (price: number | null) =>
   price === null ? "À compléter" : new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(price);

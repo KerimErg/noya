@@ -92,3 +92,23 @@ test("SEO : données structurées Restaurant", async ({ page }) => {
   expect(data.address.addressLocality).toBe("Erstein");
   expect(data.hasMenu.hasMenuSection.length).toBeGreaterThan(5);
 });
+
+test("plan affiché directement + numéro cliquable", async ({ page }, info) => {
+  await page.goto("/contact");
+  const map = page.locator('iframe[title^="Plan"]');
+  await expect(map).toHaveCount(1);
+  await expect(map).toHaveAttribute("src", /google\.com\/maps|openstreetmap/);
+  const call = page.locator('a[href="tel:+33388986994"]:visible').first();
+  await expect(call).toBeVisible();
+  if (info.project.name === "desktop") {
+    await call.click();
+    await expect(page.getByRole("status").filter({ hasText: "03 88 98 69 94" })).toBeVisible();
+  }
+});
+
+test("pages légales : mentions obligatoires présentes", async ({ page }) => {
+  await page.goto("/mentions-legales");
+  for (const t of ["Éditeur du site", "Hébergeur", "Directeur de la publication", "Médiation de la consommation", "Allergènes"]) await expect(page.getByText(t).first()).toBeVisible();
+  await page.goto("/confidentialite");
+  for (const t of ["Responsable du traitement", "Vos droits", "CNIL"]) await expect(page.getByText(t).first()).toBeVisible();
+});

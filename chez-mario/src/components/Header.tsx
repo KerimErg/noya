@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { site } from "@/content/site";
 import { Logo } from "./Logo";
 import { CloseIcon, MenuIcon, PhoneIcon } from "./Icons";
+import { CallLink } from "@/components/CallLink";
 
 const links = [
   { href: "/", label: "Accueil" },
@@ -58,9 +59,9 @@ export function Header() {
           <Link href="/carte" className="btn btn-white hidden h-11 lg:inline-flex">
             Voir la carte
           </Link>
-          <a href={`tel:${site.phone.tel}`} className="btn btn-red hidden h-11 md:inline-flex">
+          <CallLink className="btn btn-red hidden h-11 md:inline-flex">
             <PhoneIcon className="h-4 w-4" /> {site.phone.display}
-          </a>
+          </CallLink>
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}

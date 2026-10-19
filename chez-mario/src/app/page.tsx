@@ -9,6 +9,7 @@ import { Photo, hasPhoto } from "@/components/Photo";
 import { Mascot } from "@/components/Mascot";
 import { Cloud, Coin, DriftingClouds, Hills, Sparkle, Wave } from "@/components/Deco";
 import { ArrowIcon, PhoneIcon, PinIcon, StarIcon } from "@/components/Icons";
+import { CallLink } from "@/components/CallLink";
 
 const BG: Record<Color, string> = { red: "bg-mario", green: "bg-luigi", blue: "bg-royal", yellow: "bg-coin" };
 
@@ -91,9 +92,9 @@ export default function Home() {
                   <Link href="/carte" className="btn btn-red h-12 px-6 lg:h-14 lg:px-8 lg:text-lg">
                     Voir la carte <ArrowIcon className="h-5 w-5" />
                   </Link>
-                  <a href={`tel:${site.phone.tel}`} className="btn btn-coin h-12 px-6 lg:h-14 lg:px-8 lg:text-lg">
+                  <CallLink className="btn btn-coin h-12 px-6 lg:h-14 lg:px-8 lg:text-lg">
                     <PhoneIcon className="h-5 w-5" /> Appeler
-                  </a>
+                  </CallLink>
                 </div>
               </div>
             </div>
@@ -117,9 +118,9 @@ export default function Home() {
                 <Link href="/carte" className="btn btn-red h-14 px-8 text-lg">
                   Voir la carte <ArrowIcon className="h-5 w-5" />
                 </Link>
-                <a href={`tel:${site.phone.tel}`} className="btn btn-coin h-14 px-8 text-lg">
+                <CallLink className="btn btn-coin h-14 px-8 text-lg">
                   <PhoneIcon className="h-5 w-5" /> Appeler
-                </a>
+                </CallLink>
               </div>
             </div>
   
@@ -299,7 +300,7 @@ export default function Home() {
                 </div>
                 <div>
                   <h3 className="mb-2 flex items-center gap-2 font-display text-lg uppercase text-mario-dark"><PhoneIcon className="h-5 w-5" /> Téléphone</h3>
-                  <a href={`tel:${site.phone.tel}`} className="font-display text-2xl hover:text-royal">{site.phone.display}</a>
+                  <CallLink className="font-display text-2xl hover:text-royal">{site.phone.display}</CallLink>
                 </div>
                 {(site.access.parking || site.access.transport) && (
                   <div className="sm:col-span-2">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { site } from "@/content/site";
 import { PhoneIcon } from "./Icons";
+import { CallLink } from "@/components/CallLink";
 
 /** Barre d'actions toujours visible sur mobile : « Voir la carte » + « Appeler ». */
 export function StickyActions() {
@@ -9,9 +10,9 @@ export function StickyActions() {
       <Link href="/carte" className="btn btn-red h-12 px-3 shadow-pop-sm">
         Voir la carte
       </Link>
-      <a href={`tel:${site.phone.tel}`} className="btn btn-coin h-12 px-3 shadow-pop-sm" aria-label={`Appeler Chez Mario au ${site.phone.display}`}>
+      <CallLink className="btn btn-coin h-12 px-3 shadow-pop-sm" label={`Appeler Chez Mario au ${site.phone.display}`}>
         <PhoneIcon className="h-4 w-4" /> Appeler
-      </a>
+      </CallLink>
     </div>
   );
 }

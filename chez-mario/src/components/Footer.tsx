@@ -4,6 +4,7 @@ import { Logo } from "./Logo";
 import { Socials, deliveryLinks, socialLinks } from "./Socials";
 import { OpenBadge } from "./Hours";
 import { hoursSummary } from "@/lib/hours";
+import { CallLink } from "@/components/CallLink";
 
 export function Footer() {
   const delivery = deliveryLinks();
@@ -30,7 +31,7 @@ export function Footer() {
             <p className="mb-4 font-display uppercase tracking-wide text-coin">Contact</p>
             <address className="space-y-2 text-sm not-italic text-white/85">
               <p>{site.address.street}<br />{site.address.postalCode} {site.address.city}</p>
-              <p><a className="font-bold text-white hover:text-coin" href={`tel:${site.phone.tel}`}>{site.phone.display}</a></p>
+              <p><CallLink className="font-bold text-white hover:text-coin">{site.phone.display}</CallLink></p>
             </address>
             {delivery.length > 0 && (
               <ul className="mt-4 flex flex-wrap gap-3 text-sm">

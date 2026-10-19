@@ -18,16 +18,19 @@ export const site = {
   url: "https://chezmario-erstein.fr",
 
   address: {
-    street: "42 rue du Général de Gaulle", // à confirmer
+    street: "42 rue du Général de Gaulle", // confirmé par les annuaires en ligne
     postalCode: "67150",
     city: "Erstein",
     region: "Bas-Rhin",
     country: "FR",
   },
-  /** Coordonnées GPS (copiez-les depuis votre fiche Google). null = non affichées. */
+  /**
+   * Coordonnées GPS (sur Google Maps : clic droit / appui long sur le restaurant → copier les 2 nombres).
+   * Renseignées → plan OpenStreetMap (aucun cookie). null → plan Google Maps à partir de l'adresse.
+   */
   geo: null as { lat: number; lng: number } | null,
 
-  phone: { display: "03 88 98 69 94", tel: "+33388986994" }, // à confirmer
+  phone: { display: "03 88 98 69 94", tel: "+33388986994" }, // confirmé par les annuaires en ligne
 
   /**
    * Horaires. [] = fermé. Une fermeture après minuit s'écrit { open: "18:00", close: "01:00" }.
@@ -88,8 +91,12 @@ export const site = {
     siret: TODO,
     rcs: TODO,
     vat: TODO,
-    publisher: TODO, // directeur de la publication
+    publisher: TODO, // directeur de la publication (le gérant)
     email: TODO,
+    /** Médiateur de la consommation (obligatoire pour tout professionnel vendant à des particuliers). */
+    mediator: { name: TODO, url: TODO },
+    /** Origine des viandes servies (affichage obligatoire en restauration). Ex. « Bœuf : France · Poulet : UE ». */
+    meatOrigin: TODO,
   },
 };
 

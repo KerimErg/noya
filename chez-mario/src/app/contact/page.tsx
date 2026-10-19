@@ -5,6 +5,7 @@ import { MapEmbed } from "@/components/MapEmbed";
 import { Socials, deliveryLinks, socialLinks } from "@/components/Socials";
 import { Cloud } from "@/components/Deco";
 import { PhoneIcon, PinIcon } from "@/components/Icons";
+import { CallLink } from "@/components/CallLink";
 
 export const metadata: Metadata = {
   title: "Infos & contact — adresse, horaires, téléphone",
@@ -41,7 +42,7 @@ export default function ContactPage() {
           </div>
           <div className="card p-6">
             <h2 className="mb-3 flex items-center gap-2 font-display text-xl uppercase text-mario-dark"><PhoneIcon className="h-5 w-5" /> Téléphone</h2>
-            <a href={`tel:${site.phone.tel}`} className="font-display text-4xl hover:text-royal md:text-5xl">{site.phone.display}</a>
+            <CallLink className="font-display text-4xl hover:text-royal md:text-5xl">{site.phone.display}</CallLink>
           </div>
           <div className="card p-6">
             <h2 className="mb-3 font-display text-2xl uppercase">Horaires</h2>

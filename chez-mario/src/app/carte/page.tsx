@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { MENU_CONTENT, allergensNote, formatPrice, menu, type Color, type MenuCategory, type MenuItem } from "@/content/menu";
-import { site } from "@/content/site";
+import { TODO, site } from "@/content/site";
 import { CategoryNav } from "@/components/CategoryNav";
 import { Photo } from "@/components/Photo";
 import { FoodIcon } from "@/components/FoodIcon";
 import { BadgeList } from "@/components/Badges";
 import { Cloud, Coin } from "@/components/Deco";
 import { PhoneIcon } from "@/components/Icons";
+import { CallLink } from "@/components/CallLink";
 
 export const metadata: Metadata = {
   title: "La carte — kebab, tacos, burgers",
@@ -133,9 +134,9 @@ export default function CartePage() {
           </h1>
           <p className="mt-3 max-w-xl text-lg font-bold text-ink">
             Une question sur un produit ?{" "}
-            <a href={`tel:${site.phone.tel}`} className="whitespace-nowrap text-mario-dark underline decoration-[3px] underline-offset-4">
+            <CallLink className="whitespace-nowrap text-mario-dark underline decoration-[3px] underline-offset-4">
               {site.phone.display}
-            </a>
+            </CallLink>
           </p>
         </div>
       </section>
@@ -149,11 +150,16 @@ export default function CartePage() {
 
         <aside className="card mt-14 flex flex-col items-start gap-4 p-6 md:flex-row md:items-center md:justify-between">
           <p className="font-semibold text-ink-soft">
-            <strong className="text-ink">Allergènes :</strong> {allergensNote} Prix en euros TTC.
+            <strong className="text-ink">Allergènes :</strong> {allergensNote}
+            <br />
+            <strong className="text-ink">Origine des viandes :</strong>{" "}
+            {site.legal.meatOrigin === TODO ? <span className="todo">à compléter</span> : site.legal.meatOrigin}
+            <br />
+            Prix nets en euros TTC, service compris. Photos non contractuelles.
           </p>
-          <a href={`tel:${site.phone.tel}`} className="btn btn-red hidden md:inline-flex">
+          <CallLink className="btn btn-red hidden md:inline-flex">
             <PhoneIcon className="h-4 w-4" /> Appeler le restaurant
-          </a>
+          </CallLink>
         </aside>
       </div>
     </>
