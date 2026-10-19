@@ -168,7 +168,7 @@ export default function Home() {
         <div className="container-x relative">
           <div className="mb-8 text-center" data-reveal>
             <h2 id="faim-title" className="display outlined text-[clamp(2.8rem,9vw,5rem)] text-white">
-              Ça donne <span className="text-coin">faim ?</span>
+              On mange <span className="text-coin">quoi ?</span>
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-lg font-bold text-white">Kebab, assiettes, burgers, tacos… choisis ta rubrique.</p>
           </div>
