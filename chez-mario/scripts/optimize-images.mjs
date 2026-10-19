@@ -14,7 +14,7 @@ const MANIFEST = "src/content/images.generated.json";
 const EXT = /\.(jpe?g|png|webp|avif|tiff?)$/i;
 
 const presets = {
-  product: [{ suffix: "", ratio: 1, widths: [200, 400, 700] }],
+  product: [{ suffix: "", ratio: 1, widths: [300, 600, 900, 1200] }],
   // Bannière : garde son format d'origine (recadrage fait à la main avant)
   banner: [{ suffix: "", ratio: 0, widths: [640, 1024, 1376, 2048] }],
   hero: [
@@ -49,7 +49,7 @@ for (const file of files) {
         // Bannière : qualité supérieure + légère accentuation (version 2048 px pour écrans Retina)
         const hq = kind === "banner";
         const pipe = hq ? img.sharpen({ sigma: 0.7 }) : img;
-        await (fmt === "avif" ? pipe.avif({ quality: hq ? 70 : 52, effort: 6 }) : pipe.webp({ quality: hq ? 90 : 74 })).toFile(out);
+        await (fmt === "avif" ? pipe.avif({ quality: hq ? 70 : 64, effort: 6 }) : pipe.webp({ quality: hq ? 90 : 85 })).toFile(out);
       }
     }
   }

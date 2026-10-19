@@ -51,14 +51,14 @@ export default function Home() {
   };
   // Mosaïque : 4 colonnes × 3 rangées sur ordinateur (kebab en grand, assiette en hauteur)
   const gallery = [
-    { photo: "kebab", label: "Kebab", price: priceOf("kebab"), cat: "sandwichs", span: "col-span-2 md:row-span-2" },
+    { photo: "kebab", label: "Kebab", price: priceOf("kebab"), cat: "sandwichs", span: "md:col-span-2 md:row-span-2" },
     { photo: "burger", label: "Cheeseburger", price: priceOf("cheeseburger"), cat: "burgers", span: "" },
     { photo: "assiette-kebab", label: "Assiette kebab", price: priceOf("assiette-kebab"), cat: "assiettes", span: "md:row-span-2" },
     { photo: "tacos", label: "Tacos", price: from("tacos"), cat: "tacos", span: "" },
     { photo: "mario-bowl", label: "Mario Bowl", price: priceOf("mario-bowl"), cat: "assiettes", span: "" },
     { photo: "barquettes", label: "Barquettes", price: from("a-cote"), cat: "a-cote", span: "" },
     { photo: "menu-enfant", label: "Menu enfant", price: priceOf("box-happy"), cat: "enfants", span: "" },
-    { photo: "boissons", label: "Boissons", price: from("boissons"), cat: "boissons", span: "col-span-2 md:col-span-1" },
+    { photo: "boissons", label: "Boissons", price: from("boissons"), cat: "boissons", span: "" },
   ].filter((g) => hasPhoto(g.photo));
   return (
     <>
@@ -73,7 +73,7 @@ export default function Home() {
             <div className="relative flex flex-col border-b-4 border-ink bg-[#3171b2] max-md:min-h-[calc(100svh-96px)] md:border-t-4">
               {/* Mobile : le ciel de l'image se prolonge en haut, avec le nom en grand */}
               <p
-                className="flex h-[190px] shrink-0 animate-pop flex-col items-center justify-end pb-2 text-center font-sans font-black uppercase leading-[0.88] text-[#FBEFD5] md:hidden"
+                className="flex h-[215px] shrink-0 animate-pop flex-col items-center justify-end pb-2 text-center font-sans font-black uppercase leading-[0.88] text-[#FBEFD5] md:hidden"
                 style={{ WebkitTextStroke: "0.05em #3B2416", paintOrder: "stroke fill", textShadow: "0 0.06em 0 #3B2416, 0 0.12em 0.3em rgba(0,0,0,.3)" }}
                 aria-hidden
               >
@@ -86,7 +86,7 @@ export default function Home() {
                 alt="Chez Mario : Mario savoure un kebab dans un monde de champignons et de collines"
                 priority
                 sizes="100vw"
-                className="h-[max(100vw,calc(100svh-96px-190px))] w-full md:h-[min(50.87vw,calc(100svh-76px))]"
+                className="h-[max(100vw,calc(100svh-96px-215px))] w-full md:h-[min(50.87vw,calc(100svh-76px))]"
                 imgClassName="object-[8%_50%] md:object-[50%_35%]"
               />
               <div aria-hidden className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#3171b2] to-transparent md:hidden" />
@@ -173,7 +173,7 @@ export default function Home() {
             <p className="mx-auto mt-3 max-w-lg text-lg font-bold text-white">Kebab, assiettes, burgers, tacos… choisis ta rubrique.</p>
           </div>
           {/* Accès rapide aux rubriques */}
-          <ul className="no-scrollbar -mx-5 mb-8 flex gap-2 overflow-x-auto px-5 pb-2 md:mx-0 md:flex-wrap md:justify-center md:overflow-visible md:px-0" data-reveal>
+          <ul className="mb-8 hidden flex-wrap justify-center gap-2 md:flex" data-reveal>
             {menu.map((c) => (
               <li key={c.id} className="shrink-0">
                 <Link href={`/carte#${c.id}`} className="inline-flex items-center gap-2 rounded-full border-[3px] border-ink bg-white px-4 py-1.5 font-display uppercase text-ink shadow-pop-sm transition hover:-translate-y-0.5 hover:bg-coin">
@@ -183,11 +183,11 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <ul className="grid grid-cols-2 gap-3 md:h-[680px] md:grid-cols-4 md:grid-rows-3 md:gap-4">
+          <ul className="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-3 md:mx-0 md:grid md:h-[680px] md:grid-cols-4 md:grid-rows-3 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
             {gallery.map((g, i) => (
-              <li key={g.photo} className={`${g.span} relative`} data-reveal style={{ "--d": `${(i % 4) * 70}ms` } as React.CSSProperties}>
+              <li key={g.photo} className={`${g.span} relative w-[72%] shrink-0 snap-center md:w-auto`} data-reveal style={{ "--d": `${(i % 4) * 70}ms` } as React.CSSProperties}>
                 <Link href={`/carte#${g.cat}`} className="group relative block h-full overflow-hidden rounded-[1.5rem] border-[3px] border-ink bg-tile shadow-pop transition duration-200 hover:-translate-y-1 hover:shadow-pop-lg">
-                  <Photo name={g.photo} alt={g.label} sizes={i === 0 ? "(min-width:768px) 600px, 100vw" : "(min-width:768px) 300px, 50vw"} className={`w-full md:absolute md:inset-0 md:h-full ${i === 0 ? "aspect-[4/3]" : g.span.includes("col-span-2") ? "aspect-[2/1]" : "aspect-square"} md:aspect-auto`} imgClassName="transition duration-500 group-hover:scale-110" />
+                  <Photo name={g.photo} alt={g.label} sizes={i === 0 ? "(min-width:768px) 600px, 100vw" : "(min-width:768px) 300px, 50vw"} className="aspect-square w-full md:absolute md:inset-0 md:aspect-auto md:h-full" imgClassName="transition duration-500 group-hover:scale-110" />
                   <span className="absolute bottom-2 left-2 right-2 flex flex-wrap items-center gap-1.5 md:bottom-3 md:left-3">
                     <span className="rounded-full border-[3px] border-ink bg-white px-2.5 py-1 font-display text-xs uppercase leading-none text-ink sm:text-sm md:px-3 md:text-lg">{g.label}</span>
                     {g.price && <span className="rounded-full border-[3px] border-ink bg-coin px-2 py-1 font-display text-xs leading-none text-ink sm:text-sm md:px-2.5 md:text-lg">{g.price}</span>}
@@ -196,7 +196,8 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <p className="mt-10 text-center" data-reveal>
+          <p className="mt-2 text-center text-sm font-bold text-white/80 md:hidden" aria-hidden>← Fais glisser pour voir plus →</p>
+          <p className="mt-6 text-center md:mt-10" data-reveal>
             <Link href="/carte" className="btn btn-coin h-14 px-8 text-lg">
               Voir toute la carte <ArrowIcon className="h-5 w-5" />
             </Link>
