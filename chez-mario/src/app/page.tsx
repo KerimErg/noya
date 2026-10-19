@@ -7,6 +7,7 @@ import { HoursTable, OpenBadge } from "@/components/Hours";
 import { MapEmbed } from "@/components/MapEmbed";
 import { Photo, hasPhoto } from "@/components/Photo";
 import { Mascot } from "@/components/Mascot";
+import { Logo } from "@/components/Logo";
 import { Cloud, Coin, DriftingClouds, Hills, Sparkle, Wave } from "@/components/Deco";
 import { ArrowIcon, PhoneIcon, PinIcon, StarIcon } from "@/components/Icons";
 import { CallLink } from "@/components/CallLink";
@@ -63,43 +64,28 @@ export default function Home() {
   return (
     <>
       {/* ───────────── Bannière : ciel, nuages, mascotte qui saute ───────────── */}
-      <section className={`relative overflow-hidden bg-gradient-to-b from-sky to-sky-light ${banner ? "pt-[72px]" : "pt-[84px]"}`} aria-labelledby="hero-title">
+      <section className={`relative overflow-hidden bg-gradient-to-b from-sky to-sky-light ${banner ? "md:pt-[72px]" : "pt-[84px]"}`} aria-labelledby="hero-title">
         {!banner && <DriftingClouds />}
         <HeroMedia />
         {banner ? (
           <div className="relative z-10">
             {/* Bannière pleine largeur, affichée en entier (jamais recadrée) */}
             <h1 id="hero-title" className="sr-only">Chez Mario — kebab, tacos et burgers à Erstein</h1>
-            <div className="relative border-y-4 border-ink">
+            <div className="relative border-b-4 border-ink md:border-t-4">
               <Photo
                 name={site.heroBanner}
                 alt="Chez Mario : Mario savoure un kebab dans un monde de champignons et de collines"
                 priority
                 sizes="100vw"
-                className="h-[min(128vw,calc(100svh-190px))] w-full md:h-[min(50.87vw,calc(100svh-104px))]"
+                className="h-[min(170vw,calc(100svh-96px))] w-full md:h-[min(50.87vw,calc(100svh-76px))]"
                 imgClassName="object-[11%_100%] md:object-[50%_35%]"
               />
-              {/* Mobile : « Chez Mario » en haut (le titre de l'image sort du cadrage), infos en bas */}
-              <p
-                aria-hidden
-                className="absolute inset-x-0 top-3 animate-pop text-center font-sans font-black uppercase leading-[0.9] text-[#FBEFD5] md:hidden"
-                style={{ WebkitTextStroke: "0.06em #3B2416", paintOrder: "stroke fill", textShadow: "0 0.06em 0 #3B2416, 0 0.12em 0.25em rgba(0,0,0,.35)", animationDelay: "150ms" }}
-              >
-                <span className="block text-[11vw] tracking-wide">Chez</span>
-                <span className="block text-[20vw] tracking-tight">Mario</span>
-              </p>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 via-ink/40 to-transparent px-5 pb-5 pt-14 md:hidden">
-                <div className="animate-pop" style={{ animationDelay: "300ms" }}>
-                  <OpenBadge />
-                </div>
-                <p className="display outlined mt-3 animate-pop text-[2rem] leading-[0.95] text-white" style={{ animationDelay: "450ms" }}>
-                  Kebab, tacos <span className="whitespace-nowrap text-coin">&amp; burgers</span>
-                </p>
-                {kebab.price !== null && (
-                  <p className="mt-1.5 animate-pop font-display text-lg uppercase tracking-wide text-white" style={{ animationDelay: "600ms" }}>
-                    À Erstein · dès {kebab.price} €
-                  </p>
-                )}
+              {/* Mobile : logo posé sur l'image, une seule ligne discrète en bas */}
+              <div className="absolute inset-x-0 top-0 flex justify-center pt-[max(14px,env(safe-area-inset-top))] md:hidden">
+                <Logo className="h-[29vw] max-h-[170px] animate-pop drop-shadow-[0_6px_10px_rgba(0,0,0,.35)]" />
+              </div>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent px-5 pb-5 pt-16 text-center md:hidden">
+                <p className="font-display text-xl uppercase tracking-[0.12em] text-white drop-shadow">Kebab · Tacos · Burgers</p>
               </div>
               {/* Actions posées sous le titre de l'image (ordinateur/tablette ; sur mobile : barre collante) */}
               <div className="absolute left-[53%] right-[3%] top-[50%] hidden flex-col items-center gap-3 md:flex lg:gap-4">
@@ -168,7 +154,7 @@ export default function Home() {
           </div>
         )}
         {!banner && <Hills className="relative -mb-[3px] block h-[60px] w-full md:h-[110px]" />}
-        <div className={`ground border-b-[3px] border-ink ${banner ? "h-[21px]" : "h-10"}`} aria-hidden />
+        {!banner && <div className="ground h-10 border-b-[3px] border-ink" aria-hidden />}
       </section>
 
       {/* ───────────── Mosaïque photo : la carte en un coup d'œil ───────────── */}
