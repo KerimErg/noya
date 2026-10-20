@@ -95,8 +95,6 @@ export const site = {
     email: TODO,
     /** Médiateur de la consommation (obligatoire pour tout professionnel vendant à des particuliers). */
     mediator: { name: TODO, url: TODO },
-    /** Origine des viandes servies (affichage obligatoire en restauration). Ex. « Bœuf : France · Poulet : UE ». */
-    meatOrigin: TODO,
   },
 };
 

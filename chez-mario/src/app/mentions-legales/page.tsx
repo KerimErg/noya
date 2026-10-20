@@ -71,8 +71,7 @@ export default function MentionsLegales() {
           contractuelles.
         </p>
         <p>
-          Allergènes : la liste des allergènes présents dans chaque plat (règlement UE n° 1169/2011) est consultable par écrit au comptoir. Origine
-          des viandes : {l.meatOrigin === TODO ? <V v={l.meatOrigin} /> : l.meatOrigin}.
+          Allergènes : la liste des allergènes présents dans chaque plat (règlement UE n° 1169/2011) est consultable par écrit au comptoir.
         </p>
       </section>
 

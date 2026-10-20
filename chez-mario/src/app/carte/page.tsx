@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { MENU_CONTENT, allergensNote, formatPrice, menu, type Color, type MenuCategory, type MenuItem } from "@/content/menu";
-import { TODO, site } from "@/content/site";
+import { site } from "@/content/site";
 import { CategoryNav } from "@/components/CategoryNav";
 import { Photo } from "@/components/Photo";
 import { FoodIcon } from "@/components/FoodIcon";
@@ -151,9 +151,6 @@ export default function CartePage() {
         <aside className="card mt-14 flex flex-col items-start gap-4 p-6 md:flex-row md:items-center md:justify-between">
           <p className="font-semibold text-ink-soft">
             <strong className="text-ink">Allergènes :</strong> {allergensNote}
-            <br />
-            <strong className="text-ink">Origine des viandes :</strong>{" "}
-            {site.legal.meatOrigin === TODO ? <span className="todo">à compléter</span> : site.legal.meatOrigin}
             <br />
             Prix nets en euros TTC, service compris. Photos non contractuelles.
           </p>

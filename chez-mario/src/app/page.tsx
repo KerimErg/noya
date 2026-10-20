@@ -10,6 +10,10 @@ import { Mascot } from "@/components/Mascot";
 import { Cloud, Coin, DriftingClouds, Hills, Sparkle, Wave } from "@/components/Deco";
 import { ArrowIcon, PhoneIcon, PinIcon, StarIcon } from "@/components/Icons";
 import { CallLink } from "@/components/CallLink";
+import { CarouselArrows } from "@/components/CarouselArrows";
+
+/** Lettres de « MARIO » aux couleurs du jeu. */
+const MARIO_COLORS = ["text-mario", "text-coin", "text-luigi", "text-white", "text-mario"];
 
 const BG: Record<Color, string> = { red: "bg-mario", green: "bg-luigi", blue: "bg-royal", yellow: "bg-coin" };
 
@@ -70,24 +74,27 @@ export default function Home() {
           <div className="relative z-10">
             {/* Bannière pleine largeur, affichée en entier (jamais recadrée) */}
             <h1 id="hero-title" className="sr-only">Chez Mario — kebab, tacos et burgers à Erstein</h1>
-            <div className="relative flex flex-col border-b-4 border-ink bg-[#3171b2] max-md:min-h-[calc(100svh-96px)] md:border-t-4">
-              {/* Mobile : le ciel de l'image se prolonge en haut, avec le nom en grand */}
-              <p
-                className="flex h-[215px] shrink-0 animate-pop flex-col items-center justify-end pb-2 text-center font-sans font-black uppercase leading-[0.88] text-[#FBEFD5] md:hidden"
-                style={{ WebkitTextStroke: "0.05em #3B2416", paintOrder: "stroke fill", textShadow: "0 0.06em 0 #3B2416, 0 0.12em 0.3em rgba(0,0,0,.3)" }}
-                aria-hidden
-              >
-                <span className="text-[11vw] tracking-wide">Chez</span>
-                <span className="text-[21vw] tracking-tight">Mario</span>
+            <div className="relative flex flex-col border-b-4 border-ink bg-[#3171b2] max-md:h-[calc(100svh-96px)] max-md:min-h-[480px] md:border-t-4">
+              {/* Mobile : le ciel de l'image se prolonge en haut, avec le nom en grand façon jeu vidéo */}
+              <p className="flex h-[clamp(150px,24svh,200px)] shrink-0 flex-col items-center justify-end pb-1 text-center font-display uppercase leading-[0.85] md:hidden" aria-hidden>
+                <JumpWord text="Chez" className="hero-word text-[10vw] tracking-wider text-[#FBEFD5]" />
+                <span className="jump-letters hero-word inline-block whitespace-nowrap text-[23vw] tracking-tight">
+                  {[..."MARIO"].map((ch, i) => (
+                    <span key={i} className={MARIO_COLORS[i]} style={{ "--i": 4 + i, "--t": `${i % 2 ? 3 : -3}deg` } as React.CSSProperties}>
+                      {ch}
+                    </span>
+                  ))}
+                </span>
               </p>
-              <div className="relative">
+              {/* La bannière occupe tout l'espace restant, et s'arrête juste au-dessus de la barre « Voir la carte / Appeler » */}
+              <div className="relative max-md:flex-1">
               <Photo
                 name={site.heroBanner}
                 alt="Chez Mario : Mario savoure un kebab dans un monde de champignons et de collines"
                 priority
-                sizes="100vw"
-                className="h-[max(100vw,calc(100svh-96px-215px))] w-full md:h-[min(50.87vw,calc(100svh-76px))]"
-                imgClassName="object-[8%_50%] md:object-[50%_35%]"
+                sizes="(max-width: 767px) 260vw, 100vw"
+                className="w-full max-md:absolute max-md:inset-0 max-md:h-full md:h-[min(50.87vw,calc(100svh-76px))]"
+                imgClassName="max-md:absolute max-md:left-1/2 max-md:top-0 max-md:!w-auto max-md:max-w-none max-md:-translate-x-[29%] md:object-[50%_35%]"
               />
               <div aria-hidden className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#3171b2] to-transparent md:hidden" />
               {/* Actions posées sous le titre de l'image (ordinateur/tablette ; sur mobile : barre collante) */}
@@ -162,7 +169,7 @@ export default function Home() {
       </section>
 
       {/* ───────────── Mosaïque photo : la carte en un coup d'œil ───────────── */}
-      <section className="relative overflow-hidden bg-royal pb-14 pt-7 md:pb-20 md:pt-16" aria-labelledby="faim-title">
+      <section className="relative overflow-hidden bg-royal pb-14 pt-5 md:pb-20 md:pt-16" aria-labelledby="faim-title">
         <Cloud className="absolute -left-6 top-10 w-32 opacity-25 md:w-48" />
         <Cloud className="absolute bottom-24 right-4 w-28 opacity-25 md:w-40" />
         <div className="container-x relative">
@@ -183,9 +190,9 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <ul className="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-3 md:mx-0 md:grid md:h-[680px] md:grid-cols-4 md:grid-rows-3 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
+          <ul id="mosaique" data-reveal className="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain scroll-px-5 px-5 pb-3 [-webkit-overflow-scrolling:touch] md:mx-0 md:grid md:h-[680px] md:grid-cols-4 md:grid-rows-3 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
             {gallery.map((g, i) => (
-              <li key={g.photo} className={`${g.span} relative w-[72%] shrink-0 snap-center md:w-auto`} data-reveal style={{ "--d": `${(i % 4) * 70}ms` } as React.CSSProperties}>
+              <li key={g.photo} className={`${g.span} relative w-[64%] shrink-0 snap-start md:w-auto`}>
                 <Link href={`/carte#${g.cat}`} className="group relative block h-full overflow-hidden rounded-[1.5rem] border-[3px] border-ink bg-tile shadow-pop transition duration-200 hover:-translate-y-1 hover:shadow-pop-lg">
                   <Photo name={g.photo} alt={g.label} sizes={i === 0 ? "(min-width:768px) 600px, 100vw" : "(min-width:768px) 300px, 50vw"} className="aspect-square w-full md:absolute md:inset-0 md:aspect-auto md:h-full" imgClassName="transition duration-500 group-hover:scale-110" />
                   <span className="absolute bottom-2 left-2 right-2 flex flex-wrap items-center gap-1.5 md:bottom-3 md:left-3">
@@ -196,7 +203,7 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <p className="mt-2 text-center text-sm font-bold text-white/80 md:hidden" aria-hidden>← Fais glisser pour voir plus →</p>
+          <CarouselArrows target="mosaique" className="mt-3 md:hidden" />
           <p className="mt-6 text-center md:mt-10" data-reveal>
             <Link href="/carte" className="btn btn-coin h-14 px-8 text-lg">
               Voir toute la carte <ArrowIcon className="h-5 w-5" />
