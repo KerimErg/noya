@@ -7,7 +7,12 @@ export function CarouselArrows({ target, className = "" }: { target: string; cla
     if (!el) return;
     const card = el.firstElementChild as HTMLElement | null;
     const step = card ? card.offsetWidth + 12 : el.clientWidth * 0.7;
-    el.scrollBy({ left: dir * step, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    const max = el.scrollWidth - el.clientWidth;
+    // Au bout : on repart de l'autre côté
+    let left = el.scrollLeft + dir * step;
+    if (dir > 0 && el.scrollLeft >= max - 4) left = 0;
+    else if (dir < 0 && el.scrollLeft <= 4) left = max;
+    el.scrollTo({ left, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   };
   const btn = "btn btn-white h-11 w-11 shrink-0 rounded-full px-0 text-xl";
   return (

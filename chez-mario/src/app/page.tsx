@@ -30,6 +30,22 @@ function JumpWord({ text, start = 0, className = "" }: { text: string; start?: n
   );
 }
 
+/** Titre « CHEZ MARIO » de la bannière : lettres aux couleurs du jeu qui sautent une à une. */
+function HeroTitle({ className = "", chez, mario }: { className?: string; chez: string; mario: string }) {
+  return (
+    <p className={`flex flex-col items-center text-center font-display uppercase leading-[0.85] ${className}`} aria-hidden>
+      <JumpWord text="Chez" className={`hero-word tracking-wider text-[#FBEFD5] ${chez}`} />
+      <span className={`jump-letters hero-word inline-block whitespace-nowrap tracking-tight ${mario}`}>
+        {[..."MARIO"].map((ch, i) => (
+          <span key={i} className={MARIO_COLORS[i]} style={{ "--i": 4 + i, "--t": `${i % 2 ? 3 : -3}deg` } as React.CSSProperties}>
+            {ch}
+          </span>
+        ))}
+      </span>
+    </p>
+  );
+}
+
 function Sticker({ name, className = "", r = 0, delay = 0 }: { name: string; className?: string; r?: number; delay?: number }) {
   return (
     <div className={`absolute animate-float ${className}`} style={{ "--r": `${r}deg`, animationDelay: `${delay}s` } as React.CSSProperties}>
@@ -76,16 +92,7 @@ export default function Home() {
             <h1 id="hero-title" className="sr-only">Chez Mario — kebab, tacos et burgers à Erstein</h1>
             <div className="relative flex flex-col border-b-4 border-ink bg-[#3171b2] max-md:h-[calc(100svh-96px)] max-md:min-h-[480px] md:border-t-4">
               {/* Mobile : le ciel de l'image se prolonge en haut, avec le nom en grand façon jeu vidéo */}
-              <p className="flex h-[clamp(150px,24svh,200px)] shrink-0 flex-col items-center justify-end pb-1 text-center font-display uppercase leading-[0.85] md:hidden" aria-hidden>
-                <JumpWord text="Chez" className="hero-word text-[10vw] tracking-wider text-[#FBEFD5]" />
-                <span className="jump-letters hero-word inline-block whitespace-nowrap text-[23vw] tracking-tight">
-                  {[..."MARIO"].map((ch, i) => (
-                    <span key={i} className={MARIO_COLORS[i]} style={{ "--i": 4 + i, "--t": `${i % 2 ? 3 : -3}deg` } as React.CSSProperties}>
-                      {ch}
-                    </span>
-                  ))}
-                </span>
-              </p>
+              <HeroTitle className="h-[clamp(150px,24svh,200px)] shrink-0 justify-end pb-1 md:hidden" chez="text-[10vw]" mario="text-[23vw]" />
               {/* La bannière occupe tout l'espace restant, et s'arrête juste au-dessus de la barre « Voir la carte / Appeler » */}
               <div className="relative max-md:flex-1">
               <Photo
@@ -97,6 +104,10 @@ export default function Home() {
                 imgClassName="max-md:absolute max-md:left-1/2 max-md:top-0 max-md:!w-auto max-md:max-w-none max-md:-translate-x-[29%] md:object-[50%_35%]"
               />
               <div aria-hidden className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#3171b2] to-transparent md:hidden" />
+              {/* Ordinateur : le même titre, calé sur le ciel de l'image (repère = image entière, même quand elle est recadrée) */}
+              <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[calc((100%-50.87vw)*0.35)] hidden h-[50.87vw] md:block">
+                <HeroTitle className="absolute left-[53%] right-[7%] top-[5.5%]" chez="text-[5.4vw]" mario="text-[11.5vw]" />
+              </div>
               {/* Actions posées sous le titre de l'image (ordinateur/tablette ; sur mobile : barre collante) */}
               <div className="absolute left-[53%] right-[3%] top-[50%] hidden flex-col items-center gap-3 md:flex lg:gap-4">
                 <div className="animate-pop" style={{ animationDelay: "250ms" }}>
@@ -190,7 +201,7 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <ul id="mosaique" data-reveal className="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain scroll-px-5 px-5 pb-3 [-webkit-overflow-scrolling:touch] md:mx-0 md:grid md:h-[680px] md:grid-cols-4 md:grid-rows-3 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
+          <ul id="mosaique" data-reveal className="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain touch-pan-x touch-pan-y scroll-px-5 px-5 pb-3 [-webkit-overflow-scrolling:touch] md:mx-0 md:grid md:h-[680px] md:grid-cols-4 md:grid-rows-3 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
             {gallery.map((g, i) => (
               <li key={g.photo} className={`${g.span} relative w-[64%] shrink-0 snap-start md:w-auto`}>
                 <Link href={`/carte#${g.cat}`} className="group relative block h-full overflow-hidden rounded-[1.5rem] border-[3px] border-ink bg-tile shadow-pop transition duration-200 hover:-translate-y-1 hover:shadow-pop-lg">
