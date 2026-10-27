@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background: #f4f3ef;
+    color: #0b0b0b;
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  body {
+    @apply bg-paper font-sans text-ink;
+    overflow-x: clip;
+  }
+  ::selection { background: #0b0b0b; color: #f4f3ef; }
+  .bg-ink ::selection { background: #f4f3ef; color: #0b0b0b; }
+  :focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  html.menu-open { overflow: hidden; }
+}
+
+@layer components {
+  .container-x { @apply px-5 md:px-10 xl:px-16; }
+  .label { @apply text-[11px] font-medium uppercase tracking-label; }
+  .display { @apply font-sans font-medium leading-[0.92] tracking-[-0.045em]; }
+  .serif { @apply font-serif font-normal italic tracking-[-0.02em]; }
+
+  /* Lien souligné qui se trace au survol */
+  .link-line {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: background-size 0.6s cubic-bezier(.22, 1, .36, 1);
+  }
+  .link-line:hover, .link-line:focus-visible { background-size: 100% 1px; }
+
+  /* Bouton : remplissage qui monte depuis le bas */
+  .btn {
+    @apply relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-current px-6 py-3.5 text-sm font-medium;
+    isolation: isolate;
+  }
+  .btn::before {
+    content: "";
+    @apply absolute inset-0 -z-10 bg-current;
+    transform: translateY(101%);
+    transition: transform 0.6s cubic-bezier(.22, 1, .36, 1);
+  }
+  .btn > span { transition: color 0.4s; }
+  .btn:hover::before, .btn:focus-visible::before { transform: translateY(0); }
+  .btn-dark:hover > span, .btn-dark:focus-visible > span { color: #f4f3ef; }
+  .btn-light:hover > span, .btn-light:focus-visible > span { color: #0b0b0b; }
+
+  /* Grain argentique très léger sur les visuels */
+  .grain { position: relative; }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.22;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .field {
+    @apply w-full border-0 border-b border-ink/25 bg-transparent px-0 pb-3 pt-2 text-lg outline-none transition-colors placeholder:text-stone focus:border-ink;
+    border-radius: 0;
+  }
+}
+
+/* Masque des lignes découpées par SplitText */
+.split-line { padding-bottom: 0.08em; margin-bottom: -0.08em; }
+
+/* États initiaux des animations : uniquement si JS actif et mouvement autorisé (sinon tout reste visible). */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-split], .js [data-reveal], .js [data-words] { opacity: 0; }
+  .js [data-clip] { clip-path: inset(100% 0 0 0); }
+}
