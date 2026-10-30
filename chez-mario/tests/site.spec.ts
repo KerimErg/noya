@@ -93,9 +93,12 @@ test("SEO : données structurées Restaurant", async ({ page }) => {
   expect(data.hasMenu.hasMenuSection.length).toBeGreaterThan(5);
 });
 
-test("plan affiché directement + numéro cliquable", async ({ page }, info) => {
+test("plan Google chargé seulement après consentement + numéro cliquable", async ({ page }, info) => {
   await page.goto("/contact");
   const map = page.locator('iframe[title^="Plan"]');
+  // Aucun appel à Google avant le clic (cookies tiers soumis à consentement).
+  await expect(map).toHaveCount(0);
+  await page.getByRole("button", { name: "Afficher le plan" }).click();
   await expect(map).toHaveCount(1);
   await expect(map).toHaveAttribute("src", /google\.com\/maps|openstreetmap/);
   const call = page.locator('a[href="tel:+33388986994"]:visible').first();

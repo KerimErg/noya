@@ -51,10 +51,12 @@ export default function Confidentialite() {
           </p>
         ) : (
           <p>
-            Le plan est fourni par Google Maps (Google Ireland Ltd). Son affichage transmet votre adresse IP et des informations de navigation à
-            Google, qui peut déposer ses propres cookies selon sa{" "}
-            <a href="https://policies.google.com/privacy?hl=fr" target="_blank" rel="noopener noreferrer">politique de confidentialité</a>. Vous
-            pouvez bloquer ces cookies depuis les réglages de votre navigateur.
+            Le plan est fourni par Google Maps (Google Ireland Ltd). Il ne se charge <strong>que si vous cliquez sur « Afficher le plan »</strong> :
+            ce clic vaut consentement. Google reçoit alors votre adresse IP et des informations de navigation, et peut déposer ses propres cookies
+            selon sa{" "}
+            <a href="https://policies.google.com/privacy?hl=fr" target="_blank" rel="noopener noreferrer">politique de confidentialité</a>. Sans ce
+            clic, rien n&apos;est transmis à Google. Le consentement ne vaut que pour la page affichée ; vous pouvez supprimer ces cookies depuis
+            les réglages de votre navigateur.
           </p>
         )}
       </section>

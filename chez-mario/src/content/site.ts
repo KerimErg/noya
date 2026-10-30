@@ -84,14 +84,19 @@ export const site = {
   /** Photo d'accueil en fond (nom du fichier dans photos/, sans extension). */
   heroPhoto: null as string | null,
 
+  /**
+   * Société exploitante : TAHA, qui a repris le fonds « Chez Mario » en juin 2024
+   * (l'ancienne SAS CHEZ MARIO, SIREN 808 810 477, est radiée depuis le 30/06/2025).
+   * Sources : registre du commerce via societe.com et pagesjaunes.fr, consultés le 30/10/2026.
+   */
   legal: {
-    company: TODO, // raison sociale
-    legalForm: TODO, // ex. SAS, SARL, EI
-    capital: TODO,
-    siret: TODO,
-    rcs: TODO,
-    vat: TODO,
-    publisher: TODO, // directeur de la publication (le gérant)
+    company: "TAHA", // raison sociale
+    legalForm: "SAS (société par actions simplifiée)",
+    capital: "500 €",
+    siret: "852 244 375 00030",
+    rcs: "852 244 375 R.C.S. Strasbourg",
+    vat: "FR56852244375",
+    publisher: "Mikail SITTETLI, président", // directeur de la publication
     email: TODO,
     /** Médiateur de la consommation (obligatoire pour tout professionnel vendant à des particuliers). */
     mediator: { name: TODO, url: TODO },
