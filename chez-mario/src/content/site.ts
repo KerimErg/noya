@@ -14,8 +14,8 @@ export const site = {
   tagline: "Kebab · Yufka · Burgers · Tacos",
   /** Année d'ouverture (indiquée sur le logo). */
   since: 2007,
-  /** Nom de domaine définitif (sans / à la fin). À COMPLÉTER une fois le domaine acheté. */
-  url: "https://chezmario-erstein.fr",
+  /** Nom de domaine définitif (sans / à la fin), acheté chez OVH et branché sur Cloudflare Pages. */
+  url: "https://chezmarioerstein.fr",
 
   address: {
     street: "42 rue du Général de Gaulle", // confirmé par les annuaires en ligne

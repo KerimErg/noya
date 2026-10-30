@@ -20,6 +20,8 @@ export default function MentionsLegales() {
           <br />
           Nom commercial : Chez Mario
           <br />
+          Site internet : <a href={site.url}>{site.url.replace(/^https?:\/\//, "")}</a>
+          <br />
           Siège social : {fullAddress()}
           <br />
           SIRET : <V v={l.siret} /> — RCS : <V v={l.rcs} />
