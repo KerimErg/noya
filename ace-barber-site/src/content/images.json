@@ -1,0 +1,132 @@
+{
+  "equipe-1": {
+    "ratio": 0.7519,
+    "widths": [
+      640,
+      1080,
+      1600,
+      2200
+    ]
+  },
+  "equipe-2": {
+    "ratio": 1.5047,
+    "widths": [
+      640,
+      1080,
+      1600,
+      2200
+    ]
+  },
+  "equipe-3": {
+    "ratio": 1.5,
+    "widths": [
+      640,
+      1080,
+      1600,
+      2200
+    ]
+  },
+  "lieu-ciseaux": {
+    "ratio": 1.5,
+    "widths": [
+      640,
+      1080,
+      1600,
+      2200
+    ]
+  },
+  "lieu-outils": {
+    "ratio": 1.5,
+    "widths": [
+      640,
+      1080,
+      1600,
+      2200
+    ]
+  },
+  "maison-rasage": {
+    "ratio": 1.5,
+    "widths": [
+      640,
+      1080,
+      1600,
+      2200
+    ]
+  },
+  "prestation-barbe": {
+    "ratio": 1.5038,
+    "widths": [
+      640,
+      1080,
+      1600,
+      2200
+    ]
+  },
+  "prestation-coupe": {
+    "ratio": 0.8,
+    "widths": [
+      640,
+      1080,
+      1600,
+      2200
+    ]
+  },
+  "prestation-degrade": {
+    "ratio": 1.5,
+    "widths": [
+      640,
+      1080,
+      1600,
+      2200
+    ]
+  },
+  "prestation-soin": {
+    "ratio": 1.5,
+    "widths": [
+      640,
+      1080,
+      1600,
+      2200
+    ]
+  },
+  "realisation-1": {
+    "ratio": 0.75,
+    "widths": [
+      640,
+      1080,
+      1170
+    ]
+  },
+  "realisation-2": {
+    "ratio": 0.75,
+    "widths": [
+      640,
+      1080,
+      1170
+    ]
+  },
+  "realisation-3": {
+    "ratio": 0.75,
+    "widths": [
+      640,
+      1080,
+      1170
+    ]
+  },
+  "salon-attente": {
+    "ratio": 0.7212,
+    "widths": [
+      640,
+      1080,
+      1172
+    ]
+  },
+  "salon": {
+    "ratio": 0.7341,
+    "widths": [
+      640,
+      1080,
+      1179
+    ]
+  }
+}

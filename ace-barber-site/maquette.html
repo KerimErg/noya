@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Ace Barber — Barbier à Reichstett</title>
+<meta name="description" content="Ace Barber, barbier à Reichstett près de Strasbourg. Coupe, dégradé, barbe et soin visage, sur rendez-vous." />
+<meta name="theme-color" content="#0E0E0E" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HairSalon","name":"Ace Barber","telephone":"+33650135614","address":{"@type":"PostalAddress","streetAddress":"33 Rue du Général Leclerc","postalCode":"67116","addressLocality":"Reichstett","addressCountry":"FR"},"sameAs":["https://www.instagram.com/ace_bvrber/"]}
+</script>
+<style>
+@font-face { font-family: Geist; src: url(src/fonts/Geist-Light.woff2) format("woff2"); font-weight: 300; font-display: swap; }
+@font-face { font-family: Geist; src: url(src/fonts/Geist-Regular.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: Geist; src: url(src/fonts/Geist-Medium.woff2) format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: Cormorant; src: url(src/fonts/cormorant-garamond-latin-400-normal.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: Cormorant; src: url(src/fonts/cormorant-garamond-latin-400-italic.woff2) format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: Cormorant; src: url(src/fonts/cormorant-garamond-latin-500-italic.woff2) format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+
+:root {
+  --ivoire: #f2ede4; --noir: #0e0e0e; --or: #c2a472; --or-profond: #6e5428;
+  --anthracite: #171411;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --marge: clamp(20px, 6vw, 96px);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--noir); -webkit-text-size-adjust: 100%; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+body { font: 400 17px/1.6 Geist, system-ui, sans-serif; color: var(--ivoire); background: var(--noir); overflow-x: clip; -webkit-font-smoothing: antialiased; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--or); color: var(--noir); }
+:focus-visible { outline: 1px solid var(--or); outline-offset: 6px; }
+
+/* Grain de pellicule fixe */
+body::after { content: ""; position: fixed; inset: 0; z-index: 90; pointer-events: none; opacity: 0.03;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* Fonds : jamais à plat */
+.nuit { color: var(--ivoire); background:
+  radial-gradient(60% 50% at 0% 0%, rgba(194, 164, 114, 0.13), transparent 70%),
+  radial-gradient(55% 50% at 100% 100%, rgba(194, 164, 114, 0.1), transparent 70%),
+  var(--anthracite); }
+.jour { color: var(--noir); background: radial-gradient(70% 45% at 50% 0%, rgba(194, 164, 114, 0.22), transparent 75%), var(--ivoire); }
+
+/* Typographie */
+.titre { font: 300 clamp(2.9rem, 9vw, 7.6rem)/0.98 Geist, sans-serif; letter-spacing: -0.035em; }
+.titre strong { font-weight: 500; }
+.titre--m { font-size: clamp(2.4rem, 6.4vw, 5.4rem); line-height: 1.02; }
+.surtitre { font: 400 12px/1 Geist, sans-serif; letter-spacing: 0.28em; text-transform: uppercase; display: flex; align-items: center; gap: 14px; color: var(--or); }
+.jour .surtitre { color: var(--or-profond); }
+.surtitre::before { content: ""; width: 36px; height: 1px; background: currentColor; }
+.texte { max-width: 65ch; opacity: 0.78; }
+.citation { font: 400 clamp(1.7rem, 3.6vw, 2.8rem)/1.2 Cormorant, serif; letter-spacing: -0.01em; }
+.citation em { font-style: italic; font-weight: 500; color: var(--or); }
+.jour .citation em { color: var(--or-profond); }
+.todo { display: inline-block; font: 400 11px/1 Geist, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 10px; border: 1px dashed currentColor; border-radius: 999px; opacity: 0.7; vertical-align: middle; }
+.ligne-mask { overflow: hidden; }
+
+.cadre { padding-inline: var(--marge); }
+.section { position: relative; padding-block: clamp(110px, 16vw, 220px); overflow: hidden; isolation: isolate; }
+
+/* Boutons */
+.bouton { position: relative; display: inline-flex; align-items: center; gap: 14px; height: 58px; padding: 0 30px; border-radius: 999px; font: 400 13px/1 Geist, sans-serif; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid rgba(194, 164, 114, 0.6); color: var(--ivoire); transition: background 0.6s var(--ease), color 0.6s var(--ease); will-change: transform; }
+.bouton:hover { background: var(--or); color: var(--noir); }
+.bouton--plein { background: var(--or); color: var(--noir); border-color: var(--or); }
+.bouton--plein:hover { background: var(--ivoire); border-color: var(--ivoire); }
+.jour .bouton { color: var(--noir); border-color: var(--or-profond); }
+.jour .bouton:hover { background: var(--noir); color: var(--ivoire); }
+.bouton i { width: 22px; height: 1px; background: currentColor; position: relative; }
+.bouton i::after { content: ""; position: absolute; right: 0; top: -3px; width: 7px; height: 7px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg); }
+
+/* Lumières dorées qui dérivent */
+.lumiere { position: absolute; z-index: -1; width: 46vmax; height: 46vmax; border-radius: 50%; background: radial-gradient(circle, rgba(194, 164, 114, 0.22), transparent 62%); filter: blur(30px); pointer-events: none; }
+
+/* En-tête */
+.entete { position: fixed; inset: 0 0 auto; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 22px var(--marge); mix-blend-mode: difference; color: var(--ivoire); }
+.logo { display: block; width: 92px; aspect-ratio: 1021 / 543; background: currentColor; -webkit-mask: url(public/logo-ace.png) center / contain no-repeat; mask: url(public/logo-ace.png) center / contain no-repeat; }
+.entete nav { display: flex; gap: 36px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+.entete__resa { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; border-bottom: 1px solid currentColor; padding-bottom: 4px; }
+@media (max-width: 900px) { .entete nav { display: none; } .logo { width: 76px; } }
+
+/* 1. Ouverture */
+.ouverture { position: relative; height: 100svh; overflow: hidden; background: var(--noir); }
+.ouverture__media { position: absolute; inset: 0; clip-path: inset(0% 0% 0% 0% round 0px); will-change: clip-path; }
+.ouverture__media img { object-position: 35% 40%; transform: scale(1.12); }
+.ouverture__voile { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14, 14, 14, 0.55), rgba(14, 14, 14, 0.25) 40%, rgba(14, 14, 14, 0.85)); }
+.ouverture__sombre { position: absolute; inset: 0; background: var(--noir); opacity: 0; }
+.ouverture__contenu { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 var(--marge) clamp(56px, 9vh, 110px); }
+.signature { width: min(760px, 100%); height: auto; overflow: visible; }
+.signature text { font: italic 400 150px Cormorant, serif; fill: var(--ivoire); fill-opacity: 1; stroke: var(--or); stroke-width: 0.8; }
+.ouverture__bas { display: flex; justify-content: space-between; align-items: end; gap: 28px; flex-wrap: wrap; margin-top: 18px; }
+.ouverture__phrase { font: 300 clamp(1.9rem, 5.6vw, 3.6rem)/1.02 Geist, sans-serif; letter-spacing: -0.035em; }
+.ouverture__phrase strong { font-weight: 500; }
+.ouverture__lieu { position: absolute; top: 50%; right: var(--marge); writing-mode: vertical-rl; font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase; opacity: 0.6; }
+
+/* 2. La maison */
+.maison__grille { display: grid; grid-template-columns: 1fr; gap: clamp(48px, 7vw, 110px); }
+.maison__fenetre { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 24px; clip-path: inset(0% 0% 0% 0% round 24px); }
+.maison__fenetre img { transform: scale(1.15); }
+@media (min-width: 900px) { .maison__grille { grid-template-columns: 1.05fr 0.95fr; align-items: center; } .maison__fenetre { aspect-ratio: 4 / 5.2; } }
+
+/* 3. Prestations */
+.liste { margin-top: clamp(56px, 8vw, 100px); border-top: 1px solid rgba(242, 237, 228, 0.14); }
+.presta { position: relative; display: grid; grid-template-columns: 74px 1fr; gap: 18px; padding: 30px 0; border-bottom: 1px solid rgba(242, 237, 228, 0.14); }
+.presta__vignette { width: 74px; height: 92px; border-radius: 12px; overflow: hidden; }
+.presta__nom { font: 300 clamp(1.9rem, 4.6vw, 3.6rem)/1 Geist, sans-serif; letter-spacing: -0.035em; transition: transform 0.9s var(--ease); }
+.presta__desc { margin-top: 10px; font-size: 15px; opacity: 0.6; max-width: 46ch; }
+.presta__prix { grid-column: 2; margin-top: 14px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--or); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+@media (min-width: 900px) {
+  .presta { grid-template-columns: 90px 1fr auto; align-items: center; padding: 38px 0; }
+  .presta__vignette { display: none; }
+  .presta::before { content: attr(data-n); font-size: 13px; letter-spacing: 0.2em; color: var(--or); }
+  .presta__prix { grid-column: auto; margin-top: 0; justify-content: flex-end; }
+  .presta:hover .presta__nom { transform: translateX(18px); }
+}
+.apercu { position: fixed; left: 0; top: 0; z-index: 40; width: 280px; height: 360px; border-radius: 18px; overflow: hidden; pointer-events: none; opacity: 0; transform: scale(0.8); }
+.apercu img { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s var(--ease); }
+.apercu img.on { opacity: 1; }
+
+/* 4. Équipe */
+.equipe { display: grid; gap: 22px; margin-top: clamp(56px, 8vw, 100px); grid-template-columns: 1fr; }
+.membre__photo { aspect-ratio: 3 / 4; overflow: hidden; border-radius: 20px; }
+.membre__photo img { transform: scale(1.12); filter: grayscale(0.25); }
+.membre__nom { margin-top: 18px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font: 300 26px/1 Geist, sans-serif; letter-spacing: -0.03em; }
+.membre__nom small { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or-profond); }
+@media (min-width: 760px) { .equipe { grid-template-columns: repeat(3, 1fr); } .equipe .membre:nth-child(2) { margin-top: 90px; } }
+
+/* 5. Réalisations (cercle qui s'ouvre depuis le bas) */
+.realisations { clip-path: circle(150% at 50% 100%); }
+.galerie { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: clamp(56px, 8vw, 100px); }
+.galerie figure { overflow: hidden; border-radius: 18px; aspect-ratio: 3 / 4; }
+.galerie figure:first-child { grid-column: span 2; aspect-ratio: 4 / 3.6; }
+@media (min-width: 900px) { .galerie { grid-template-columns: 1.3fr 1fr 1fr; gap: 20px; } .galerie figure:first-child { grid-column: auto; aspect-ratio: 3 / 4; } .galerie figure:nth-child(3) { margin-top: 120px; } }
+.avap { position: relative; margin-top: 22px; border-radius: 18px; overflow: hidden; aspect-ratio: 16 / 10; border: 1px solid rgba(194, 164, 114, 0.3); user-select: none; touch-action: pan-y; }
+.avap__pan { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: clamp(20px, 4vw, 40px); }
+.avap__apres { justify-content: flex-end; text-align: right; }
+.avap__pan b { display: block; margin-bottom: 12px; font: 300 clamp(1.8rem, 5vw, 3.4rem)/1 Geist, sans-serif; letter-spacing: -0.035em; }
+.avap__avant { background: radial-gradient(60% 60% at 30% 40%, rgba(194, 164, 114, 0.16), transparent), #1d1a16; }
+.avap__apres { background: radial-gradient(60% 60% at 70% 60%, rgba(194, 164, 114, 0.3), transparent), #2a241c; clip-path: inset(0 0 0 var(--x, 50%)); }
+.avap__ligne { position: absolute; top: 0; bottom: 0; left: var(--x, 50%); width: 1px; background: var(--or); }
+.avap__ligne::after { content: "↔"; position: absolute; top: 50%; left: 50%; translate: -50% -50%; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--or); background: rgba(14, 14, 14, 0.7); color: var(--or); display: grid; place-items: center; font-size: 18px; }
+.avap input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; }
+@media (max-width: 600px) { .avap { aspect-ratio: 4 / 5; } }
+
+/* 6. Le lieu (rideau tiré depuis la gauche) */
+.lieu { clip-path: inset(0 0% 0 0); }
+.lieu__scene { position: relative; margin-top: clamp(56px, 8vw, 100px); height: clamp(720px, 150vw, 1100px); }
+.lieu__scene figure { position: absolute; overflow: hidden; border-radius: 20px; }
+.lieu__a { left: 0; top: 0; width: 72%; aspect-ratio: 4 / 5; }
+.lieu__b { right: 0; top: 38%; width: 52%; aspect-ratio: 3 / 4; z-index: 2; box-shadow: 0 30px 80px rgba(14, 14, 14, 0.25); }
+.lieu__c { left: 8%; bottom: 0; width: 38%; aspect-ratio: 1; z-index: 3; }
+.lieu__d { right: 6%; top: 2%; width: 22%; aspect-ratio: 3 / 4; }
+@media (min-width: 900px) { .lieu__scene { height: 860px; } .lieu__a { width: 46%; } .lieu__b { width: 32%; right: 18%; top: 22%; } .lieu__c { width: 22%; left: 40%; bottom: 0; } .lieu__d { width: 16%; right: 0; top: 0; } }
+
+/* 7. Avis */
+.avis__vide { margin-top: clamp(48px, 7vw, 90px); border: 1px dashed rgba(194, 164, 114, 0.5); border-radius: 22px; padding: clamp(36px, 6vw, 80px); display: grid; gap: 16px; justify-items: start; }
+.avis__vide p { max-width: 52ch; opacity: 0.75; }
+
+/* 8. Réservation */
+.resa__grille { display: grid; gap: 40px; margin-top: clamp(56px, 8vw, 100px); }
+.info { border-top: 1px solid rgba(14, 14, 14, 0.18); padding-top: 22px; }
+.info h3 { font: 400 12px/1 Geist, sans-serif; letter-spacing: 0.26em; text-transform: uppercase; color: var(--or-profond); margin-bottom: 16px; }
+.info p, .info li { font: 300 clamp(1.3rem, 2.6vw, 1.8rem)/1.35 Geist, sans-serif; letter-spacing: -0.02em; }
+.info ul { list-style: none; }
+.info li { display: flex; justify-content: space-between; gap: 16px; font-size: clamp(1.05rem, 2vw, 1.25rem); padding: 8px 0; border-bottom: 1px solid rgba(14, 14, 14, 0.08); }
+@media (min-width: 900px) { .resa__grille { grid-template-columns: repeat(3, 1fr); gap: 56px; } }
+
+/* 9. Pied de page */
+.pied { padding: clamp(80px, 10vw, 140px) var(--marge) 40px; }
+.pied__haut { display: grid; gap: 40px; }
+.pied .logo { width: 150px; color: var(--or); }
+.pied h4 { font: 400 12px/1 Geist, sans-serif; letter-spacing: 0.26em; text-transform: uppercase; color: var(--or); margin-bottom: 14px; }
+.pied a, .pied p { display: block; opacity: 0.72; line-height: 2; }
+.pied a:hover { opacity: 1; color: var(--or); }
+.pied__bas { margin-top: 70px; padding-top: 22px; border-top: 1px solid rgba(242, 237, 228, 0.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 13px; opacity: 0.6; }
+@media (min-width: 900px) { .pied__haut { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+
+/* Curseur et fil de lecture (ordinateur) */
+.curseur { position: fixed; left: 0; top: 0; z-index: 95; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--or); pointer-events: none; display: grid; place-items: center; transition: width 0.5s var(--ease), height 0.5s var(--ease), margin 0.5s var(--ease); }
+.curseur span { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--noir); opacity: 0; transition: opacity 0.3s; }
+.curseur.mot { width: 84px; height: 84px; margin: -42px 0 0 -42px; }
+.curseur.mot span { opacity: 1; }
+.fil { position: fixed; right: 18px; top: 50%; translate: 0 -50%; z-index: 60; width: 1px; height: 42vh; background: rgba(194, 164, 114, 0.25); }
+.fil__plein { position: absolute; inset: 0; background: var(--or); transform-origin: top; transform: scaleY(0); }
+.fil__repere { position: absolute; left: -3px; width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--or); background: var(--noir); }
+.fil__repere.passe { background: var(--or); }
+@media (hover: none), (pointer: coarse), (max-width: 900px) { .curseur, .fil { display: none; } }
+@media (prefers-reduced-motion: reduce) { .curseur { display: none; } }
+</style>
+</head>
+<body>
+
+<header class="entete">
+  <a href="#accueil" aria-label="Ace Barber, retour en haut" data-cursor="Haut"><span class="logo"></span></a>
+  <nav aria-label="Navigation principale">
+    <a href="#maison" data-cursor="Voir">La maison</a><a href="#prestations" data-cursor="Voir">Prestations</a><a href="#lieu" data-cursor="Voir">Le lieu</a>
+  </nav>
+  <a class="entete__resa" href="#reservation" data-cursor="Réserver">Réserver</a>
+</header>
+
+<main id="accueil">
+  <!-- 1. Ouverture -->
+  <section class="ouverture" data-section="Ouverture" aria-labelledby="titre-site">
+    <div class="ouverture__media"><img src="public/img/salon-1080.webp" alt="Le poste de coupe d'Ace Barber sous son plafond lumineux" fetchpriority="high" /><div class="ouverture__voile"></div><div class="ouverture__sombre"></div></div>
+    <p class="ouverture__lieu" aria-hidden="true">Reichstett — Alsace</p>
+    <div class="ouverture__contenu">
+      <h1 id="titre-site">
+        <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Ace Barber</span>
+        <svg class="signature" viewBox="0 0 900 190" aria-hidden="true"><text x="4" y="150">Ace Barber</text></svg>
+      </h1>
+      <div class="ouverture__bas">
+        <p class="ouverture__phrase" data-monte>Votre style, <strong>sublimé.</strong></p>
+        <a class="bouton bouton--plein" href="#reservation" data-aimant data-cursor="Réserver">Prendre rendez-vous <i></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. La maison -->
+  <section class="section jour cadre" id="maison" data-section="La maison">
+    <div class="maison__grille">
+      <div>
+        <p class="surtitre">La maison</p>
+        <h2 class="titre titre--m" data-lignes style="margin-top:28px">Une coupe n'est pas un détail. C'est <strong>une signature.</strong></h2>
+        <p class="texte" style="margin-top:32px">À Reichstett, Ace Barber prend le temps de bien faire : le bon dégradé, la ligne juste, une barbe nette. Un salon calme, un geste précis, et le plaisir de ressortir comme on est entré, en mieux.</p>
+        <p class="citation" style="margin-top:48px">« Le style ne se crie pas, <em>il se remarque.</em> »</p>
+      </div>
+      <figure class="maison__fenetre" data-fenetre><img src="public/img/maison-rasage-1080.webp" alt="Rasage à l'ancienne dans la pénombre" loading="lazy" data-zoom /></figure>
+    </div>
+  </section>
+
+  <!-- 3. Prestations -->
+  <section class="section nuit cadre" id="prestations" data-section="Prestations">
+    <div class="lumiere" style="left:-14vmax;top:-10vmax" data-derive></div>
+    <div class="lumiere" style="right:-16vmax;bottom:-14vmax" data-derive></div>
+    <p class="surtitre">Prestations</p>
+    <h2 class="titre" data-lignes style="margin-top:28px">Le geste <strong>juste.</strong></h2>
+    <div class="liste" data-liste></div>
+    <p style="margin-top:40px;font-size:14px;opacity:.55">Tarifs indicatifs « à partir de », confirmés au salon selon la longueur et le travail demandé.</p>
+  </section>
+
+  <!-- 4. Équipe -->
+  <section class="section jour cadre" id="equipe" data-section="L'équipe">
+    <p class="surtitre">L'équipe</p>
+    <h2 class="titre titre--m" data-lignes style="margin-top:28px">Des mains <strong>sûres.</strong></h2>
+    <div class="equipe" data-equipe></div>
+  </section>
+
+  <!-- 5. Réalisations -->
+  <section class="section nuit cadre realisations" id="realisations" data-section="Réalisations" data-cercle>
+    <div class="lumiere" style="left:30%;top:-20vmax" data-derive></div>
+    <p class="surtitre">Réalisations</p>
+    <h2 class="titre" data-lignes style="margin-top:28px">Le travail, <strong>sans filtre.</strong></h2>
+    <div class="galerie">
+      <figure><img src="public/img/realisation-1-1080.webp" alt="Dégradé avec boucles décolorées" loading="lazy" data-zoom /></figure>
+      <figure><img src="public/img/realisation-2-1080.webp" alt="Dégradé à blanc et boucles sur le dessus" loading="lazy" data-zoom /></figure>
+      <figure><img src="public/img/realisation-3-1080.webp" alt="Coiffé en arrière et barbe taillée" loading="lazy" data-zoom /></figure>
+    </div>
+    <div class="avap" data-avap aria-label="Comparateur avant et après">
+      <div class="avap__pan avap__avant"><div><b>Avant</b><span class="todo" style="margin-top:14px">Photo avant à fournir</span></div></div>
+      <div class="avap__pan avap__apres"><div><b>Après</b><span class="todo" style="margin-top:14px">Photo après à fournir</span></div></div>
+      <div class="avap__ligne"></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Glisser pour comparer avant et après" data-cursor="Glisser" />
+    </div>
+  </section>
+
+  <!-- 6. Le lieu -->
+  <section class="section jour cadre lieu" id="lieu" data-section="Le lieu" data-rideau>
+    <p class="surtitre">Le lieu</p>
+    <h2 class="titre titre--m" data-lignes style="margin-top:28px">Mur végétal, lumière <strong>douce.</strong></h2>
+    <div class="lieu__scene">
+      <figure class="lieu__a" data-profondeur="-6"><img src="public/img/salon-1080.webp" alt="Le poste de coupe et son miroir ovale" loading="lazy" /></figure>
+      <figure class="lieu__b" data-profondeur="10"><img src="public/img/salon-attente-1080.webp" alt="Le coin attente devant le mur végétal" loading="lazy" /></figure>
+      <figure class="lieu__c" data-profondeur="18"><img src="public/img/lieu-ciseaux-640.webp" alt="Ciseaux et sèche-cheveux sur bois sombre" loading="lazy" /></figure>
+      <figure class="lieu__d" data-profondeur="4"><img src="public/img/lieu-outils-640.webp" alt="Tondeuses, peigne et produits de barbier" loading="lazy" /></figure>
+    </div>
+  </section>
+
+  <!-- 7. Avis -->
+  <section class="section nuit cadre" id="avis" data-section="Avis">
+    <div class="lumiere" style="right:-10vmax;top:10%" data-derive></div>
+    <p class="surtitre">Avis clients</p>
+    <h2 class="titre titre--m" data-lignes style="margin-top:28px">Ils en <strong>parlent.</strong></h2>
+    <div class="avis__vide">
+      <span class="todo" style="color:var(--or)">À remplir avec de vrais avis</span>
+      <p>Emplacement réservé aux avis Google du salon. Aucun avis n'est inventé : ils seront ajoutés tels quels, avec le prénom du client et la date.</p>
+    </div>
+  </section>
+
+  <!-- 8. Réservation -->
+  <section class="section jour cadre" id="reservation" data-section="Réservation">
+    <p class="surtitre">Réservation</p>
+    <h2 class="titre" data-lignes style="margin-top:28px">Le fauteuil <strong>vous attend.</strong></h2>
+    <div style="margin-top:44px;display:flex;gap:14px;flex-wrap:wrap">
+      <a class="bouton" href="#reservation" data-aimant data-cursor="Réserver">Réserver en ligne <i></i></a>
+      <a class="bouton" href="tel:+33650135614" data-aimant data-cursor="Appeler">06 50 13 56 14</a>
+    </div>
+    <div class="resa__grille">
+      <div class="info"><h3>Adresse</h3><p>33 Rue du Général Leclerc<br />67116 Reichstett</p></div>
+      <div class="info"><h3>Téléphone</h3><p><a href="tel:+33650135614">06 50 13 56 14</a></p></div>
+      <div class="info"><h3>Horaires <span class="todo">À confirmer</span></h3><ul data-horaires></ul></div>
+    </div>
+  </section>
+</main>
+
+<!-- 9. Pied de page -->
+<footer class="pied nuit" data-section="Contact">
+  <div class="pied__haut">
+    <div><span class="logo"></span><p style="margin-top:22px;max-width:30ch">Barbier à Reichstett, près de Strasbourg. Sur rendez-vous.</p></div>
+    <div><h4>Salon</h4><a href="#maison">La maison</a><a href="#prestations">Prestations</a><a href="#lieu">Le lieu</a></div>
+    <div><h4>Suivre</h4><a href="https://www.instagram.com/ace_bvrber/" target="_blank" rel="noopener noreferrer" data-cursor="Ouvrir">Instagram @ace_bvrber</a><a href="tel:+33650135614">06 50 13 56 14</a></div>
+    <div><h4>Informations</h4><a href="#mentions">Mentions légales</a><a href="#confidentialite">Confidentialité</a></div>
+  </div>
+  <div class="pied__bas"><span>© 2026 Ace Barber</span><span>Maquette — contenu à valider</span></div>
+</footer>
+
+<div class="apercu" data-apercu aria-hidden="true"></div>
+<div class="curseur" data-curseur aria-hidden="true"><span></span></div>
+<div class="fil" data-fil aria-hidden="true"><div class="fil__plein"></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+<script>
+/* ── Contenu (tout ce qui change pour un vrai client est ici) ── */
+var PRESTATIONS = [
+  { nom: "Coupe", desc: "Coupe sur mesure, pensée avec vous selon votre visage et votre style.", img: "public/img/prestation-coupe-640.webp" },
+  { nom: "Dégradé", desc: "Transitions nettes, du plus léger au plus marqué.", img: "public/img/prestation-degrade-640.webp" },
+  { nom: "Barbe", desc: "Taille, contours au rasoir et finitions soignées.", img: "public/img/prestation-barbe-640.webp" },
+  { nom: "Soin visage vapeur", desc: "Un moment de détente : vapeur, nettoyage et soin de la peau.", img: "public/img/prestation-soin-640.webp" },
+  { nom: "Coloration", desc: "Couleur, mèches ou décoloration, selon l'envie.", img: null },
+];
+var EQUIPE = [
+  { img: "public/img/equipe-1-640.webp" }, { img: "public/img/equipe-2-640.webp" }, { img: "public/img/equipe-3-640.webp" },
+];
+var HORAIRES = [["Lundi", "Fermé"], ["Mardi", "10h – 19h"], ["Mercredi", "10h – 19h"], ["Jeudi", "10h – 19h"], ["Vendredi", "10h – 19h"], ["Samedi", "10h – 19h"], ["Dimanche", "Fermé"]];
+
+(function () {
+  // Rendu du contenu
+  var liste = document.querySelector("[data-liste]");
+  PRESTATIONS.forEach(function (p, i) {
+    var el = document.createElement("div");
+    el.className = "presta"; el.dataset.n = String(i + 1).padStart(2, "0"); el.dataset.img = p.img || "";
+    el.innerHTML = '<div class="presta__vignette">' + (p.img ? '<img src="' + p.img + '" alt="" loading="lazy">' : "") + '</div><div><h3 class="presta__nom">' + p.nom + '</h3><p class="presta__desc">' + p.desc + '</p></div><p class="presta__prix">À partir de <span class="todo">Prix à compléter</span></p>';
+    if (!p.img) el.querySelector(".presta__vignette").style.background = "radial-gradient(circle at 30% 30%, rgba(194,164,114,.35), #221d17)";
+    liste.appendChild(el);
+  });
+  var eq = document.querySelector("[data-equipe]");
+  EQUIPE.forEach(function (m) {
+    var el = document.createElement("article"); el.className = "membre";
+    el.innerHTML = '<div class="membre__photo"><img src="' + m.img + '" alt="Photo d\'illustration d\'un barbier au travail" loading="lazy" data-zoom></div><p class="membre__nom"><span class="todo">Prénom à compléter</span><small>Barbier</small></p>';
+    eq.appendChild(el);
+  });
+  var h = document.querySelector("[data-horaires]");
+  HORAIRES.forEach(function (j) { var li = document.createElement("li"); li.innerHTML = "<span>" + j[0] + "</span><span>" + j[1] + "</span>"; h.appendChild(li); });
+
+  // Comparateur avant / après (fonctionne aussi sans animation)
+  var avap = document.querySelector("[data-avap]");
+  avap.querySelector("input").addEventListener("input", function (e) { avap.style.setProperty("--x", e.target.value + "%"); });
+
+  if (!window.gsap) return; // sans GSAP : tout reste affiché normalement
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  var mm = gsap.matchMedia();
+
+  mm.add("(prefers-reduced-motion: no-preference)", function () {
+    // Défilement fluide et inertiel
+    var lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 0.9 });
+    lenis.on("scroll", ScrollTrigger.update);
+    var raf = function (t) { lenis.raf(t * 1000); };
+    gsap.ticker.add(raf); gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener("click", function (e) { var id = a.getAttribute("href"); var t = id === "#accueil" ? 0 : document.querySelector(id); if (t !== null && t !== undefined) { e.preventDefault(); lenis.scrollTo(t, { duration: 1.8 }); } });
+    });
+
+    // Ouverture : signature tracée à la plume, phrase qui monte
+    var txt = document.querySelector(".signature text");
+    var len = 2600;
+    gsap.set(txt, { strokeDasharray: len, strokeDashoffset: len, fillOpacity: 0 });
+    var intro = gsap.timeline({ delay: 0.3 });
+    intro.from(".ouverture__media img", { scale: 1.3, duration: 3, ease: "power2.out" }, 0)
+      .to(txt, { strokeDashoffset: 0, duration: 2.6, ease: "power1.inOut" }, 0.3)
+      .to(txt, { fillOpacity: 1, duration: 1.4, ease: "power2.out" }, 2.2)
+      .from("[data-monte]", { yPercent: 60, opacity: 0, duration: 1.4, ease: "expo.out" }, 2.4)
+      .from(".ouverture .bouton, .ouverture__lieu", { y: 30, opacity: 0, duration: 1.2, ease: "expo.out", stagger: 0.12 }, 2.6);
+
+    // Au défilement : l'image se referme en cadre arrondi et s'assombrit
+    gsap.timeline({ scrollTrigger: { trigger: ".ouverture", start: "top top", end: "+=90%", scrub: 1, pin: true, pinSpacing: true } })
+      .to(".ouverture__media", { clipPath: "inset(9% 6% 9% 6% round 28px)", ease: "none" }, 0)
+      .to(".ouverture__sombre", { opacity: 0.55, ease: "none" }, 0)
+      .to(".ouverture__contenu", { yPercent: -12, opacity: 0, ease: "none" }, 0);
+
+    // Titres : ligne par ligne
+    document.fonts.ready.then(function () {
+      document.querySelectorAll("[data-lignes]").forEach(function (el) {
+        SplitText.create(el, { type: "lines", mask: "lines", autoSplit: true, onSplit: function (s) {
+          return gsap.from(s.lines, { yPercent: 110, duration: 1.5, ease: "expo.out", stagger: 0.12, scrollTrigger: { trigger: el, start: "top 86%" } });
+        } });
+      });
+      ScrollTrigger.refresh();
+    });
+
+    // Transitions entre sections
+    gsap.fromTo("[data-fenetre]", { clipPath: "inset(16% 22% 16% 22% round 999px)" }, { clipPath: "inset(0% 0% 0% 0% round 24px)", ease: "none", scrollTrigger: { trigger: "[data-fenetre]", start: "top 95%", end: "center 55%", scrub: 1 } });
+    gsap.fromTo("[data-cercle]", { clipPath: "circle(8% at 50% 100%)" }, { clipPath: "circle(150% at 50% 100%)", ease: "none", scrollTrigger: { trigger: "[data-cercle]", start: "top bottom", end: "top 15%", scrub: 1 } });
+    gsap.fromTo("[data-rideau]", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", ease: "none", scrollTrigger: { trigger: "[data-rideau]", start: "top bottom", end: "top 25%", scrub: 1 } });
+
+    // Photos : zoom lent + profondeur
+    document.querySelectorAll("[data-zoom]").forEach(function (img) {
+      gsap.fromTo(img, { scale: 1.18, yPercent: -4 }, { scale: 1, yPercent: 4, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
+    });
+    document.querySelectorAll("[data-profondeur]").forEach(function (f) {
+      var d = +f.dataset.profondeur;
+      gsap.fromTo(f, { yPercent: d }, { yPercent: -d, ease: "none", scrollTrigger: { trigger: ".lieu__scene", start: "top bottom", end: "bottom top", scrub: true } });
+      gsap.fromTo(f.querySelector("img"), { scale: 1.15 }, { scale: 1, ease: "none", scrollTrigger: { trigger: f, start: "top bottom", end: "bottom top", scrub: true } });
+    });
+    gsap.from(".presta, .membre, .info", { y: 50, opacity: 0, duration: 1.4, ease: "expo.out", stagger: 0.08, scrollTrigger: { trigger: "[data-liste]", start: "top 85%" } });
+
+    // Lumières dorées qui dérivent comme une bougie
+    document.querySelectorAll("[data-derive]").forEach(function (l, i) {
+      gsap.to(l, { x: "random(-120, 120)", y: "random(-80, 80)", scale: "random(0.85, 1.2)", opacity: "random(0.6, 1)", duration: "random(14, 22)", ease: "sine.inOut", repeat: -1, yoyo: true, repeatRefresh: true, delay: i * 1.5 });
+    });
+
+    return function () { gsap.ticker.remove(raf); lenis.destroy(); };
+  });
+
+  // Ordinateur : curseur, boutons aimantés, aperçu des prestations, fil de lecture
+  mm.add("(hover: hover) and (pointer: fine) and (min-width: 901px) and (prefers-reduced-motion: no-preference)", function () {
+    var c = document.querySelector("[data-curseur]"), mot = c.querySelector("span");
+    var cx = gsap.quickTo(c, "x", { duration: 0.5, ease: "power3" }), cy = gsap.quickTo(c, "y", { duration: 0.5, ease: "power3" });
+    var ap = document.querySelector("[data-apercu]");
+    var ax = gsap.quickTo(ap, "x", { duration: 0.9, ease: "power3" }), ay = gsap.quickTo(ap, "y", { duration: 0.9, ease: "power3" });
+    addEventListener("mousemove", function (e) { cx(e.clientX); cy(e.clientY); ax(e.clientX + 30); ay(e.clientY - 180); });
+    document.querySelectorAll("a, button, [data-cursor]").forEach(function (el) {
+      el.addEventListener("mouseenter", function () { mot.textContent = el.dataset.cursor || "Voir"; c.classList.add("mot"); });
+      el.addEventListener("mouseleave", function () { c.classList.remove("mot"); });
+    });
+    document.querySelectorAll("[data-aimant]").forEach(function (b) {
+      var bx = gsap.quickTo(b, "x", { duration: 0.8, ease: "elastic.out(1, 0.4)" }), by = gsap.quickTo(b, "y", { duration: 0.8, ease: "elastic.out(1, 0.4)" });
+      b.addEventListener("mousemove", function (e) { var r = b.getBoundingClientRect(); bx((e.clientX - r.left - r.width / 2) * 0.3); by((e.clientY - r.top - r.height / 2) * 0.4); });
+      b.addEventListener("mouseleave", function () { bx(0); by(0); });
+    });
+    // Aperçu photo au survol des prestations
+    document.querySelectorAll(".presta").forEach(function (p) {
+      if (!p.dataset.img) return;
+      var im = new Image(); im.src = p.dataset.img; im.alt = ""; ap.appendChild(im);
+      p.addEventListener("mouseenter", function () { ap.querySelectorAll("img").forEach(function (x) { x.classList.toggle("on", x === im); }); gsap.to(ap, { opacity: 1, scale: 1, duration: 0.6, ease: "expo.out" }); mot.textContent = "Réserver"; });
+      p.addEventListener("mouseleave", function () { gsap.to(ap, { opacity: 0, scale: 0.85, duration: 0.5, ease: "expo.out" }); });
+    });
+    // Fil doré + repères
+    var fil = document.querySelector("[data-fil]"), plein = fil.querySelector(".fil__plein");
+    var reperes = [];
+    function placer() {
+      reperes.forEach(function (r) { r.el.remove(); }); reperes = [];
+      var H = document.documentElement.scrollHeight - innerHeight;
+      document.querySelectorAll("[data-section]").forEach(function (s) {
+        var y = Math.min(1, Math.max(0, (s.getBoundingClientRect().top + scrollY) / H));
+        var d = document.createElement("span"); d.className = "fil__repere"; d.style.top = "calc(" + y * 100 + "% - 3px)"; d.title = s.dataset.section; fil.appendChild(d);
+        reperes.push({ el: d, y: y });
+      });
+    }
+    ScrollTrigger.addEventListener("refresh", placer); placer();
+    ScrollTrigger.create({ start: 0, end: "max", onUpdate: function (self) { gsap.set(plein, { scaleY: self.progress }); reperes.forEach(function (r) { r.el.classList.toggle("passe", self.progress >= r.y - 0.001); }); } });
+  });
+})();
+</script>
+</body>
+</html>
